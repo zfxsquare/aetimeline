@@ -1,0 +1,84 @@
+.timeline-parser {
+  background-color: #2b2b2b;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.file-upload {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.file-upload input {
+  background-color: #1a1a1a;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #4a4a4a;
+  color: #ffffff;
+}
+
+.file-upload button {
+  background-color: #3a7bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.file-upload button:hover {
+  background-color: #2960d3;
+}
+
+.file-upload button:disabled {
+  background-color: #5a5a5a;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #ff5555;
+  margin: 10px 0;
+  padding: 8px;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.file-info {
+  margin: 10px 0;
+  padding: 8px;
+  background-color: #333333;
+  border-radius: 3px;
+}
+
+.timeline-format-info {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #333333;
+  border-radius: 4px;
+}
+
+.timeline-format-info h3 {
+  margin-top: 0;
+  color: #a0d8ff;
+}
+
+.timeline-format-info code {
+  background-color: #1a1a1a;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+.timeline-format-info pre {
+  background-color: #1a1a1a;
+  padding: 10px;
+  border-radius: 3px;
+  overflow-x: auto;
+  font-family: monospace;
+  max-height: 200px;
+  overflow-y: auto;
+} 

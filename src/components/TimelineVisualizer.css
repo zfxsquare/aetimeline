@@ -1,0 +1,165 @@
+.timeline-visualizer {
+  background-color: #2b2b2b;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.timeline-controls {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.timeline-controls button {
+  background-color: #3a7bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.timeline-controls button:hover {
+  background-color: #2960d3;
+}
+
+.time-display {
+  margin-left: auto;
+  font-size: 1.2em;
+  font-family: monospace;
+  padding: 5px 10px;
+  background-color: #333333;
+  border-radius: 3px;
+}
+
+.timeline-container {
+  position: relative;
+  overflow-x: auto;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border: 1px solid #444444;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.time-ruler {
+  position: relative;
+  height: 20px;
+  background-color: #333333;
+  border-bottom: 1px solid #444444;
+}
+
+.time-marker {
+  position: absolute;
+  font-size: 10px;
+  font-family: monospace;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: #aaaaaa;
+}
+
+.current-time-indicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #ff5555;
+  z-index: 10;
+}
+
+.entries-container {
+  position: relative;
+  padding-top: 10px;
+  min-height: 200px;
+}
+
+.timeline-entry {
+  position: absolute;
+  padding: 5px 8px;
+  background-color: #333333;
+  border-radius: 4px;
+  border-left: 4px solid #57a3ff;
+  min-width: 200px;
+  transform: translateY(-50%);
+  z-index: 5;
+  margin-top: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-entry:hover {
+  z-index: 6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.timeline-entry.past {
+  border-left-color: #8a8a8a;
+  background-color: #2a2a2a;
+  color: #aaaaaa;
+}
+
+.timeline-entry.upcoming {
+  border-left-color: #ff5757;
+  background-color: #3a3333;
+}
+
+.timeline-entry.has-label {
+  border-left-color: #57ff8a;
+}
+
+.timeline-entry.has-sync {
+  border-left-color: #ffd257;
+}
+
+.entry-time {
+  font-weight: bold;
+  font-family: monospace;
+  color: #aaaaaa;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
+.entry-text {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.entry-label,
+.entry-sync,
+.entry-window,
+.entry-jump {
+  font-size: 0.85em;
+  color: #bbbbbb;
+  margin-top: 3px;
+}
+
+.entry-label {
+  color: #7affaa;
+}
+
+.entry-sync {
+  color: #ffeea0;
+}
+
+.entry-jump {
+  color: #a0d8ff;
+}
+
+.jump-line path:hover {
+  stroke-width: 3;
+}
+
+/* 为了显示不同高度的条目，每隔三个条目交错显示 */
+.timeline-entry:nth-child(3n+1) {
+  top: 20%;
+}
+
+.timeline-entry:nth-child(3n+2) {
+  top: 50%;
+}
+
+.timeline-entry:nth-child(3n+3) {
+  top: 80%;
+} 
