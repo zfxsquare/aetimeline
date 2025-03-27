@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import TimelineEditor from './components/TimelineEditor';
 import TimelineManager from './components/TimelineManager';

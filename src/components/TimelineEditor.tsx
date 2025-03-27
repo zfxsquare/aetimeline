@@ -75,7 +75,6 @@ interface EntryGroupMap {
 
 interface TimelineEditorProps {
   importedEntries?: TimelineEntry[];
-  onSave?: (data: any) => void;
 }
 
 // 生成唯一ID
@@ -98,7 +97,7 @@ const targetTypes = [
   { value: 'party8', label: '小队8' }
 ];
 
-const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [], onSave }) => {
+const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] }) => {
   // 基本配置状态
   const [name, setName] = useState('timeline');
   
@@ -372,12 +371,6 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [], o
     
     setIsEditingCondition(false);
     setEditingConditionIndex(-1);
-  };
-
-  // 获取当前选中的组
-  const getSelectedGroup = (): ConditionActionGroup | null => {
-    if (!selectedGroupId) return null;
-    return groups.find(group => group.id === selectedGroupId) || null;
   };
 
   // 导出时间轴配置
