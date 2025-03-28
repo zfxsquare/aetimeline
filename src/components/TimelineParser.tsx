@@ -49,7 +49,7 @@ const TimelineParser: React.FC<TimelineParserProps> = ({ onTimelineParsed }) => 
         };
         
         // 解析同步信息
-        const syncMatch = line.match(/(?:StartsUsing|Ability|AddedCombatant|ActorControl|SystemLogMessage|InCombat)\s+{\s[^}]+\s}/);
+        const syncMatch = line.match(/(?:StartsUsing|Ability|AddedCombatant|ActorControl|SystemLogMessage|InCombat|MapEffect)\s+{\s[^}]+\s}/);
         if (syncMatch) {
           entry.sync = syncMatch[0];
         }
