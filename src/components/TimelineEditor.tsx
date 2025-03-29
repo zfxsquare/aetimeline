@@ -79,11 +79,6 @@ interface TimelineEditorProps {
   importedEntries?: TimelineEntry[];
 }
 
-// 添加技能ID到技能名称的映射接口
-interface SkillNameMap {
-  [key: string]: string;
-}
-
 // 生成唯一ID
 const generateId = (): string => {
   return Math.random().toString(36).substring(2, 11);
@@ -107,9 +102,6 @@ const targetTypes = [
 const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] }) => {
   // 基本配置状态
   const [name, setName] = useState('timeline');
-  
-  // 添加技能名称映射状态
-  const [skillNameMap, setSkillNameMap] = useState<SkillNameMap>({});
   
   // 条目相关状态
   const [selectedEntry, setSelectedEntry] = useState<TimelineEntry | null>(null);
@@ -542,21 +534,6 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   // 修改SkillSearch组件的onSelect处理
   const handleSkillSelect = (skillId: string) => {
     setSkillId(skillId);
-    // 更新技能名称映射
-    setSkillNameMap(prev => ({
-      ...prev,
-      [skillId]: skillId // 初始时使用ID作为名称
-    }));
-  };
-
-  // 添加一个新的函数来处理技能搜索选择
-  const handleSkillSearchSelect = (skillId: string, skillName: string) => {
-    setSkillId(skillId);
-    // 更新技能名称映射
-    setSkillNameMap(prev => ({
-      ...prev,
-      [skillId]: skillName
-    }));
   };
 
   // 渲染动作表单

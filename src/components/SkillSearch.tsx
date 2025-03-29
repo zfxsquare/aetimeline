@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './SkillSearch.css';
-import { Skill, skills } from '../data/skills';
+import { skills } from '../data/skills';
 
 interface SkillSearchProps {
-  value?: string;
   onChange?: (value: string) => void;
   onSelect?: (skillId: string) => void;
 }
 
-export const SkillSearch: React.FC<SkillSearchProps> = ({ value = '', onChange, onSelect }) => {
+export const SkillSearch: React.FC<SkillSearchProps> = ({ onChange, onSelect }) => {
   const [searchText, setSearchText] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
   const [filteredSkills, setFilteredSkills] = useState(skills);
