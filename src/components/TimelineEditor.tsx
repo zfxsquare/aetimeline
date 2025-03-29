@@ -44,7 +44,6 @@ type Action = SkillAction | ToggleAction;
 interface ConditionActionGroup {
   id: string;  // 组的唯一标识
   name: string; // 组的名称
-  eventType: string; // 触发事件类型
   timeout: number; // 超时时间
   enabled: boolean; // 是否启用
   conditions: TimelineCondition[];
@@ -116,7 +115,6 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   const [isEditingGroup, setIsEditingGroup] = useState(false);
   const [editingGroupId, setEditingGroupId] = useState<string | null>(null);
   const [newGroupName, setNewGroupName] = useState('');
-  const [newEventType, setNewEventType] = useState('OnCastStart');
   const [newTimeout, setNewTimeout] = useState(10);
   
   // 动作编辑状态
@@ -294,7 +292,6 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     const newGroup: ConditionActionGroup = {
       id: generateId(),
       name: newGroupName || `组 ${groups.length + 1}`,
-      eventType: newEventType,
       timeout: newTimeout,
       enabled: true,
       conditions: [],
@@ -314,7 +311,6 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     setIsEditingGroup(true);
     setEditingGroupId(groupId);
     setNewGroupName(group.name);
-    setNewEventType(group.eventType);
     setNewTimeout(group.timeout);
   };
 
@@ -327,7 +323,6 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
         ? { 
             ...group, 
             name: newGroupName || group.name,
-            eventType: newEventType,
             timeout: newTimeout
           } 
         : group
@@ -461,7 +456,6 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                 const newGroup: ConditionActionGroup = {
                   id: generateId(),
                   name: "导入的动作",
-                  eventType: 'OnCastStart',
                   timeout: 10,
                   enabled: true,
                   conditions: [],
@@ -1199,17 +1193,6 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                         placeholder="输入组名称"
                       />
                     </div>
-                    
-                    <div className="input-group">
-                      <label>事件：</label>
-                      <select 
-                        value={newEventType}
-                        onChange={(e) => setNewEventType(e.target.value)}
-                      >
-                        <option value="OnCastStart">读条开始</option>
-                        <option value="OnCastEnd">读条结束</option>
-                      </select>
-                    </div>
 
                     <div className="input-group">
                       <label>超时时间 (秒):</label>
@@ -1277,7 +1260,6 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                           <div className="group-summary">
                             <span className="group-condition-count">条件: {group.conditions.length}</span>
                             <span className="group-action-count">动作: {group.actions.length}</span>
-                            <span className="group-event-type">事件: {group.eventType === 'OnCastStart' ? '读条开始' : '读条结束'}</span>
                           </div>
                           <div className="group-buttons">
                             <button 
@@ -1306,10 +1288,6 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                         {selectedGroupId === group.id && (
                           <div className="group-content">
                             <div className="group-config">
-                              <div className="input-group">
-                                <label>事件类型:</label>
-                                <span>{group.eventType === 'OnCastStart' ? '读条开始' : '读条结束'}</span>
-                              </div>
                               <div className="input-group">
                                 <label>超时时间:</label>
                                 <span>{group.timeout} 秒</span>
