@@ -28,6 +28,7 @@ interface SkillAction {
   skillId: string;
   target?: 'current' | 'self' | 'current_target' | 'party1' | 'party2' | 'party3' | 'party4' | 'party5' | 'party6' | 'party7' | 'party8';
   timeOffset: number;
+  forceUse?: boolean;
 }
 
 interface ToggleAction {
@@ -123,6 +124,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   const [editingActionIndex, setEditingActionIndex] = useState<number>(-1);
   const [skillId, setSkillId] = useState('');
   const [skillTarget, setSkillTarget] = useState<SkillAction['target']>(undefined);
+  const [forceUse, setForceUse] = useState(false);
   const [toggleName, setToggleName] = useState('');
   const [toggleState, setToggleState] = useState(true);
   const [timeOffset, setTimeOffset] = useState(0);
@@ -257,6 +259,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     setEditingActionIndex(-1);
     setSkillId('');
     setSkillTarget(undefined);
+    setForceUse(false);
     setToggleName('');
     setToggleState(true);
     setTimeOffset(0);
@@ -449,17 +452,40 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
           config.entries.forEach(entry => {
             const entryId = getEntryId(entry);
             if ((entry as any).groups && (entry as any).groups.length > 0) {
-              newEntryGroupMap[entryId] = (entry as any).groups;
+              // 处理每个组中的动作，确保forceUse属性存在
+              const processedGroups = (entry as any).groups.map((group: any) => ({
+                ...group,
+                actions: group.actions.map((action: any) => {
+                  if (action.type === 'skill') {
+                    return {
+                      ...action,
+                      forceUse: action.forceUse || false // 确保forceUse属性存在
+                    };
+                  }
+                  return action;
+                })
+              }));
+              newEntryGroupMap[entryId] = processedGroups;
             } else {
               // 兼容旧格式: 如果存在actions但没有groups，创建单个组
               if ((entry as any).actions && (entry as any).actions.length > 0) {
+                const processedActions = (entry as any).actions.map((action: any) => {
+                  if (action.type === 'skill') {
+                    return {
+                      ...action,
+                      forceUse: action.forceUse || false // 确保forceUse属性存在
+                    };
+                  }
+                  return action;
+                });
+                
                 const newGroup: ConditionActionGroup = {
                   id: generateId(),
                   name: "导入的动作",
                   timeout: 10,
                   enabled: true,
                   conditions: [],
-                  actions: (entry as any).actions
+                  actions: processedActions
                 };
                 newEntryGroupMap[entryId] = [newGroup];
               }
@@ -539,6 +565,16 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                   <button onClick={() => handleTimeOffsetChange((timeOffset + 0.1).toFixed(1))}>+</button>
                 </div>
               </div>
+            </div>
+            <div className="input-group">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={forceUse}
+                  onChange={(e) => setForceUse(e.target.checked)}
+                />
+                强制使用
+              </label>
             </div>
             <div className="action-form-buttons">
               <button 
@@ -636,6 +672,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
           <span className={`time-offset ${action.timeOffset > 0 ? 'positive' : action.timeOffset < 0 ? 'negative' : ''}`}>
             {action.timeOffset > 0 ? '+' : ''}{action.timeOffset}s
           </span>
+          {action.forceUse && <span className="action-detail force-use">强制使用</span>}
         </>
       );
     } else {
@@ -669,7 +706,8 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
             enabled: true,
             skillId,
             target: skillTarget || undefined,
-            timeOffset
+            timeOffset,
+            forceUse
           };
         }
         break;
@@ -709,6 +747,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
       setEditingActionIndex(-1);
       setSkillId('');
       setSkillTarget(undefined);
+      setForceUse(false);
       setToggleName('');
       setToggleState(true);
       setTimeOffset(0);
@@ -730,6 +769,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     if (action.type === 'skill') {
       setSkillId(action.skillId);
       setSkillTarget(action.target);
+      setForceUse(action.forceUse || false);
     } else if (action.type === 'toggle') {
       setToggleName(action.toggleName);
       setToggleState(action.state);
@@ -764,6 +804,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     setEditingActionIndex(-1);
     setSkillId('');
     setSkillTarget(undefined);
+    setForceUse(false);
     setToggleName('');
     setToggleState(true);
     setTimeOffset(0);
