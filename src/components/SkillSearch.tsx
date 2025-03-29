@@ -3,15 +3,21 @@ import './SkillSearch.css';
 import { skills } from '../data/skills';
 
 interface SkillSearchProps {
+  value?: string;
   onChange?: (value: string) => void;
   onSelect?: (skillId: string) => void;
 }
 
-export const SkillSearch: React.FC<SkillSearchProps> = ({ onChange, onSelect }) => {
-  const [searchText, setSearchText] = useState('');
+export const SkillSearch: React.FC<SkillSearchProps> = ({ value = '', onChange, onSelect }) => {
+  const [searchText, setSearchText] = useState(value);
   const [showDropdown, setShowDropdown] = useState(false);
   const [filteredSkills, setFilteredSkills] = useState(skills);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // 同步外部value和内部searchText状态
+  useEffect(() => {
+    setSearchText(value);
+  }, [value]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
