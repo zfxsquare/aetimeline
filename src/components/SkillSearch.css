@@ -1,0 +1,90 @@
+.skill-search {
+  position: relative;
+  width: 100%;
+}
+
+.skill-search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  background-color: #2a2a2a;
+  color: #ffffff;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.skill-search-input:focus {
+  outline: none;
+  border-color: #3a7bff;
+}
+
+.skill-search-loading {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  color: #7a9cc4;
+  text-align: center;
+  z-index: 1000;
+}
+
+.skill-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  margin-top: 4px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.skill-option {
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.skill-option:hover {
+  background-color: #3a3a3a;
+}
+
+.skill-id {
+  color: #7a9cc4;
+  font-family: monospace;
+  min-width: 40px;
+}
+
+.skill-name {
+  color: #ffffff;
+}
+
+/* 自定义滚动条样式 */
+.skill-dropdown::-webkit-scrollbar {
+  width: 8px;
+}
+
+.skill-dropdown::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+.skill-dropdown::-webkit-scrollbar-thumb {
+  background: #3a3a3a;
+  border-radius: 4px;
+}
+
+.skill-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #4a4a4a;
+} 

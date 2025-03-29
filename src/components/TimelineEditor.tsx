@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import './TimelineEditor.css';
+import SkillSearch from './SkillSearch';
+import { skills } from '../data/skills';
 
 interface ActionType {
   id: string;
@@ -77,6 +79,11 @@ interface TimelineEditorProps {
   importedEntries?: TimelineEntry[];
 }
 
+// 添加技能ID到技能名称的映射接口
+interface SkillNameMap {
+  [key: string]: string;
+}
+
 // 生成唯一ID
 const generateId = (): string => {
   return Math.random().toString(36).substring(2, 11);
@@ -100,6 +107,9 @@ const targetTypes = [
 const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] }) => {
   // 基本配置状态
   const [name, setName] = useState('timeline');
+  
+  // 添加技能名称映射状态
+  const [skillNameMap, setSkillNameMap] = useState<SkillNameMap>({});
   
   // 条目相关状态
   const [selectedEntry, setSelectedEntry] = useState<TimelineEntry | null>(null);
@@ -206,7 +216,10 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
         // 检查条件
         const conditionMatch = group.conditions.some(condition => {
           if (condition.type === 'skill_available') {
-            return condition.skillId.toLowerCase().includes(lowerSearchText);
+            // 通过技能ID查找技能名称
+            const skillInfo = skills.find(s => s.id === condition.skillId);
+            const skillName = skillInfo ? skillInfo.name.toLowerCase() : condition.skillId.toLowerCase();
+            return skillName.includes(lowerSearchText) || condition.skillId.toLowerCase().includes(lowerSearchText);
           } else if (condition.type === 'team_count') {
             // 搜索团队数量条件的操作符和数值
             const operatorText = operators.find(op => op.value === condition.operator)?.label || '';
@@ -222,8 +235,12 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
         // 检查动作
         return group.actions.some(action => {
           if (action.type === 'skill') {
-            return action.skillId.toLowerCase().includes(lowerSearchText) || 
-                  (action.target && action.target.toLowerCase().includes(lowerSearchText));
+            // 通过技能ID查找技能名称
+            const skillInfo = skills.find(s => s.id === action.skillId);
+            const skillName = skillInfo ? skillInfo.name.toLowerCase() : action.skillId.toLowerCase();
+            return skillName.includes(lowerSearchText) || 
+                   action.skillId.toLowerCase().includes(lowerSearchText) || 
+                   (action.target && action.target.toLowerCase().includes(lowerSearchText));
           } else if (action.type === 'toggle') {
             return action.toggleName.toLowerCase().includes(lowerSearchText);
           }
@@ -522,6 +539,26 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     event.target.value = '';
   };
 
+  // 修改SkillSearch组件的onSelect处理
+  const handleSkillSelect = (skillId: string) => {
+    setSkillId(skillId);
+    // 更新技能名称映射
+    setSkillNameMap(prev => ({
+      ...prev,
+      [skillId]: skillId // 初始时使用ID作为名称
+    }));
+  };
+
+  // 添加一个新的函数来处理技能搜索选择
+  const handleSkillSearchSelect = (skillId: string, skillName: string) => {
+    setSkillId(skillId);
+    // 更新技能名称映射
+    setSkillNameMap(prev => ({
+      ...prev,
+      [skillId]: skillName
+    }));
+  };
+
   // 渲染动作表单
   const renderActionForm = () => {
     switch (actionType) {
@@ -530,11 +567,10 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
           <div className="action-form">
             <div className="input-group">
               <label>技能ID:</label>
-              <input
-                type="text"
+              <SkillSearch
                 value={skillId}
-                onChange={(e) => setSkillId(e.target.value)}
-                placeholder="输入技能ID"
+                onChange={setSkillId}
+                onSelect={handleSkillSelect}
               />
             </div>
             <div className="input-group">
@@ -664,9 +700,13 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     
     if (action.type === 'skill') {
       const targetLabel = action.target ? targetTypes.find(t => t.value === action.target)?.label : '无目标';
+      // 从skills.ts中查找技能名称
+      const skillInfo = skills.find(s => s.id === action.skillId);
+      const skillName = skillInfo ? skillInfo.name : action.skillId;
       content = (
         <>
-          <span className="action-type">使用技能</span>: {action.skillId} 
+          <span className="action-type">使用技能</span>: {skillName} 
+          <span className="action-detail">(ID: {action.skillId})</span>
           <span className="action-detail">目标</span>: {targetLabel}
           <span className="action-detail">偏移</span>: 
           <span className={`time-offset ${action.timeOffset > 0 ? 'positive' : action.timeOffset < 0 ? 'negative' : ''}`}>
@@ -949,11 +989,10 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
           <div className="condition-form">
             <div className="input-group">
               <label>技能ID:</label>
-              <input
-                type="text"
+              <SkillSearch
                 value={skillConditionId}
-                onChange={(e) => setSkillConditionId(e.target.value)}
-                placeholder="输入技能ID"
+                onChange={setSkillConditionId}
+                onSelect={setSkillConditionId}
               />
             </div>
             <div className="action-form-buttons">
