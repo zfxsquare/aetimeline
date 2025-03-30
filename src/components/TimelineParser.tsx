@@ -49,9 +49,12 @@ const TimelineParser: React.FC<TimelineParserProps> = ({ onTimelineParsed }) => 
         };
         
         // 解析同步信息
-        const syncMatch = line.match(/(?:StartsUsing|Ability|AddedCombatant|ActorControl|SystemLogMessage|InCombat|MapEffect)\s+{\s[^}]+\s}/);
+        const syncMatch = line.match(/(?:StartsUsing|Ability|AddedCombatant|ActorControl|SystemLogMessage|InCombat|MapEffect)\s+{([^}]+)}/);
         if (syncMatch) {
-          entry.sync = syncMatch[0];
+          const syncContent = syncMatch[1];
+          // 处理未加引号的 id 格式
+          const processedContent = syncContent.replace(/(\w+):\s*([^,}\s]+)/g, '"$1": "$2"');
+          entry.sync = syncMatch[0].replace(syncContent, processedContent);
         }
         
         // 解析窗口信息
