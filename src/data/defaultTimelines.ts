@@ -54,7 +54,7 @@ export const fru_cact_txt = `0.0 "--同步化--" InCombat {"inGameCombat":"1"} w
 # Source actors are elided on some lines where stale data can make P1 actors fill it in.
 # Ability IDs should be sufficient in those cases.
 # Sync on the map change
-200.0 "--同步化--" MapEffect {"flags":"23","location":"17"} window 200,5
+200.0 "--sync--" MapEffect { flags: "00020001", location: "17" } window 200,5
 204.1 "--可选中--"
 210.3 "--同步化--" StartsUsing {"id":"9CFF","source":"希瓦·米特隆"}
 215.3 "四剑斩 1" Ability {"id":"9CFF","source":"希瓦·米特隆"}
