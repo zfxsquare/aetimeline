@@ -28,9 +28,11 @@ interface SkillAction {
   type: 'skill';
   enabled: boolean;
   skillId: string;
-  target?: 'current' | 'self' | 'current_target' | 'party1' | 'party2' | 'party3' | 'party4' | 'party5' | 'party6' | 'party7' | 'party8';
+  target?: 'current' | 'self' | 'current_target' | 'party1' | 'party2' | 'party3' | 'party4' | 'party5' | 'party6' | 'party7' | 'party8' | 'id' | 'coordinate';
   timeOffset: number;
   forceUse?: boolean;
+  targetId?: string;
+  targetCoordinate?: { x: number; y: number; z: number };
 }
 
 interface ToggleAction {
@@ -96,7 +98,9 @@ const targetTypes = [
   { value: 'party5', label: '小队5' },
   { value: 'party6', label: '小队6' },
   { value: 'party7', label: '小队7' },
-  { value: 'party8', label: '小队8' }
+  { value: 'party8', label: '小队8' },
+  { value: 'id', label: '目标ID' },
+  { value: 'coordinate', label: '坐标' }
 ];
 
 const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] }) => {
@@ -130,6 +134,8 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   const [toggleName, setToggleName] = useState('');
   const [toggleState, setToggleState] = useState(true);
   const [timeOffset, setTimeOffset] = useState(0);
+  const [targetId, setTargetId] = useState('');
+  const [targetCoordinate, setTargetCoordinate] = useState({ x: 0, y: 0, z: 0 });
   
   // 条件编辑状态
   const [conditionType, setConditionType] = useState<string>('skill_available');
@@ -272,6 +278,8 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     setToggleName('');
     setToggleState(true);
     setTimeOffset(0);
+    setTargetId('');
+    setTargetCoordinate({ x: 0, y: 0, z: 0 });
     
     // 重置条件编辑状态
     setIsEditingCondition(false);
@@ -564,6 +572,42 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                 ))}
               </select>
             </div>
+            {skillTarget === 'id' && (
+              <div className="input-group">
+                <label>目标ID:</label>
+                <input
+                  type="text"
+                  value={targetId}
+                  onChange={(e) => setTargetId(e.target.value)}
+                  placeholder="输入目标ID"
+                />
+              </div>
+            )}
+            {skillTarget === 'coordinate' && (
+              <div className="input-group">
+                <label>坐标:</label>
+                <div className="coordinate-input">
+                  <input
+                    type="number"
+                    value={targetCoordinate.x}
+                    onChange={(e) => setTargetCoordinate({ ...targetCoordinate, x: parseFloat(e.target.value) })}
+                    placeholder="X"
+                  />
+                  <input
+                    type="number"
+                    value={targetCoordinate.y}
+                    onChange={(e) => setTargetCoordinate({ ...targetCoordinate, y: parseFloat(e.target.value) })}
+                    placeholder="Y"
+                  />
+                  <input
+                    type="number"
+                    value={targetCoordinate.z}
+                    onChange={(e) => setTargetCoordinate({ ...targetCoordinate, z: parseFloat(e.target.value) })}
+                    placeholder="Z"
+                  />
+                </div>
+              </div>
+            )}
             <div className="input-group">
               <label>时间偏移(秒):</label>
               <div className="number-input">
@@ -685,6 +729,12 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
           <span className="action-type">使用技能</span>: {skillName} 
           <span className="action-detail">(ID: {action.skillId})</span>
           <span className="action-detail">目标</span>: {targetLabel}
+          {action.target === 'id' && (
+            <span className="action-detail">目标ID: {action.targetId}</span>
+          )}
+          {action.target === 'coordinate' && (
+            <span className="action-detail">坐标: {action.targetCoordinate?.x}, {action.targetCoordinate?.y}, {action.targetCoordinate?.z}</span>
+          )}
           <span className="action-detail">偏移</span>: 
           <span className={`time-offset ${action.timeOffset > 0 ? 'positive' : action.timeOffset < 0 ? 'negative' : ''}`}>
             {action.timeOffset > 0 ? '+' : ''}{action.timeOffset}s
@@ -726,6 +776,13 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
             timeOffset,
             forceUse
           };
+          
+          // 根据目标类型添加额外属性
+          if (skillTarget === 'id' && targetId) {
+            (newAction as SkillAction).targetId = targetId;
+          } else if (skillTarget === 'coordinate') {
+            (newAction as SkillAction).targetCoordinate = targetCoordinate;
+          }
         }
         break;
       case 'toggle':
@@ -787,6 +844,13 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
       setSkillId(action.skillId);
       setSkillTarget(action.target);
       setForceUse(action.forceUse || false);
+      
+      // 设置目标ID和坐标（如果有）
+      if (action.target === 'id' && action.targetId) {
+        setTargetId(action.targetId);
+      } else if (action.target === 'coordinate' && action.targetCoordinate) {
+        setTargetCoordinate(action.targetCoordinate);
+      }
     } else if (action.type === 'toggle') {
       setToggleName(action.toggleName);
       setToggleState(action.state);
@@ -821,6 +885,8 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     setEditingActionIndex(-1);
     setSkillId('');
     setSkillTarget(undefined);
+    setTargetId('');
+    setTargetCoordinate({x: 0, y: 0, z: 0});
     setForceUse(false);
     setToggleName('');
     setToggleState(true);

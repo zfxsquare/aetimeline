@@ -1153,4 +1153,18 @@
 .condition-type,
 .action-type {
   color: #4caf50;
+}
+
+.coordinate-input {
+  display: flex;
+  gap: 5px;
+}
+
+.coordinate-input input {
+  width: 70px;
+  background-color: #3a3a3a;
+  border: none;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 3px;
 } 
