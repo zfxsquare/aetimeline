@@ -22,7 +22,14 @@ interface TeamCountCondition {
   range: number;
 }
 
-type TimelineCondition = SkillCondition | TeamCountCondition;
+interface TeamHpCondition {
+  type: 'team_hp';
+  enabled: boolean;
+  hpPercent: number;
+  excludeTank: boolean;
+}
+
+type TimelineCondition = SkillCondition | TeamCountCondition | TeamHpCondition;
 
 interface SkillAction {
   type: 'skill';
@@ -145,6 +152,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   const [teamCountOperator, setTeamCountOperator] = useState<'>' | '<' | '==' | '>=' | '<='>('>=');
   const [teamCountValue, setTeamCountValue] = useState(1);
   const [teamCountRange, setTeamCountRange] = useState(30);
+  const [excludeTank, setExcludeTank] = useState(false);
   
   // 导入文件的引用
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -162,7 +170,8 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
 
   const conditionTypes = [
     { id: 'skill_available', name: '技能可用' },
-    { id: 'team_count', name: '周围队友' }
+    { id: 'team_count', name: '周围队友' },
+    { id: 'team_hp', name: '团队血量' }
   ];
 
   const operators = [
@@ -224,6 +233,10 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
             return operatorText.includes(lowerSearchText) || 
                    condition.count.toString().includes(lowerSearchText) ||
                    condition.range.toString().includes(lowerSearchText);
+          } else if (condition.type === 'team_hp') {
+            // 搜索团队血量条件的操作符和数值
+            const hpPercentText = condition.hpPercent.toString();
+            return hpPercentText.includes(lowerSearchText);
           }
           return false;
         });
@@ -288,6 +301,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     setTeamCountOperator('>=');
     setTeamCountValue(1);
     setTeamCountRange(30);
+    setExcludeTank(false);
   };
 
   // 保存当前条目的组
@@ -935,6 +949,14 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
           range: teamCountRange
         };
         break;
+      case 'team_hp':
+        newCondition = {
+          type: 'team_hp',
+          enabled: true,
+          hpPercent: teamCountValue,
+          excludeTank
+        };
+        break;
     }
     
     if (newCondition) {
@@ -962,6 +984,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
       setTeamCountOperator('>=');
       setTeamCountValue(1);
       setTeamCountRange(30);
+      setExcludeTank(false);
     }
   };
 
@@ -983,6 +1006,9 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
       setTeamCountOperator(condition.operator);
       setTeamCountValue(condition.count);
       setTeamCountRange(condition.range);
+    } else if (condition.type === 'team_hp') {
+      setTeamCountValue(condition.hpPercent);
+      setExcludeTank(condition.excludeTank);
     }
   };
 
@@ -1011,9 +1037,9 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     setIsEditingCondition(false);
     setEditingConditionIndex(-1);
     setSkillConditionId('');
-    setTeamCountOperator('>=');
     setTeamCountValue(1);
     setTeamCountRange(30);
+    setExcludeTank(false);
   };
 
   // 处理条件类型切换
@@ -1123,6 +1149,53 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
           </div>
         );
       
+      case 'team_hp':
+        return (
+          <div className="condition-form">
+            <div className="input-group">
+              <label>团队血量百分比:</label>
+              <div className="slider-container">
+                <input
+                  type="range"
+                  className="slider"
+                  min="0"
+                  max="100"
+                  value={teamCountValue}
+                  onChange={(e) => setTeamCountValue(parseInt(e.target.value))}
+                />
+                <span className="slider-value">{teamCountValue}%</span>
+              </div>
+            </div>
+            <div className="input-group">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={excludeTank}
+                  onChange={(e) => setExcludeTank(e.target.checked)}
+                />
+                排除坦克
+              </label>
+            </div>
+            <div className="action-form-buttons">
+              <button 
+                className="action-add-button" 
+                onClick={handleAddCondition}
+                disabled={!selectedGroupId}
+              >
+                {isEditingCondition ? '更新' : '添加'}
+              </button>
+              {isEditingCondition && (
+                <button 
+                  className="action-cancel-button"
+                  onClick={cancelEditingCondition}
+                >
+                  取消
+                </button>
+              )}
+            </div>
+          </div>
+        );
+      
       default:
         return null;
     }
@@ -1138,12 +1211,19 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
           <span className="condition-type">技能可用</span>: {condition.skillId}
         </>
       );
-    } else {
+    } else if (condition.type === 'team_count') {
       content = (
         <>
           <span className="condition-type">周围队友</span>: 
           {operators.find(op => op.value === condition.operator)?.label || condition.operator} {condition.count} 人
           <span className="condition-detail">检测范围</span>: {condition.range} yalm
+        </>
+      );
+    } else if (condition.type === 'team_hp') {
+      content = (
+        <>
+          <span className="condition-type">团队血量</span>: {condition.hpPercent}%
+          {condition.excludeTank && <span className="condition-detail">(排除坦克)</span>}
         </>
       );
     }
