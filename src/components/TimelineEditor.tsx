@@ -119,6 +119,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   const [timelineEntries, setTimelineEntries] = useState<TimelineEntry[]>(importedEntries);
   const [searchText, setSearchText] = useState('');
   const [showTimes, setShowTimes] = useState(false);
+  const [showWarning, setShowWarning] = useState(true);
   
   // 条件-动作组相关状态
   const [selectedGroupId, setSelectedGroupId] = useState<string | null>(null);
@@ -1274,8 +1275,50 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     setGroups(updatedGroups);
   };
 
+  // 初始化时从cookie中读取警告栏状态
+  useEffect(() => {
+    const warningClosed = getCookie('timeline_warning_closed');
+    if (warningClosed === 'true') {
+      setShowWarning(false);
+    }
+  }, []);
+
+  // 设置cookie的函数
+  const setCookie = (name: string, value: string, days: number = 365) => {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "; expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + expires + "; path=/";
+  };
+
+  // 获取cookie的函数
+  const getCookie = (name: string): string | null => {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  };
+
+  // 处理关闭警告栏
+  const handleCloseWarning = () => {
+    setShowWarning(false);
+    setCookie('timeline_warning_closed', 'true');
+  };
+
   return (
     <div className="timeline-editor">
+      {showWarning && (
+        <div className="warning-banner">
+          ⚠️ 警告：不要导入旧时间轴！新版本不兼容旧格式 ⚠️
+          <button className="close-warning-button" onClick={handleCloseWarning}>
+            我已知晓
+          </button>
+        </div>
+      )}
       <div className="editor-layout">
         <div className="editor-sidebar">
           <div className="sidebar-header">
