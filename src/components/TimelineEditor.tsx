@@ -455,12 +455,16 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
 
   // 格式化时间显示
   const formatTime = (timeInSeconds: number): string => {
+    // 处理负数时间
+    const isNegative = timeInSeconds < 0;
+    const absTime = Math.abs(timeInSeconds);
+    
     if (timeFormat === 'seconds') {
-      return timeInSeconds.toFixed(1);
+      return `${isNegative ? '-' : ''}${absTime.toFixed(1)}`;
     } else {
-      const minutes = Math.floor(timeInSeconds / 60);
-      const seconds = timeInSeconds % 60;
-      return `${minutes}:${seconds.toFixed(1).padStart(4, '0')}`;
+      const minutes = Math.floor(absTime / 60);
+      const seconds = absTime % 60;
+      return `${isNegative ? '-' : ''}${minutes}:${seconds.toFixed(1).padStart(4, '0')}`;
     }
   };
 
@@ -818,6 +822,109 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
         if (skillId) {
           // 查找技能信息
           const skillInfo = skills.find(s => s.id === skillId);
+          
+          // 检查冷却时间和充能层数
+          if (skillInfo) {
+            // 获取当前时间条目的ID
+            const currentEntryId = selectedEntry ? `${selectedEntry.time}-${selectedEntry.text}` : '';
+            
+            // 查找整个时间轴中该技能的使用记录
+            const skillUses: Array<{time: number, entryId: string}> = [];
+            
+            // 遍历所有时间条目
+            timelineEntries.forEach(entry => {
+              const entryId = `${entry.time}-${entry.text}`;
+              const groupsForEntry = entryGroupMap[entryId] || [];
+              
+              // 遍历该条目的所有组
+              groupsForEntry.forEach(group => {
+                group.actions.forEach(action => {
+                  if (action.type === 'skill' && action.skillId === skillId) {
+                    // 计算实际使用时间（条目基础时间 + 动作偏移时间）
+                    const actualUseTime = entry.time + action.timeOffset;
+                    skillUses.push({time: actualUseTime, entryId});
+                  }
+                });
+              });
+            });
+            
+            // 按时间顺序排序
+            skillUses.sort((a, b) => a.time - b.time);
+            
+            // 计算当前时间
+            const currentUseTime = selectedEntry ? selectedEntry.time + timeOffset : timeOffset;
+            
+            // 如果是充能技能
+            if (skillInfo.maxcharge > 0) {
+              let chargeCount = skillInfo.maxcharge; // 初始充能层数
+              let lastUseTime: number | undefined;
+              
+              // 按时间顺序处理每个使用记录
+              for (const use of skillUses) {
+                if (use.time < currentUseTime) {
+                  // 计算距离上次使用的时间间隔
+                  const timeInterval = lastUseTime !== undefined ? use.time - lastUseTime : 0;
+                  // 计算这段时间内恢复的充能层数
+                  const recoveredCharges = Math.floor(timeInterval / skillInfo.recast);
+                  // 更新充能层数
+                  chargeCount = Math.min(skillInfo.maxcharge, chargeCount + recoveredCharges);
+                  // 使用一层充能
+                  chargeCount--;
+                  lastUseTime = use.time;
+                }
+              }
+              
+              // 计算当前时间距离上次使用的时间间隔
+              const timeInterval = lastUseTime !== undefined ? currentUseTime - lastUseTime : 0;
+              // 计算这段时间内恢复的充能层数
+              const recoveredCharges = Math.floor(timeInterval / skillInfo.recast);
+              // 更新充能层数
+              chargeCount = Math.min(skillInfo.maxcharge, chargeCount + recoveredCharges);
+              
+              // 如果没有可用充能层数，显示警告
+              if (chargeCount <= 0) {
+                // 计算距离下一次充能恢复的时间
+                const timeSinceLastUse = timeInterval % skillInfo.recast;
+                const timeUntilNextCharge = skillInfo.recast - timeSinceLastUse;
+                alert(`警告：技能 ${skillInfo.name} 当前没有可用充能层数（最大充能层数：${skillInfo.maxcharge}），距离下一次充能恢复还有 ${timeUntilNextCharge.toFixed(1)} 秒`);
+                return;
+              }
+            } else {
+              // 如果不是充能技能，检查与前后技能使用时间的间隔
+              let prevUse: {time: number, entryId: string} | undefined;
+              let nextUse: {time: number, entryId: string} | undefined;
+              
+              // 找到当前时间前后的技能使用记录
+              for (let i = 0; i < skillUses.length; i++) {
+                if (skillUses[i].time < currentUseTime) {
+                  prevUse = skillUses[i];
+                } else if (skillUses[i].time > currentUseTime) {
+                  nextUse = skillUses[i];
+                  break;
+                }
+              }
+              
+              // 检查与前一个技能使用的时间间隔
+              if (prevUse) {
+                const timeInterval = currentUseTime - prevUse.time;
+                if (timeInterval < skillInfo.recast) {
+                  const timeRemaining = skillInfo.recast - timeInterval;
+                  alert(`警告：技能 ${skillInfo.name} 的冷却时间为 ${skillInfo.recast} 秒，但距离上次使用只过了 ${timeInterval.toFixed(1)} 秒（在条目"${prevUse.entryId}"中使用），距离可用还有 ${timeRemaining.toFixed(1)} 秒`);
+                  return;
+                }
+              }
+              
+              // 检查与后一个技能使用的时间间隔
+              if (nextUse) {
+                const timeInterval = nextUse.time - currentUseTime;
+                if (timeInterval < skillInfo.recast) {
+                  const timeRemaining = skillInfo.recast - timeInterval;
+                  alert(`警告：技能 ${skillInfo.name} 的冷却时间为 ${skillInfo.recast} 秒，但距离下次使用只有 ${timeInterval.toFixed(1)} 秒（在条目"${nextUse.entryId}"中使用），需要等待 ${timeRemaining.toFixed(1)} 秒`);
+                  return;
+                }
+              }
+            }
+          }
           
           // 确定目标
           let targetToUse = skillTarget;
