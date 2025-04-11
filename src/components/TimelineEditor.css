@@ -10,15 +10,19 @@
 
 .editor-layout {
   display: flex;
-  min-height: 600px;
+  height: calc(100vh - 50px);
+  overflow: hidden;
 }
 
 .editor-sidebar {
-  width: 250px;
-  background-color: #2b2b2b;
-  border-right: 1px solid #3a3a3a;
+  flex: 0 0 300px;
+  min-width: 300px;
+  background-color: #252525;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  border-right: 1px solid #3a3a3a;
 }
 
 .sidebar-header {
@@ -60,7 +64,7 @@
 
 .sidebar-content {
   flex: 1;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .reactions-section {
@@ -125,11 +129,14 @@
 .search-options {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+  width: 100%;
 }
 
 .search-options input {
   flex: 1;
+  width: auto;
+  min-width: 0;
   background-color: #3a3a3a;
   border: none;
   color: #ffffff;
@@ -137,26 +144,59 @@
   border-radius: 3px;
 }
 
-.time-toggle-button {
-  background-color: #3a3a3a;
-  border: none;
+.time-toggle-button, 
+.time-format-button {
+  background-color: #2a2a2a;
   color: #ffffff;
-  width: 28px;
-  height: 28px;
-  border-radius: 3px;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  min-width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: background-color 0.2s;
+  flex-shrink: 0;
 }
 
 .time-toggle-button:hover {
   background-color: #4a4a4a;
 }
 
-.time-toggle-button.active {
-  background-color: #3a7bff;
+.time-toggle-button.active,
+.time-format-button.active {
+  background-color: #4a77b3;
+  border-color: #5a87c3;
+}
+
+.time-format-button:hover {
+  background-color: #3a3a3a;
+}
+
+.time-format-button {
+  font-weight: bold;
+  font-size: 14px;
+  position: relative;
+}
+
+.time-format-button::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  transition: all 0.2s;
+}
+
+.time-format-button.active::after {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #5a87c3;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
 }
 
 .time-icon {
@@ -164,8 +204,8 @@
 }
 
 .entries-list {
-  max-height: 500px;
   overflow-y: auto;
+  max-height: 100%;
 }
 
 .entry-item, .reaction-item {
@@ -253,9 +293,9 @@
 
 .editor-main {
   flex: 1;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
+  overflow: auto;
+  padding: 15px;
+  height: 100%;
 }
 
 .editor-header {

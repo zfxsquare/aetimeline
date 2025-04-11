@@ -120,6 +120,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   const [searchText, setSearchText] = useState('');
   const [showTimes, setShowTimes] = useState(false);
   const [showWarning, setShowWarning] = useState(true);
+  const [timeFormat, setTimeFormat] = useState<'seconds' | 'minutes'>('seconds');
   
   // 条件-动作组相关状态
   const [selectedGroupId, setSelectedGroupId] = useState<string | null>(null);
@@ -445,6 +446,22 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   // 切换是否显示时间
   const toggleShowTimes = () => {
     setShowTimes(!showTimes);
+  };
+
+  // 切换时间显示格式
+  const toggleTimeFormat = () => {
+    setTimeFormat(timeFormat === 'seconds' ? 'minutes' : 'seconds');
+  };
+
+  // 格式化时间显示
+  const formatTime = (timeInSeconds: number): string => {
+    if (timeFormat === 'seconds') {
+      return timeInSeconds.toFixed(1);
+    } else {
+      const minutes = Math.floor(timeInSeconds / 60);
+      const seconds = timeInSeconds % 60;
+      return `${minutes}:${seconds.toFixed(1).padStart(4, '0')}`;
+    }
   };
 
   // 触发文件选择对话框
@@ -1379,6 +1396,13 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                     >
                       <i className="time-icon">{showTimes ? "⏱️" : "⏲️"}</i>
                     </button>
+                    <button
+                      className={`time-format-button ${timeFormat === 'minutes' ? 'active' : ''}`}
+                      onClick={toggleTimeFormat}
+                      title={timeFormat === 'seconds' ? "切换到分:秒格式" : "切换到秒格式"}
+                    >
+                      {timeFormat === 'seconds' ? "s" : "m:s"}
+                    </button>
                   </div>
                 </div>
                 <div className="entries-list">
@@ -1394,7 +1418,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                           onClick={() => handleEntrySelect(entry)}
                         >
                           {showTimes && (
-                            <span className="entry-time-display">{entry.time.toFixed(1)}</span>
+                            <span className="entry-time-display">{formatTime(entry.time)}</span>
                           )}
                           <span className="entry-text-display">{entry.text}</span>
                         </div>
