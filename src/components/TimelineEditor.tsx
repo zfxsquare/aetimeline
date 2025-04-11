@@ -825,9 +825,6 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
           
           // 检查冷却时间和充能层数
           if (skillInfo) {
-            // 获取当前时间条目的ID
-            const currentEntryId = selectedEntry ? `${selectedEntry.time}-${selectedEntry.text}` : '';
-            
             // 查找整个时间轴中该技能的使用记录
             const skillUses: Array<{time: number, entryId: string}> = [];
             
