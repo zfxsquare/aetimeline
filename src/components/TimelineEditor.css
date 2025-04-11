@@ -1168,6 +1168,55 @@
   color: #ff6b6b;
 }
 
+/* 添加目标提示文本样式 */
+.target-hint {
+  font-size: 12px;
+  color: #4a77b3;
+  margin-top: 4px;
+  padding: 2px 5px;
+  background-color: rgba(74, 119, 179, 0.1);
+  border-radius: 3px;
+  font-style: italic;
+}
+
+/* 不同类型技能的提示颜色 */
+.target-hint.self-only {
+  color: #4a77b3;
+  background-color: rgba(74, 119, 179, 0.1);
+}
+
+.target-hint.hostile-only {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+}
+
+.target-hint.area-only {
+  color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+/* 技能信息显示样式 */
+.skill-info {
+  background-color: rgba(74, 119, 179, 0.1);
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 10px 0;
+  border-left: 3px solid #4a77b3;
+}
+
+.skill-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.skill-id {
+  font-size: 12px;
+  color: #a0a0a0;
+  font-family: monospace;
+}
+
 /* 添加启用状态的样式 */
 .group-item:not(.disabled) {
   border: 1px solid #4caf50;

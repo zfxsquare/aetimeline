@@ -144,7 +144,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   const [toggleState, setToggleState] = useState(true);
   const [timeOffset, setTimeOffset] = useState(0);
   const [targetId, setTargetId] = useState('');
-  const [targetCoordinate, setTargetCoordinate] = useState({ x: 0, y: 0, z: 0 });
+  const [targetCoordinate, setTargetCoordinate] = useState({ x: 100, y: 0, z: 100 });
   
   // 条件编辑状态
   const [conditionType, setConditionType] = useState<string>('skill_available');
@@ -294,7 +294,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     setToggleState(true);
     setTimeOffset(0);
     setTargetId('');
-    setTargetCoordinate({ x: 0, y: 0, z: 0 });
+    setTargetCoordinate({ x: 100, y: 0, z: 100 });
     
     // 重置条件编辑状态
     setIsEditingCondition(false);
@@ -580,6 +580,13 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   const renderActionForm = () => {
     switch (actionType) {
       case 'skill':
+        // 获取当前技能的信息
+        const currentSkillInfo = skillId ? skills.find(s => s.id === skillId) : null;
+        // 确定技能类型
+        const isSelfOnlySkill = currentSkillInfo && currentSkillInfo.canTargetSelf && !currentSkillInfo.canTargetParty && !currentSkillInfo.canTargetHostile;
+        const isHostileOnlySkill = currentSkillInfo && !currentSkillInfo.canTargetSelf && !currentSkillInfo.canTargetParty && currentSkillInfo.canTargetHostile;
+        const isAreaOnlySkill = currentSkillInfo && !currentSkillInfo.canTargetSelf && !currentSkillInfo.canTargetParty && !currentSkillInfo.canTargetHostile && currentSkillInfo.targetArea;
+        
         return (
           <div className="action-form">
             <div className="input-group">
@@ -603,6 +610,15 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                   </option>
                 ))}
               </select>
+              {!skillTarget && isSelfOnlySkill && (
+                <div className="target-hint self-only">此技能未设置目标时将默认对自己释放</div>
+              )}
+              {!skillTarget && isHostileOnlySkill && (
+                <div className="target-hint hostile-only">此技能未设置目标时将默认对当前目标释放</div>
+              )}
+              {!skillTarget && isAreaOnlySkill && (
+                <div className="target-hint area-only">此技能未设置目标时将默认对(100,0,100)释放</div>
+              )}
             </div>
             {skillTarget === 'id' && (
               <div className="input-group">
@@ -800,20 +816,50 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     switch (actionType) {
       case 'skill':
         if (skillId) {
+          // 查找技能信息
+          const skillInfo = skills.find(s => s.id === skillId);
+          
+          // 确定目标
+          let targetToUse = skillTarget;
+          
+          // 如果没有选择目标，根据技能类型设置默认目标
+          if (skillInfo && !targetToUse) {
+            // 只能对自己释放的技能
+            if (skillInfo.canTargetSelf && !skillInfo.canTargetParty && !skillInfo.canTargetHostile) {
+              targetToUse = 'self';
+            }
+            // 只能对敌人释放的技能
+            else if (!skillInfo.canTargetSelf && !skillInfo.canTargetParty && skillInfo.canTargetHostile) {
+              targetToUse = 'current';
+            }
+            // 只能对地面释放的技能
+            else if (!skillInfo.canTargetSelf && !skillInfo.canTargetParty && !skillInfo.canTargetHostile && skillInfo.targetArea) {
+              targetToUse = 'coordinate';
+              // 设置默认坐标为 100,0,100
+              setTargetCoordinate({ x: 100, y: 0, z: 100 });
+            }
+          }
+          
           newAction = {
             type: 'skill',
             enabled: true,
             skillId,
-            target: skillTarget || undefined,
+            target: targetToUse || undefined,
             timeOffset,
             forceUse
           };
           
           // 根据目标类型添加额外属性
-          if (skillTarget === 'id' && targetId) {
+          if (targetToUse === 'id' && targetId) {
             (newAction as SkillAction).targetId = targetId;
-          } else if (skillTarget === 'coordinate') {
-            (newAction as SkillAction).targetCoordinate = targetCoordinate;
+          } else if (targetToUse === 'coordinate') {
+            if (skillInfo && !skillInfo.canTargetSelf && !skillInfo.canTargetParty && !skillInfo.canTargetHostile && skillInfo.targetArea) {
+              // 对地面释放的技能使用默认坐标
+              (newAction as SkillAction).targetCoordinate = { x: 100, y: 0, z: 100 };
+            } else {
+              // 其他情况使用用户设置的坐标
+              (newAction as SkillAction).targetCoordinate = targetCoordinate;
+            }
           }
         }
         break;
@@ -874,7 +920,33 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     // 根据动作类型设置表单值
     if (action.type === 'skill') {
       setSkillId(action.skillId);
-      setSkillTarget(action.target);
+      
+      // 获取技能信息
+      const skillInfo = skills.find(s => s.id === action.skillId);
+      
+      // 如果没有设置目标，根据技能类型设置默认目标
+      if (skillInfo && !action.target) {
+        // 只能对自己释放的技能
+        if (skillInfo.canTargetSelf && !skillInfo.canTargetParty && !skillInfo.canTargetHostile) {
+          setSkillTarget('self');
+        }
+        // 只能对敌人释放的技能
+        else if (!skillInfo.canTargetSelf && !skillInfo.canTargetParty && skillInfo.canTargetHostile) {
+          setSkillTarget('current');
+        }
+        // 只能对地面释放的技能
+        else if (!skillInfo.canTargetSelf && !skillInfo.canTargetParty && !skillInfo.canTargetHostile && skillInfo.targetArea) {
+          setSkillTarget('coordinate');
+          // 设置默认坐标为 100,0,100
+          setTargetCoordinate({ x: 100, y: 0, z: 100 });
+        }
+        else {
+          setSkillTarget(action.target);
+        }
+      } else {
+        setSkillTarget(action.target);
+      }
+      
       setForceUse(action.forceUse || false);
       
       // 设置目标ID和坐标（如果有）
@@ -918,7 +990,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     setSkillId('');
     setSkillTarget(undefined);
     setTargetId('');
-    setTargetCoordinate({x: 0, y: 0, z: 0});
+    setTargetCoordinate({x: 100, y: 0, z: 100});
     setForceUse(false);
     setToggleName('');
     setToggleState(true);
@@ -1072,6 +1144,10 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   const renderConditionForm = () => {
     switch (conditionType) {
       case 'skill_available':
+        // 获取当前选择的技能信息
+        const currentSkillInfo = skillConditionId ? skills.find(s => s.id === skillConditionId) : null;
+        const skillName = currentSkillInfo ? currentSkillInfo.name : '';
+        
         return (
           <div className="condition-form">
             <div className="input-group">
@@ -1082,6 +1158,12 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                 onSelect={setSkillConditionId}
               />
             </div>
+            {skillConditionId && (
+              <div className="skill-info">
+                <div className="skill-name">{skillName || '未知技能'}</div>
+                <div className="skill-id">ID: {skillConditionId}</div>
+              </div>
+            )}
             <div className="action-form-buttons">
               <button 
                 className="action-add-button" 
@@ -1224,9 +1306,14 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     let content: React.ReactNode;
     
     if (condition.type === 'skill_available') {
+      // 获取技能信息
+      const skillInfo = skills.find(s => s.id === condition.skillId);
+      const skillName = skillInfo ? skillInfo.name : '';
+      
       content = (
         <>
-          <span className="condition-type">技能可用</span>: {condition.skillId}
+          <span className="condition-type">技能可用</span>: {skillName}
+          <span className="condition-detail">(ID: {condition.skillId})</span>
         </>
       );
     } else if (condition.type === 'team_count') {
