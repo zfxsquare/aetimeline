@@ -1,0 +1,106 @@
+.group-form {
+  background-color: #2b2b2b;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid #3a3a3a;
+}
+
+.group-form .input-group {
+  display: flex;
+  margin-bottom: 15px;
+  width: 100%;
+  align-items: center;
+}
+
+.group-form label {
+  min-width: 120px;
+  font-size: 14px;
+  color: #aaa;
+  margin-right: 10px;
+}
+
+.group-form input {
+  flex: 1;
+  padding: 8px 10px;
+  background-color: #333;
+  border: 1px solid #444;
+  color: #fff;
+  border-radius: 4px;
+  min-width: 180px;
+}
+
+.group-form .number-input {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 180px;
+}
+
+.group-form .number-input input {
+  flex: 1;
+  min-width: 80px;
+  padding: 8px 10px;
+  background-color: #333;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.group-form .number-controls {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+}
+
+.group-form .number-controls button {
+  background: #444;
+  border: 1px solid #555;
+  color: #fff;
+  width: 24px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  line-height: 1;
+}
+
+.group-form .form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.group-form .button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.group-form .add-button,
+.group-form .update-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.group-form .add-button:hover,
+.group-form .update-button:hover {
+  background-color: #45a049;
+}
+
+.group-form .cancel-button {
+  background-color: #555;
+  color: white;
+}
+
+.group-form .cancel-button:hover {
+  background-color: #666;
+} 

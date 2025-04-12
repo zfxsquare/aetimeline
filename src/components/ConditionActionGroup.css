@@ -1,0 +1,277 @@
+/* 条件动作组样式 */
+.group-item {
+  background-color: #2b2b2b;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.group-item.selected {
+  border-color: #4a77b3;
+}
+
+.group-item.disabled {
+  opacity: 0.7;
+}
+
+.group-header {
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2f2f2f;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.group-header:hover {
+  background-color: #383838;
+}
+
+.group-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.group-name {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.group-summary {
+  display: flex;
+  gap: 15px;
+  color: #a0a0a0;
+  font-size: 0.9em;
+}
+
+.group-condition-count,
+.group-action-count {
+  display: inline-block;
+  padding: 2px 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.group-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.edit-group-button,
+.remove-group-button {
+  background: none;
+  border: none;
+  color: #a0a0a0;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.edit-group-button:hover {
+  background-color: rgba(74, 119, 179, 0.15);
+  color: #4a77b3;
+}
+
+.remove-group-button:hover {
+  background-color: rgba(255, 0, 0, 0.15);
+  color: #ff4d4d;
+}
+
+.group-content {
+  padding: 15px;
+  border-top: 1px solid #3a3a3a;
+}
+
+.group-config {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.group-config .input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.group-config label {
+  min-width: 120px;
+  margin-right: 10px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.group-config span {
+  font-size: 14px;
+  color: #eee;
+}
+
+.group-config .timeout-value {
+  display: flex;
+  align-items: baseline;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.group-config .timeout-value .value {
+  font-size: 16px;
+  font-weight: 500;
+  color: #eee;
+  margin-right: 5px;
+  border: none;
+  background: transparent;
+}
+
+.group-config .timeout-value .unit {
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* 条件部分样式 */
+.conditions-section,
+.actions-section {
+  margin-bottom: 20px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.section-header h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.conditions-list,
+.actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.condition-item,
+.action-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #333;
+  border-radius: 4px;
+  gap: 8px;
+}
+
+.condition-item.disabled,
+.action-item.disabled {
+  opacity: 0.6;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.toggle-button.enabled {
+  color: #4CAF50;
+}
+
+.toggle-button.disabled {
+  color: #f44336;
+}
+
+.condition-number,
+.action-number {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.condition-content,
+.action-content {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+
+.condition-buttons,
+.action-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.edit-condition-button,
+.edit-action-button,
+.remove-condition-button,
+.remove-action-button {
+  background: none;
+  border: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.edit-condition-button,
+.edit-action-button {
+  color: #4a77b3;
+}
+
+.remove-condition-button,
+.remove-action-button {
+  color: #f44336;
+}
+
+.edit-condition-button:hover,
+.edit-action-button:hover {
+  background-color: rgba(74, 119, 179, 0.15);
+}
+
+.remove-condition-button:hover,
+.remove-action-button:hover {
+  background-color: rgba(244, 67, 54, 0.15);
+}
+
+.no-conditions,
+.no-actions {
+  padding: 15px;
+  text-align: center;
+  color: #777;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+} 

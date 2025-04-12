@@ -1,0 +1,355 @@
+/* 条件动作编辑区域 */
+.tab-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.condition-tabs,
+.action-tabs {
+  background-color: #333;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.tab-scroll-container {
+  padding: 10px 0;
+  overflow-x: auto;
+  background-color: #2d2d2d;
+  border-bottom: 1px solid #444;
+}
+
+.tab-selection {
+  display: flex;
+  padding: 0 15px;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 8px 15px;
+  color: #aaa;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.tab-button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ddd;
+}
+
+.tab-button.active {
+  background-color: #4a77b3;
+  color: white;
+  position: relative;
+}
+
+.tab-content {
+  padding: 15px;
+}
+
+.condition-form,
+.action-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input-group {
+  display: flex;
+  margin-bottom: 15px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.input-group label {
+  min-width: 120px;
+  margin-right: 10px;
+  text-align: left;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  flex: 1;
+  padding: 8px 10px;
+  background-color: #333;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #fff;
+  min-width: 250px;
+}
+
+.input-group textarea {
+  min-height: 100px;
+  font-family: monospace;
+  resize: vertical;
+}
+
+.number-input {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 180px;
+}
+
+.number-input input {
+  flex: 1;
+  padding: 8px 10px;
+  background-color: #333;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #fff;
+  min-width: 80px;
+}
+
+.number-controls {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+}
+
+.number-controls button {
+  background: #444;
+  border: 1px solid #555;
+  color: #fff;
+  width: 24px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  line-height: 1;
+}
+
+.coordinate-input {
+  display: flex;
+  gap: 10px;
+}
+
+.coordinate-input input {
+  flex: 1;
+  min-width: 0;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slider {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 8px;
+  background: #444;
+  border-radius: 4px;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #4a77b3;
+  cursor: pointer;
+}
+
+.slider-value {
+  min-width: 40px;
+  text-align: right;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.skill-info {
+  background-color: rgba(74, 119, 179, 0.1);
+  border-radius: 4px;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+.skill-name {
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.skill-id {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.add-button,
+.update-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.add-button:hover,
+.update-button:hover {
+  background-color: #45a049;
+}
+
+.add-button:disabled,
+.update-button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.cancel-button {
+  background-color: #555;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #666;
+}
+
+.section-header {
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  background-color: #2d2d2d;
+  border-bottom: 1px solid #444;
+}
+
+.section-header h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.target-hint {
+  margin-top: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #aaa;
+}
+
+.target-hint.self-only {
+  background-color: rgba(74, 119, 179, 0.1);
+  color: #7a9cc4;
+}
+
+.target-hint.hostile-only {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #f88;
+}
+
+.target-hint.area-only {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #ffd166;
+}
+
+/* 美化复选框样式 */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px;
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #333;
+  border: 1px solid #4a77b3;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.checkbox-container:hover .checkbox-mark {
+  background-color: #2d2d2d;
+  border-color: #5a87c3;
+}
+
+.checkbox-container input:checked ~ .checkbox-mark {
+  background-color: #4a77b3;
+  border-color: #4a77b3;
+}
+
+.checkbox-mark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkbox-mark:after {
+  display: block;
+}
+
+.checkbox-container .checkbox-mark:after {
+  left: 7px;
+  top: 3px;
+  width: 4px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-container .checkbox-label {
+  color: #ccc;
+  font-size: 14px;
+  margin-left: 15px;
+}
+
+.checkbox-group {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.checkbox-group .checkbox-label-main {
+  min-width: 120px;
+  margin-right: 10px;
+  text-align: left;
+  margin-top: 8px;
+  color: #aaa;
+} 
