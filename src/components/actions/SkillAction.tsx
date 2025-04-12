@@ -1,6 +1,7 @@
 import React from 'react';
 import SkillSearch from '../SkillSearch';
 import { skills } from '../../data/skills';
+import { FiClock, FiCheck } from 'react-icons/fi';
 
 interface SkillActionProps {
   skillId: string;
@@ -20,6 +21,16 @@ interface SkillActionProps {
   selectedGroupId: string | null;
   cancelEditingAction: () => void;
   handleSkillSelect: (skillId: string) => void;
+  cooldownInfo?: {
+    isCooldown: boolean;
+    nextAvailableTime: number | null;
+    cooldownInfo: string;
+    cooldownSource?: {
+      type: string;
+      entryTime?: number;
+      entryText?: string;
+    };
+  };
 }
 
 const SkillActionComponent: React.FC<SkillActionProps> = ({
@@ -39,7 +50,8 @@ const SkillActionComponent: React.FC<SkillActionProps> = ({
   isEditingAction,
   selectedGroupId,
   cancelEditingAction,
-  handleSkillSelect
+  handleSkillSelect,
+  cooldownInfo
 }) => {
   // 目标类型选项
   const targetTypes = [
@@ -65,6 +77,55 @@ const SkillActionComponent: React.FC<SkillActionProps> = ({
   const isHostileOnlySkill = currentSkillInfo && !currentSkillInfo.canTargetSelf && !currentSkillInfo.canTargetParty && currentSkillInfo.canTargetHostile;
   const isAreaOnlySkill = currentSkillInfo && !currentSkillInfo.canTargetSelf && !currentSkillInfo.canTargetParty && !currentSkillInfo.canTargetHostile && currentSkillInfo.targetArea;
   
+  const renderSkillCooldownStatus = () => {
+    if (!skillId || !cooldownInfo) return null;
+
+    const isCooldown = cooldownInfo.isCooldown || false;
+    const cooldownText = cooldownInfo.cooldownInfo || '';
+    const cooldownSource = cooldownInfo.cooldownSource;
+    
+    // 构建冷却来源信息
+    let sourceInfo = '';
+    if (isCooldown && cooldownSource) {
+      switch(cooldownSource.type) {
+        case 'timeline':
+          sourceInfo = `上次在${cooldownSource.entryTime}秒"${cooldownSource.entryText}"处使用过`;
+          break;
+        case 'current_entry':
+          sourceInfo = `在当前条目的其他组中使用过`;
+          break;
+        case 'same_group':
+          sourceInfo = `在当前组中已有使用记录`;
+          break;
+      }
+    }
+    
+    // 显示更准确的冷却信息，直接使用后端计算的结果
+    return (
+      <div className={`skill-cooldown-status ${isCooldown ? 'is-cooldown' : ''}`}>
+        <div className="cooldown-info">
+          {isCooldown ? (
+            <>
+              <span className="cooldown-icon"><FiClock /></span> 
+              <span className="cooldown-text">
+                {cooldownText}
+                {sourceInfo && <div className="cooldown-source">{sourceInfo}</div>}
+              </span>
+            </>
+          ) : (
+            <>
+              <span className="cooldown-icon"><FiCheck /></span> 
+              <span className="cooldown-text">{cooldownText}</span>
+              {cooldownText.includes("充能") && (
+                <span className="cooldown-charges-icon">🔋</span>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="action-form">
       <div className="input-group">
@@ -75,6 +136,9 @@ const SkillActionComponent: React.FC<SkillActionProps> = ({
           onSelect={handleSkillSelect}
         />
       </div>
+      
+      {renderSkillCooldownStatus()}
+      
       <div className="input-group">
         <label>目标:</label>
         <select

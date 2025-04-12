@@ -1,0 +1,138 @@
+/* 复制粘贴相关样式 */
+.header-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.copy-button, 
+.paste-button {
+  padding: 4px 8px;
+  background: #3a3a3a;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.copy-button:hover, 
+.paste-button:hover {
+  background: #444;
+  border-color: #555;
+}
+
+.copy-button:active, 
+.paste-button:active {
+  transform: scale(0.98);
+}
+
+.copy-button .icon,
+.paste-button .icon {
+  font-size: 12px;
+}
+
+/* 复制状态显示区域 */
+.copy-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 10px 0;
+}
+
+.copy-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.copy-icon {
+  font-size: 16px;
+}
+
+.copy-text {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.copy-text strong {
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+.copy-details {
+  color: #aaa;
+  font-size: 12px;
+  margin-left: auto;
+}
+
+.clear-copy-button {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.clear-copy-button:hover {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: #ff4d4d;
+}
+
+.copy-success {
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+.success-flash {
+  animation: flash-success 2s ease;
+}
+
+@keyframes flash-success {
+  0% {
+    background-color: rgba(76, 175, 80, 0.1);
+  }
+  20% {
+    background-color: rgba(76, 175, 80, 0.4);
+  }
+  100% {
+    background-color: rgba(76, 175, 80, 0.1);
+  }
+}
+
+.paste-success {
+  color: #4A77B3;
+  font-weight: 500;
+}
+
+.paste-flash {
+  animation: flash-paste 2s ease;
+}
+
+@keyframes flash-paste {
+  0% {
+    background-color: rgba(76, 175, 80, 0.1);
+  }
+  20% {
+    background-color: rgba(74, 119, 179, 0.4);
+  }
+  100% {
+    background-color: rgba(76, 175, 80, 0.1);
+  }
+} 

@@ -64,7 +64,8 @@
 }
 
 .edit-group-button,
-.remove-group-button {
+.remove-group-button,
+.copy-button {
   background: none;
   border: none;
   color: #a0a0a0;
@@ -81,6 +82,11 @@
 .edit-group-button:hover {
   background-color: rgba(74, 119, 179, 0.15);
   color: #4a77b3;
+}
+
+.copy-button:hover {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: #4CAF50;
 }
 
 .remove-group-button:hover {

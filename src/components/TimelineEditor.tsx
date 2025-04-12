@@ -146,9 +146,9 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     saveGroupsForCurrentEntry();
   }, [groups]);
 
-  // 生成条目的唯一标识符
+  // 获取条目的唯一ID
   const getEntryId = (entry: TimelineEntry) => {
-    return `${entry.time}-${entry.text}`;
+    return `${entry.time}:${entry.text}`;
   };
 
   // 过滤时间轴条目
@@ -530,6 +530,8 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                 selectedGroupId={selectedGroupId}
                 setSelectedGroupId={setSelectedGroupId}
                 resetAllEditStates={resetAllEditStates}
+                timelineEntries={timelineEntries}
+                entryGroupMap={entryGroupMap}
               />
             )}
           </div>

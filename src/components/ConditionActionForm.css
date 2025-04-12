@@ -172,23 +172,120 @@
   color: #aaa;
 }
 
+/* 技能信息样式 */
 .skill-info {
-  background-color: rgba(74, 119, 179, 0.1);
-  border-radius: 4px;
+  margin: 10px 0;
   padding: 10px;
-  margin: 5px 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .skill-name {
   font-weight: bold;
-  font-size: 14px;
-  color: #fff;
-  margin-bottom: 5px;
+  color: #4CAF50;
 }
 
 .skill-id {
-  font-size: 12px;
-  color: #aaa;
+  font-size: 0.9em;
+  color: #999;
+}
+
+.skill-recast {
+  font-size: 0.9em;
+  color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.skill-charges {
+  color: #ffc107;
+  margin-left: 5px;
+}
+
+/* 冷却状态显示 */
+.skill-cooldown-status {
+  padding: 8px 10px;
+  border-radius: 3px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 0.95em;
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+  border-left: 3px solid #4CAF50;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.skill-cooldown-status.is-cooldown {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #F44336;
+  border-left: 3px solid #F44336;
+  animation: cooldown-pulse 2s infinite;
+  font-weight: 500;
+}
+
+.skill-cooldown-status.is-cooldown::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(244, 67, 54, 0.1) 25%, transparent 25%, transparent 50%, rgba(244, 67, 54, 0.1) 50%, rgba(244, 67, 54, 0.1) 75%, transparent 75%);
+  background-size: 8px 8px;
+  pointer-events: none;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+@keyframes cooldown-pulse {
+  0% { border-color: #F44336; }
+  50% { border-color: #ff9800; }
+  100% { border-color: #F44336; }
+}
+
+.cooldown-info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  z-index: 1;
+}
+
+.cooldown-icon {
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cooldown-text {
+  flex: 1;
+}
+
+.cooldown-source {
+  font-size: 0.85em;
+  margin-top: 4px;
+  opacity: 0.85;
+  font-style: italic;
+  color: #ff9800;
+}
+
+.cooldown-charges-icon {
+  margin-left: 5px;
+  font-size: 1.2em;
+}
+
+.force-use-hint {
+  margin-left: 5px;
+  font-size: 0.8em;
+  color: #F44336;
+  font-style: italic;
 }
 
 .form-buttons {

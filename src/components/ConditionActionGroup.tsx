@@ -70,6 +70,7 @@ interface ConditionActionGroupProps {
   handleToggleActionEnabled: (groupId: string, actionIndex: number) => void;
   handleEditAction: (groupId: string, actionIndex: number) => void;
   handleRemoveAction: (groupId: string, actionIndex: number) => void;
+  handleCopyGroup: (groupId: string) => void;
 }
 
 const ConditionActionGroupComponent: React.FC<ConditionActionGroupProps> = ({
@@ -84,7 +85,8 @@ const ConditionActionGroupComponent: React.FC<ConditionActionGroupProps> = ({
   handleRemoveCondition,
   handleToggleActionEnabled,
   handleEditAction,
-  handleRemoveAction
+  handleRemoveAction,
+  handleCopyGroup
 }) => {
   return (
     <div 
@@ -122,6 +124,16 @@ const ConditionActionGroupComponent: React.FC<ConditionActionGroupProps> = ({
             title="编辑组"
           >
             ✎
+          </button>
+          <button 
+            className="copy-button"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleCopyGroup(group.id);
+            }}
+            title={`复制 "${group.name}" 组 (${group.conditions.length}个条件, ${group.actions.length}个动作)`}
+          >
+            📋
           </button>
           <button 
             className="remove-group-button"
