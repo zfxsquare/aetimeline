@@ -123,34 +123,45 @@
 }
 
 .search-bar {
-  padding: 5px 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .search-options {
   display: flex;
-  align-items: center;
-  gap: 8px;
   width: 100%;
 }
 
 .search-options input {
   flex: 1;
-  width: auto;
-  min-width: 0;
-  background-color: #3a3a3a;
-  border: none;
+  background-color: #2a2a2a;
+  border: 1px solid #4a4a4a;
   color: #ffffff;
-  padding: 5px 10px;
-  border-radius: 3px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.time-display-options {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .time-toggle-button, 
-.time-format-button {
+.time-format-button,
+.time-diff-button {
   background-color: #2a2a2a;
   color: #ffffff;
   border: 1px solid #3a3a3a;
   border-radius: 4px;
-  min-width: 32px;
+  padding: 4px 10px;
   height: 32px;
   display: flex;
   align-items: center;
@@ -158,49 +169,26 @@
   cursor: pointer;
   transition: background-color 0.2s;
   flex-shrink: 0;
+  font-size: 12px;
+  white-space: nowrap;
 }
 
-.time-toggle-button:hover {
+.time-toggle-button:hover,
+.time-diff-button:hover,
+.time-format-button:hover {
   background-color: #4a4a4a;
 }
 
 .time-toggle-button.active,
-.time-format-button.active {
+.time-format-button.active,
+.time-diff-button.active {
   background-color: #4a77b3;
   border-color: #5a87c3;
 }
 
-.time-format-button:hover {
-  background-color: #3a3a3a;
-}
-
 .time-format-button {
   font-weight: bold;
-  font-size: 14px;
   position: relative;
-}
-
-.time-format-button::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  transition: all 0.2s;
-}
-
-.time-format-button.active::after {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #5a87c3;
-  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
-}
-
-.time-icon {
-  font-style: normal;
 }
 
 .entries-list {
@@ -224,6 +212,28 @@
   min-width: 40px;
   font-family: monospace;
   font-size: 0.9em;
+}
+
+.entry-time-diff {
+  color: #a1a1a1;
+  font-weight: bold;
+  margin-right: 8px;
+  min-width: 40px;
+  font-family: monospace;
+  font-size: 0.9em;
+  background-color: rgba(60, 60, 60, 0.2);
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.entry-time-diff.positive {
+  color: #5a9c5a;
+  background-color: rgba(90, 156, 90, 0.1);
+}
+
+.entry-time-diff.negative {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
 }
 
 .entry-text-display {

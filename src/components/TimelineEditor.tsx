@@ -97,6 +97,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   const [timelineEntries, setTimelineEntries] = useState<TimelineEntry[]>(importedEntries);
   const [searchText, setSearchText] = useState('');
   const [showTimes, setShowTimes] = useState(false);
+  const [showTimeDiff, setShowTimeDiff] = useState(false);
   const [showWarning, setShowWarning] = useState(true);
   const [timeFormat, setTimeFormat] = useState<'seconds' | 'minutes'>('seconds');
   
@@ -255,6 +256,11 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   // 切换时间显示格式
   const toggleTimeFormat = () => {
     setTimeFormat(timeFormat === 'seconds' ? 'minutes' : 'seconds');
+  };
+
+  // 切换是否显示时间差
+  const toggleShowTimeDiff = () => {
+    setShowTimeDiff(!showTimeDiff);
   };
 
   // 格式化时间显示
@@ -476,19 +482,28 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                       value={searchText}
                       onChange={(e) => setSearchText(e.target.value)}
                     />
+                  </div>
+                  <div className="time-display-options">
                     <button 
                       className={`time-toggle-button ${showTimes ? 'active' : ''}`}
                       onClick={toggleShowTimes}
                       title={showTimes ? "隐藏时间" : "显示时间"}
                     >
-                      <i className="time-icon">{showTimes ? "⏱️" : "⏲️"}</i>
+                      {showTimes ? "隐藏时间" : "显示时间"}
                     </button>
                     <button
                       className={`time-format-button ${timeFormat === 'minutes' ? 'active' : ''}`}
                       onClick={toggleTimeFormat}
                       title={timeFormat === 'seconds' ? "切换到分:秒格式" : "切换到秒格式"}
                     >
-                      {timeFormat === 'seconds' ? "s" : "m:s"}
+                      {timeFormat === 'seconds' ? "秒" : "分:秒"}
+                    </button>
+                    <button
+                      className={`time-diff-button ${showTimeDiff ? 'active' : ''}`}
+                      onClick={toggleShowTimeDiff}
+                      title={showTimeDiff ? "隐藏时间差" : "显示时间差"}
+                    >
+                      {showTimeDiff ? "隐藏时间差" : "显示时间差"}
                     </button>
                   </div>
                 </div>
@@ -498,6 +513,12 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                       const entryId = getEntryId(entry);
                       const hasGroups = entryGroupMap[entryId] && entryGroupMap[entryId].length > 0;
                       
+                      // 计算与前一个条目的时间差
+                      let timeDiff: number | null = null;
+                      if (showTimeDiff && index > 0) {
+                        timeDiff = entry.time - filteredEntries[index - 1].time;
+                      }
+                      
                       return (
                         <div 
                           key={index}
@@ -506,6 +527,11 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                         >
                           {showTimes && (
                             <span className="entry-time-display">{formatTime(entry.time)}</span>
+                          )}
+                          {showTimeDiff && index > 0 && timeDiff !== null && (
+                            <span className={`entry-time-diff ${timeDiff > 0 ? 'positive' : timeDiff < 0 ? 'negative' : ''}`}>
+                              {timeDiff > 0 ? '+' : ''}{formatTime(timeDiff)}
+                            </span>
                           )}
                           <span className="entry-text-display">{entry.text}</span>
                         </div>
