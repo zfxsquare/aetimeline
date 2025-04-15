@@ -543,7 +543,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                   type="text" 
                   value={acr}
                   onChange={(e) => setAcr(e.target.value)}
-                  placeholder="输入适用ACR版本"
+                  placeholder="输入适用ACR"
                   className={acr.trim() === '' ? 'invalid' : ''}
                 />
               </div>
