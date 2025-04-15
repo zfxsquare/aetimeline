@@ -71,6 +71,10 @@ interface TimelineEntry {
 
 interface TimelineConfig {
   name: string;
+  mapId: string;
+  description: string;  // 添加描述字段
+  author: string;      // 添加作者字段
+  acr: string;         // 添加适用ACR字段
   entries: TimelineEntry[];
 }
 
@@ -91,6 +95,11 @@ const generateId = (): string => {
 const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] }) => {
   // 基本配置状态
   const [name, setName] = useState('timeline');
+  const [mapId, setMapId] = useState('');
+  const [description, setDescription] = useState('');
+  const [author, setAuthor] = useState('');
+  const [acr, setAcr] = useState('');
+  const [isInfoExpanded, setIsInfoExpanded] = useState(false);  // 添加展开状态
   
   // 条目相关状态
   const [selectedEntry, setSelectedEntry] = useState<TimelineEntry | null>(null);
@@ -209,8 +218,23 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     });
   }, [timelineEntries, searchText, entryGroupMap]);
 
+  // 检查所有必填项是否已填写
+  const validateRequiredFields = (): boolean => {
+    return name.trim() !== '' && 
+           mapId.trim() !== '' && 
+           description.trim() !== '' && 
+           author.trim() !== '' && 
+           acr.trim() !== '';
+  };
+
   // 导出时间轴配置
   const exportTimeline = () => {
+    // 检查必填项
+    if (!validateRequiredFields()) {
+      alert('请填写所有必填项：时间轴名称、地图ID、描述、作者和适用ACR');
+      return;
+    }
+
     // 确保所有组已保存
     saveGroupsForCurrentEntry();
     
@@ -228,6 +252,10 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     // 创建配置对象
     const config: TimelineConfig = {
       name,
+      mapId,
+      description,  // 添加描述
+      author,      // 添加作者
+      acr,         // 添加ACR
       entries: entriesWithGroups
     };
 
@@ -298,6 +326,10 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
         
         // 更新编辑器状态
         setName(config.name || '');
+        setMapId(config.mapId || '');
+        setDescription(config.description || '');  // 设置描述
+        setAuthor(config.author || '');           // 设置作者
+        setAcr(config.acr || '');                // 设置ACR
         
         // 处理时间轴条目和组映射
         if (config.entries && config.entries.length > 0) {
@@ -459,15 +491,62 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
             </div>
           </div>
           
-          <div className="timeline-name-input">
-            <div className="input-group">
-              <label>时间轴名称：</label>
-              <input 
-                type="text" 
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="输入时间轴名称"
-              />
+          <div className="timeline-info-section">
+            <div className="timeline-info-header" onClick={() => setIsInfoExpanded(!isInfoExpanded)}>
+              <h3>时间轴信息</h3>
+              <span className={`expand-icon ${isInfoExpanded ? 'expanded' : ''}`}>▼</span>
+            </div>
+            <div className={`timeline-info-content ${isInfoExpanded ? 'expanded' : ''}`}>
+              <div className="input-group">
+                <label>时间轴名称：<span className="required">*</span></label>
+                <input 
+                  type="text" 
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="输入时间轴名称"
+                  className={name.trim() === '' ? 'invalid' : ''}
+                />
+              </div>
+              <div className="input-group">
+                <label>地图ID：<span className="required">*</span></label>
+                <input 
+                  type="text" 
+                  value={mapId}
+                  onChange={(e) => setMapId(e.target.value)}
+                  placeholder="输入地图ID"
+                  className={mapId.trim() === '' ? 'invalid' : ''}
+                />
+              </div>
+              <div className="input-group">
+                <label>时间轴描述：<span className="required">*</span></label>
+                <textarea 
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="输入时间轴描述"
+                  rows={3}
+                  className={description.trim() === '' ? 'invalid' : ''}
+                />
+              </div>
+              <div className="input-group">
+                <label>作者：<span className="required">*</span></label>
+                <input 
+                  type="text" 
+                  value={author}
+                  onChange={(e) => setAuthor(e.target.value)}
+                  placeholder="输入作者名称"
+                  className={author.trim() === '' ? 'invalid' : ''}
+                />
+              </div>
+              <div className="input-group">
+                <label>适用ACR：<span className="required">*</span></label>
+                <input 
+                  type="text" 
+                  value={acr}
+                  onChange={(e) => setAcr(e.target.value)}
+                  placeholder="输入适用ACR版本"
+                  className={acr.trim() === '' ? 'invalid' : ''}
+                />
+              </div>
             </div>
           </div>
           
