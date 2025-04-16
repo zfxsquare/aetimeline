@@ -1492,6 +1492,7 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   z-index: 101;
   animation: fadeInDown 0.3s ease;
+  box-sizing: border-box;
 }
 
 @keyframes fadeInDown {
@@ -1509,22 +1510,17 @@
   margin: 0 15px 10px;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
   width: calc(100% - 30px);
 }
 
-.timeline-info-dropdown .input-group:last-child {
-  margin-bottom: 0;
-}
-
-.timeline-info-dropdown label {
-  margin-bottom: 5px;
+.timeline-info-dropdown .input-group label {
   color: #a0a0a0;
   font-size: 0.9em;
-  width: 100%;
+  margin-bottom: 5px;
 }
 
-.timeline-info-dropdown input,
-.timeline-info-dropdown textarea {
+.timeline-info-dropdown .input-group select {
   background-color: #333;
   border: 1px solid #4a4a4a;
   color: #ffffff;
@@ -1533,32 +1529,6 @@
   font-size: 0.9em;
   width: 100%;
   box-sizing: border-box;
-  font-family: inherit;
-}
-
-.timeline-info-dropdown textarea {
-  resize: vertical;
-  min-height: 60px;
-  line-height: 1.4;
-}
-
-.timeline-info-dropdown input:focus,
-.timeline-info-dropdown textarea:focus {
-  outline: none;
-  border-color: #5a87c3;
-  box-shadow: 0 0 0 1px #5a87c3;
-}
-
-.timeline-info-dropdown select {
-  background-color: #333;
-  border: 1px solid #4a4a4a;
-  color: #ffffff;
-  padding: 8px 10px;
-  border-radius: 4px;
-  font-size: 0.9em;
-  width: 100%;
-  box-sizing: border-box;
-  cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1566,31 +1536,19 @@
   background-repeat: no-repeat;
   background-position: right 8px center;
   padding-right: 30px;
+  cursor: pointer;
 }
 
-.timeline-info-dropdown select:focus {
+.timeline-info-dropdown .input-group select:focus {
   outline: none;
   border-color: #5a87c3;
   box-shadow: 0 0 0 1px #5a87c3;
 }
 
-.timeline-info-dropdown select option {
+.timeline-info-dropdown .input-group select option {
   background-color: #333;
   color: #ffffff;
-}
-
-.timeline-info-dropdown input.invalid,
-.timeline-info-dropdown textarea.invalid,
-.timeline-info-dropdown select.invalid {
-  border-color: #ff4d4f;
-  background-color: rgba(255, 77, 79, 0.1);
-}
-
-.timeline-info-dropdown input.invalid:focus,
-.timeline-info-dropdown textarea.invalid:focus,
-.timeline-info-dropdown select.invalid:focus {
-  border-color: #ff4d4f;
-  box-shadow: 0 0 0 1px #ff4d4f;
+  padding: 5px;
 }
 
 .job-selection {
@@ -1664,4 +1622,52 @@
   background-color: #333;
   color: #ffffff;
   padding: 5px 15px;
+}
+
+.timeline-info-dropdown .input-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23ffffff' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 30px;
+}
+
+.timeline-info-dropdown .checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  flex-direction: row-reverse;
+  width: auto;
+}
+
+.timeline-info-dropdown .checkbox-label input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.timeline-info-dropdown .checkbox-label span {
+  white-space: nowrap;
+  margin: 0 8px 0 0;
+}
+
+.timeline-info-dropdown input[type="text"]:focus,
+.timeline-info-dropdown textarea:focus,
+.timeline-info-dropdown select:focus {
+  outline: none;
+  border-color: #5a87c3;
+  box-shadow: 0 0 0 1px #5a87c3;
+}
+
+.timeline-info-dropdown select option {
+  background-color: #333;
+  color: #ffffff;
+  padding: 5px;
 } 

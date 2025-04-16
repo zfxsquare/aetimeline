@@ -201,6 +201,7 @@ interface TimelineConfig {
   author: string;      // 添加作者字段
   acr: string;         // 添加适用ACR字段
   job?: Jobs;          // 修改为单个职业
+  ClearCustomed?: boolean;  // 添加是否证道字段
   entries: TimelineEntry[];
 }
 
@@ -227,6 +228,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   const [acr, setAcr] = useState('');
   const [isInfoExpanded, setIsInfoExpanded] = useState(false);  // 添加展开状态
   const [selectedJob, setSelectedJob] = useState<Jobs | ''>('');  // 修改为单选
+  const [clearCustomed, setClearCustomed] = useState(false);  // 添加是否证道状态
   
   // 条目相关状态
   const [selectedEntry, setSelectedEntry] = useState<TimelineEntry | null>(null);
@@ -388,6 +390,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
       author,
       acr,
       job: selectedJob as Jobs,
+      ClearCustomed: clearCustomed,  // 添加是否证道字段
       entries: entriesWithGroups
     };
 
@@ -469,6 +472,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
         setAuthor(config.author || '');
         setAcr(config.acr || '');
         setSelectedJob(config.job || '');  // 设置选中的职业
+        setClearCustomed(config.ClearCustomed || false);  // 设置是否证道状态
         
         // 处理时间轴条目和组映射
         if (config.entries && config.entries.length > 0) {
@@ -724,6 +728,16 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                         ))
                       }
                     </optgroup>
+                  </select>
+                </div>
+                <div className="input-group">
+                  <label>是否证道：</label>
+                  <select
+                    value={clearCustomed ? "true" : "false"}
+                    onChange={(e) => setClearCustomed(e.target.value === "true")}
+                  >
+                    <option value="false">否</option>
+                    <option value="true">是</option>
                   </select>
                 </div>
               </div>
