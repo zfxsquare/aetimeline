@@ -220,7 +220,10 @@ const SkillActionComponent: React.FC<SkillActionProps> = ({
           <input
             type="checkbox"
             checked={forceUse}
-            onChange={(e) => setForceUse(e.target.checked)}
+            onChange={(e) => {
+              setForceUse(e.target.checked);
+              // 因为强制使用不影响冷却计算，此处不需要更新冷却状态
+            }}
           />
           <span className="checkbox-mark"></span>
           <span className="checkbox-label">强制使用</span>

@@ -445,10 +445,12 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
     if (!selectedGroupId) return;
     
     let newAction: Action | null = null;
+    let addedSkillId = ''; // 记录添加的技能ID
     
     switch (actionType) {
       case 'skill':
         if (skillId) {
+          addedSkillId = skillId; // 保存当前添加的技能ID
           // 查找技能信息
           const skillInfo = skills.find(s => s.id === skillId);
           
@@ -510,6 +512,10 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
     }
     
     if (newAction) {
+      // 记录添加前的技能和时间偏移量，用于后续计算
+      const addedSkillTimeOffset = timeOffset;
+      
+      // 更新组
       const updatedGroups = groups.map(group => {
         if (group.id === selectedGroupId) {
           if (isEditingAction && editingActionIndex >= 0) {
@@ -525,17 +531,55 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
         return group;
       });
       
+      // 更新状态
       setGroups(updatedGroups);
       
-      // 重置动作表单
+      // 如果是添加技能动作，需要重新计算冷却状态
+      if (newAction.type === 'skill' && selectedEntry) {
+        // 延迟更新冷却状态，确保组状态已更新
+        setTimeout(() => {
+          // 当前技能的信息
+          const skillInfo = skills.find(s => s.id === addedSkillId);
+          
+          if (skillInfo) {
+            console.log(`添加技能 ${addedSkillId}(${skillInfo.name})，立即更新冷却状态`);
+            
+            // 重新计算冷却状态（为下一次添加做准备）
+            // 特别注意：这里需要正确传递时间点，下一个动作的时间点应该比当前动作晚
+            const currentEntryTime = selectedEntry.time;
+            // 计算一个新的时间偏移，确保它与当前添加的技能有区别
+            const nextTimeOffset = addedSkillTimeOffset + 0.01; // 略微增加时间偏移
+            
+            const cooldownStatus = checkSkillCooldown(addedSkillId, currentEntryTime, nextTimeOffset);
+            console.log('添加后更新冷却状态:', cooldownStatus);
+            
+            // 无论正在连续添加哪种技能，都更新界面显示
+            setSkillId(addedSkillId); // 保持当前技能选中
+            setSkillCooldownInfo(cooldownStatus);
+          }
+        }, 10); // 延长超时时间，确保状态已更新
+      }
+      
+      // 重置动作表单但保留当前技能ID
       setIsEditingAction(false);
       setEditingActionIndex(-1);
-      setSkillId('');
-      setSkillTarget(undefined);
-      setForceUse(false);
-      setToggleName('');
-      setToggleState(true);
-      setTimeOffset(0);
+      
+      // 如果添加的是技能动作，保留技能ID以便连续添加
+      if (newAction.type === 'skill') {
+        // 保持同一个技能ID，但重置其他表单项
+        setSkillTarget(undefined);
+        setForceUse(false);
+        setTimeOffset(0);
+      } else {
+        // 如果是其他类型的动作，完全重置表单
+        setSkillId('');
+        setSkillTarget(undefined);
+        setForceUse(false);
+        setToggleName('');
+        setToggleState(true);
+        setTimeOffset(0);
+        setSkillCooldownInfo(undefined);
+      }
     }
   };
 
@@ -637,6 +681,11 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
     setToggleState(true);
     setTimeOffset(0);
     setSkillCooldownInfo(undefined);
+    
+    // 清除操作类型状态，防止影响下次冷却检查
+    setTimeout(() => {
+      console.log('重置技能状态');
+    }, 0);
   };
 
   // 条件管理功能
@@ -832,17 +881,16 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
             // 计算此动作的实际执行时间
             const actionExecTime = entry.time + action.timeOffset;
             
-            // 如果此动作是在我们当前检查的动作之前使用
-            if (actionExecTime < actionTime) {
-              usageTimesList.push(actionExecTime);
-              usageSources.push({
-                type: 'timeline',
-                entryTime: entry.time,
-                entryText: entry.text,
-                actionTime: actionExecTime
-              });
-              console.log(`在条目 ${entry.time}:${entry.text} 发现技能 ${skillId} 使用记录，时间点: ${actionExecTime}`);
-            }
+            // 注意: 这里不再判断时间先后，而是收集所有使用记录
+            // 只要是时间轴上的使用记录，都应该计入计算
+            usageTimesList.push(actionExecTime);
+            usageSources.push({
+              type: 'timeline',
+              entryTime: entry.time,
+              entryText: entry.text,
+              actionTime: actionExecTime
+            });
+            console.log(`在条目 ${entry.time}:${entry.text} 发现技能 ${skillId} 使用记录，时间点: ${actionExecTime}`);
           }
         }
       }
@@ -858,17 +906,15 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
           if (action.type === 'skill' && action.enabled && action.skillId === skillId) {
             const actionExecTime = currentEntryTime + action.timeOffset;
             
-            // 如果动作在当前我们检查的时间点之前
-            if (actionExecTime < actionTime) {
-              usageTimesList.push(actionExecTime);
-              usageSources.push({
-                type: 'current_entry',
-                entryTime: currentEntryTime,
-                entryText: selectedEntry.text,
-                actionTime: actionExecTime
-              });
-              console.log(`在当前条目的其他组中发现技能 ${skillId} 使用记录，时间点: ${actionExecTime}`);
-            }
+            // 同样不判断时间先后，收集所有使用记录
+            usageTimesList.push(actionExecTime);
+            usageSources.push({
+              type: 'current_entry',
+              entryTime: currentEntryTime,
+              entryText: selectedEntry.text,
+              actionTime: actionExecTime
+            });
+            console.log(`在当前条目的其他组中发现技能 ${skillId} 使用记录，时间点: ${actionExecTime}`);
           }
         }
       }
@@ -879,7 +925,7 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
         for (let i = 0; i < currentGroup.actions.length; i++) {
           const action = currentGroup.actions[i];
           
-          // 跳过正在编辑的动作本身
+          // 只跳过当前正在编辑的动作，其他同组中的相同技能都计入
           if (isEditingAction && editingActionIndex === i) {
             continue;
           }
@@ -887,18 +933,31 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
           if (action.type === 'skill' && action.enabled && action.skillId === skillId) {
             const actionExecTime = currentEntryTime + action.timeOffset;
             
-            // 如果这个动作是在当前检查的动作之前使用
-            if (actionExecTime < actionTime) {
-              usageTimesList.push(actionExecTime);
-              usageSources.push({
-                type: 'same_group',
-                entryTime: currentEntryTime,
-                entryText: selectedEntry.text,
-                actionTime: actionExecTime
-              });
-              console.log(`在当前编辑的同一组内发现技能 ${skillId} 使用记录，时间点: ${actionExecTime}`);
-            }
+            // 添加所有同组内其他动作的使用记录，不考虑时间先后顺序
+            usageTimesList.push(actionExecTime);
+            usageSources.push({
+              type: 'same_group',
+              entryTime: currentEntryTime,
+              entryText: selectedEntry.text,
+              actionTime: actionExecTime
+            });
+            console.log(`在当前编辑的同一组内发现技能 ${skillId} 使用记录，时间点: ${actionExecTime}`);
           }
+        }
+        
+        // 特殊处理：如果当前正在添加一个新的相同技能（非编辑模式），也计入使用记录
+        // 这样能处理连续添加多个相同技能的情况
+        if (!isEditingAction && skillId && actionType === 'skill') {
+          // 记录当前即将添加的动作，假设它已经被添加
+          const potentialActionTime = currentEntryTime + timeOffset;
+          console.log(`检测到当前正在添加的相同技能 ${skillId}，计入使用记录，时间点: ${potentialActionTime}`);
+          usageTimesList.push(potentialActionTime);
+          usageSources.push({
+            type: 'same_group',
+            entryTime: currentEntryTime,
+            entryText: selectedEntry.text,
+            actionTime: potentialActionTime
+          });
         }
       }
     }
@@ -917,80 +976,75 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
     
     console.log(`技能${skillId}(${skillInfo.name})使用时间列表:`, usageTimesList, `当前时间: ${actionTime}`);
     
-    // 如果有充能机制
+    // 对于充能技能，我们需要特殊处理
     if (maxCharges > 0) {
-      // 计算当前时间点可用的充能数
-      let availableCharges = maxCharges;
-      let lastRechargeTime = 0;
+      // 采用更直接的充能计算方式
+      console.log(`----充能技能计算开始----`);
+      console.log(`技能: ${skillId}(${skillInfo.name}), 最大充能数: ${maxCharges}, 充能时间: ${recastTime}秒`);
+      console.log(`当前时间点: ${actionTime}秒, 相关使用记录: ${usageTimesList.join(', ')}`);
       
-      // 从最早的使用时间开始计算
-      for (const usageTime of usageTimesList) {
-        // 从上次充能时间到当前使用时间，计算恢复了多少充能
-        const elapsedTime = usageTime - lastRechargeTime;
-        const recoveredCharges = Math.floor(elapsedTime / recastTime);
-        
-        // 更新可用充能数（不超过最大值）
-        availableCharges = Math.min(maxCharges, availableCharges + recoveredCharges);
-        
-        // 使用了一次充能
-        availableCharges--;
-        
-        // 记录使用时间以便后续计算
-        if (availableCharges <= 0) {
-          // 如果充能用完，记录当前时间作为下次充能的起始时间
-          lastRechargeTime = usageTime;
-          availableCharges = 0;
-        } else {
-          // 如果仍有充能剩余，我们需要调整lastRechargeTime以便正确计算下一次充能时间
-          // 计算当前剩余充能需要多少个完整充能周期
-          const remainingChargesCycles = maxCharges - availableCharges;
-          // 更新最后一次充能的开始时间点
-          if (remainingChargesCycles > 0) {
-            lastRechargeTime = usageTime - (remainingChargesCycles * recastTime);
-          }
-        }
+      // 筛选当前时间点之前的使用记录
+      const pastUsages = usageTimesList.filter(time => time < actionTime);
+      
+      // 如果没有过去的使用记录，技能是满充能的
+      if (pastUsages.length === 0) {
+        console.log(`没有过去的使用记录，技能满充能`);
+        return {
+          isCooldown: false,
+          nextAvailableTime: null,
+          cooldownInfo: `技能可用 (${maxCharges}/${maxCharges}充能)`,
+          cooldownSource: undefined
+        };
       }
       
-      // 计算从最后一次充能开始到当前动作时间恢复的充能数
-      const finalElapsedTime = actionTime - lastRechargeTime;
-      const finalRecoveredCharges = Math.floor(finalElapsedTime / recastTime);
-      availableCharges = Math.min(maxCharges, availableCharges + finalRecoveredCharges);
+      console.log(`过去的使用记录(${pastUsages.length}个): ${pastUsages.join(', ')}`);
       
-      // 计算下一次充能完成的时间（如果有）
+      // 按照充能的简单规则：
+      // 1. 初始充能是满的
+      // 2. 每次使用消耗一层充能
+      // 3. 每隔recastTime时间恢复一层充能
+      // 4. 不能超过最大充能数
+      
+      // 计算从第一次使用到当前时间恢复了多少充能
+      const firstUsageTime = pastUsages[0];
+      const totalElapsedTime = actionTime - firstUsageTime;
+      const totalRecoveredCharges = Math.floor(totalElapsedTime / recastTime);
+      
+      console.log(`从第一次使用(${firstUsageTime})到现在(${actionTime})过了${totalElapsedTime}秒, 总共恢复了${totalRecoveredCharges}充能`);
+      
+      // 计算当前可用充能 = 初始充能 - 使用次数 + 恢复充能数
+      let currentCharges = maxCharges - pastUsages.length + totalRecoveredCharges;
+      currentCharges = Math.min(maxCharges, Math.max(0, currentCharges));
+      
+      console.log(`计算: ${maxCharges}(初始) - ${pastUsages.length}(使用) + ${totalRecoveredCharges}(恢复) = ${currentCharges}(当前充能)`);
+      
+      // 计算下一次充能时间
       let nextChargeTime = null;
-      if (availableCharges < maxCharges) {
-        // 计算剩余部分时间
-        const remainingTimeInCurrentCycle = finalElapsedTime % recastTime;
-        // 下一次充能时间 = 当前时间 + (充能周期 - 已经过的部分时间)
-        nextChargeTime = actionTime + (recastTime - remainingTimeInCurrentCycle);
+      if (currentCharges < maxCharges) {
+        // 计算最后一次恢复充能的时间
+        const lastRecoveryTime = firstUsageTime + (totalRecoveredCharges * recastTime);
+        // 下一次恢复充能需要的时间
+        nextChargeTime = lastRecoveryTime + recastTime;
+        console.log(`下一次充能时间: ${nextChargeTime}秒`);
       }
       
-      console.log(`充能技能${skillId}计算结果:`, {
-        lastRechargeTime,
-        actionTime,
-        finalElapsedTime,
-        finalRecoveredCharges,
-        availableCharges,
-        maxCharges,
-        nextChargeTime
-      });
+      console.log(`----充能技能计算结束----`);
       
       // 判断是否有充能可用
-      if (availableCharges > 0) {
+      if (currentCharges > 0) {
         return {
           isCooldown: false,
           nextAvailableTime: nextChargeTime,
-          cooldownInfo: `技能可用 (${availableCharges}/${maxCharges}充能)`,
-          cooldownSource: usageSources[usageTimesList.length - 1]
+          cooldownInfo: `技能可用 (${currentCharges}/${maxCharges}充能)`,
+          cooldownSource: usageSources[usageSources.length - 1]
         };
       } else {
-        // 计算还需多久才能获得下一次充能
         const remainingTime = nextChargeTime ? nextChargeTime - actionTime : 0;
         return {
           isCooldown: true,
           nextAvailableTime: nextChargeTime,
           cooldownInfo: `技能在冷却中 (还需 ${remainingTime.toFixed(1)} 秒获得下一次充能)`,
-          cooldownSource: usageSources[usageTimesList.length - 1]
+          cooldownSource: usageSources[usageSources.length - 1]
         };
       }
     } 
