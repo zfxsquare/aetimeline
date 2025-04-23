@@ -3,6 +3,131 @@ import './TimelineEditor.css';
 import ConditionActionGroupManager from './ConditionActionGroupManager';
 import { skills } from '../data/skills';
 
+// 在文件开头添加职业枚举
+enum Jobs {
+  // 坦克
+  Paladin = "Paladin",
+  Warrior = "Warrior",
+  DarkKnight = "DarkKnight",
+  Gunbreaker = "Gunbreaker",
+  
+  // 奶妈
+  WhiteMage = "WhiteMage",
+  Scholar = "Scholar",
+  Astrologian = "Astrologian",
+  Sage = "Sage",
+  
+  // DPS
+  Monk = "Monk",
+  Dragoon = "Dragoon",
+  Ninja = "Ninja",
+  Samurai = "Samurai",
+  Reaper = "Reaper",
+  Bard = "Bard",
+  Machinist = "Machinist",
+  Dancer = "Dancer",
+  BlackMage = "BlackMage",
+  Summoner = "Summoner",
+  RedMage = "RedMage",
+  BlueMage = "BlueMage",
+  
+  // 新职业
+  Viper = "Viper",
+  Pictomancer = "Pictomancer"
+}
+
+// 职业分类
+enum JobCategory {
+  Tank = "坦克",
+  Healer = "治疗",
+  DPS = "输出"
+}
+
+// 职业名称映射
+const jobNames: { [key in Jobs]: string } = {
+  // 坦克
+  [Jobs.Paladin]: "骑士",
+  [Jobs.Warrior]: "战士",
+  [Jobs.DarkKnight]: "黑骑",
+  [Jobs.Gunbreaker]: "枪刃",
+  
+  // 奶妈
+  [Jobs.WhiteMage]: "白魔",
+  [Jobs.Scholar]: "学者",
+  [Jobs.Astrologian]: "占星",
+  [Jobs.Sage]: "贤者",
+  
+  // DPS
+  [Jobs.Monk]: "武僧",
+  [Jobs.Dragoon]: "龙骑",
+  [Jobs.Ninja]: "忍者",
+  [Jobs.Samurai]: "武士",
+  [Jobs.Reaper]: "镰刀",
+  [Jobs.Bard]: "诗人",
+  [Jobs.Machinist]: "机工",
+  [Jobs.Dancer]: "舞者",
+  [Jobs.BlackMage]: "黑魔",
+  [Jobs.Summoner]: "召唤",
+  [Jobs.RedMage]: "赤魔",
+  [Jobs.BlueMage]: "青魔",
+  
+  // 新职业
+  [Jobs.Viper]: "蝰蛇",
+  [Jobs.Pictomancer]: "画家"
+};
+
+// 职业分类映射
+const jobCategories: { [key in Jobs]: JobCategory } = {
+  // 坦克
+  [Jobs.Paladin]: JobCategory.Tank,
+  [Jobs.Warrior]: JobCategory.Tank,
+  [Jobs.DarkKnight]: JobCategory.Tank,
+  [Jobs.Gunbreaker]: JobCategory.Tank,
+  
+  // 奶妈
+  [Jobs.WhiteMage]: JobCategory.Healer,
+  [Jobs.Scholar]: JobCategory.Healer,
+  [Jobs.Astrologian]: JobCategory.Healer,
+  [Jobs.Sage]: JobCategory.Healer,
+  
+  // DPS
+  [Jobs.Monk]: JobCategory.DPS,
+  [Jobs.Dragoon]: JobCategory.DPS,
+  [Jobs.Ninja]: JobCategory.DPS,
+  [Jobs.Samurai]: JobCategory.DPS,
+  [Jobs.Reaper]: JobCategory.DPS,
+  [Jobs.Bard]: JobCategory.DPS,
+  [Jobs.Machinist]: JobCategory.DPS,
+  [Jobs.Dancer]: JobCategory.DPS,
+  [Jobs.BlackMage]: JobCategory.DPS,
+  [Jobs.Summoner]: JobCategory.DPS,
+  [Jobs.RedMage]: JobCategory.DPS,
+  [Jobs.BlueMage]: JobCategory.DPS,
+  
+  // 新职业
+  [Jobs.Viper]: JobCategory.DPS,
+  [Jobs.Pictomancer]: JobCategory.DPS
+};
+
+// 返回按类别排序的职业列表
+const getOrderedJobs = (): {job: Jobs, name: string, category: JobCategory}[] => {
+  return Object.entries(jobNames)
+    .map(([job, name]) => ({
+      job: job as Jobs,
+      name,
+      category: jobCategories[job as Jobs]
+    }))
+    .sort((a, b) => {
+      // 先按类别排序：坦克 > 治疗 > DPS
+      const categoryOrder = { [JobCategory.Tank]: 1, [JobCategory.Healer]: 2, [JobCategory.DPS]: 3 };
+      const categoryDiff = categoryOrder[a.category] - categoryOrder[b.category];
+      if (categoryDiff !== 0) return categoryDiff;
+      
+      // 类别相同时按名称排序
+      return a.name.localeCompare(b.name, 'zh-CN');
+    });
+};
+
 interface SkillCondition {
   type: 'skill_available';
   enabled: boolean;
@@ -71,6 +196,12 @@ interface TimelineEntry {
 
 interface TimelineConfig {
   name: string;
+  mapId: string;
+  description: string;  // 添加描述字段
+  author: string;      // 添加作者字段
+  acr: string;         // 添加适用ACR字段
+  job?: Jobs;          // 修改为单个职业
+  ClearCustomed?: boolean;  // 添加是否证道字段
   entries: TimelineEntry[];
 }
 
@@ -91,6 +222,13 @@ const generateId = (): string => {
 const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] }) => {
   // 基本配置状态
   const [name, setName] = useState('timeline');
+  const [mapId, setMapId] = useState('');
+  const [description, setDescription] = useState('');
+  const [author, setAuthor] = useState('');
+  const [acr, setAcr] = useState('');
+  const [isInfoExpanded, setIsInfoExpanded] = useState(false);  // 添加展开状态
+  const [selectedJob, setSelectedJob] = useState<Jobs | ''>('');  // 修改为单选
+  const [clearCustomed, setClearCustomed] = useState(false);  // 添加是否证道状态
   
   // 条目相关状态
   const [selectedEntry, setSelectedEntry] = useState<TimelineEntry | null>(null);
@@ -108,6 +246,9 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   
   // 导入文件的引用
   const fileInputRef = useRef<HTMLInputElement>(null);
+  
+  // 新增ref用于获取内容高度
+  const infoContentRef = useRef<HTMLDivElement>(null);
 
   // 当导入的条目发生变化时更新本地状态
   useEffect(() => {
@@ -209,8 +350,24 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     });
   }, [timelineEntries, searchText, entryGroupMap]);
 
+  // 检查所有必填项是否已填写
+  const validateRequiredFields = (): boolean => {
+    return name.trim() !== '' && 
+           mapId.trim() !== '' && 
+           description.trim() !== '' && 
+           author.trim() !== '' && 
+           acr.trim() !== '' &&
+           selectedJob !== '';  // 验证职业已选择
+  };
+
   // 导出时间轴配置
   const exportTimeline = () => {
+    // 检查必填项
+    if (!validateRequiredFields()) {
+      alert('请填写所有必填项：时间轴名称、地图ID、描述、作者、适用ACR和职业');
+      return;
+    }
+
     // 确保所有组已保存
     saveGroupsForCurrentEntry();
     
@@ -228,18 +385,30 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
     // 创建配置对象
     const config: TimelineConfig = {
       name,
+      mapId,
+      description,
+      author,
+      acr,
+      job: selectedJob as Jobs,
+      ClearCustomed: clearCustomed,  // 添加是否证道字段
       entries: entriesWithGroups
     };
 
     // 将配置转换为JSON字符串
     const jsonString = JSON.stringify(config, null, 2);
 
+    // 获取所选职业的中文名称
+    const jobName = jobNames[selectedJob as Jobs] || '';
+    
+    // 生成文件名: 时间轴名称-作者-职业
+    const fileName = `${name}-${author}-${jobName}.json`;
+
     // 创建下载链接
     const blob = new Blob([jsonString], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${name || 'timeline'}.json`;
+    a.download = fileName;
     document.body.appendChild(a);
     a.click();
     
@@ -298,6 +467,12 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
         
         // 更新编辑器状态
         setName(config.name || '');
+        setMapId(config.mapId || '');
+        setDescription(config.description || '');
+        setAuthor(config.author || '');
+        setAcr(config.acr || '');
+        setSelectedJob(config.job || '');  // 设置选中的职业
+        setClearCustomed(config.ClearCustomed || false);  // 设置是否证道状态
         
         // 处理时间轴条目和组映射
         if (config.entries && config.entries.length > 0) {
@@ -459,16 +634,114 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
             </div>
           </div>
           
-          <div className="timeline-name-input">
-            <div className="input-group">
-              <label>时间轴名称：</label>
-              <input 
-                type="text" 
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="输入时间轴名称"
-              />
+          <div className="timeline-info-container">
+            <div className="timeline-info-header" onClick={() => setIsInfoExpanded(!isInfoExpanded)}>
+              <h3>时间轴信息</h3>
+              <span className={`expand-icon ${isInfoExpanded ? 'expanded' : ''}`}>▼</span>
             </div>
+            
+            {isInfoExpanded && (
+              <div className="timeline-info-dropdown" ref={infoContentRef}>
+                <div className="input-group">
+                  <label>时间轴名称：<span className="required">*</span></label>
+                  <input 
+                    type="text" 
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="输入时间轴名称"
+                    className={name.trim() === '' ? 'invalid' : ''}
+                  />
+                </div>
+                <div className="input-group">
+                  <label>地图ID：<span className="required">*</span></label>
+                  <input 
+                    type="text" 
+                    value={mapId}
+                    onChange={(e) => setMapId(e.target.value)}
+                    placeholder="输入地图ID"
+                    className={mapId.trim() === '' ? 'invalid' : ''}
+                  />
+                </div>
+                <div className="input-group">
+                  <label>时间轴描述：<span className="required">*</span></label>
+                  <textarea 
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    placeholder="输入时间轴描述"
+                    rows={3}
+                    className={description.trim() === '' ? 'invalid' : ''}
+                  />
+                </div>
+                <div className="input-group">
+                  <label>作者：<span className="required">*</span></label>
+                  <input 
+                    type="text" 
+                    value={author}
+                    onChange={(e) => setAuthor(e.target.value)}
+                    placeholder="输入作者名称"
+                    className={author.trim() === '' ? 'invalid' : ''}
+                  />
+                </div>
+                <div className="input-group">
+                  <label>适用ACR：<span className="required">*</span></label>
+                  <input 
+                    type="text" 
+                    value={acr}
+                    onChange={(e) => setAcr(e.target.value)}
+                    placeholder="输入适用ACR"
+                    className={acr.trim() === '' ? 'invalid' : ''}
+                  />
+                </div>
+                <div className="input-group">
+                  <label>适用职业：<span className="required">*</span></label>
+                  <select 
+                    value={selectedJob}
+                    onChange={(e) => setSelectedJob(e.target.value as Jobs | '')}
+                    className={selectedJob === '' ? 'invalid' : ''}
+                  >
+                    <option value="">请选择职业</option>
+                    
+                    {/* 按分类显示职业 */}
+                    <optgroup label="坦克">
+                      {getOrderedJobs()
+                        .filter(item => item.category === JobCategory.Tank)
+                        .map(({ job, name }) => (
+                          <option key={job} value={job}>{name}</option>
+                        ))
+                      }
+                    </optgroup>
+                    
+                    <optgroup label="治疗">
+                      {getOrderedJobs()
+                        .filter(item => item.category === JobCategory.Healer)
+                        .map(({ job, name }) => (
+                          <option key={job} value={job}>{name}</option>
+                        ))
+                      }
+                    </optgroup>
+                    
+                    <optgroup label="输出">
+                      {getOrderedJobs()
+                        .filter(item => item.category === JobCategory.DPS)
+                        .map(({ job, name }) => (
+                          <option key={job} value={job}>{name}</option>
+                        ))
+                      }
+                    </optgroup>
+                  </select>
+                </div>
+                <div className="input-group">
+                  <label>是否证道：</label>
+                  <select
+                    value={clearCustomed ? "true" : "false"}
+                    onChange={(e) => setClearCustomed(e.target.value === "true")}
+                  >
+                    <option value="false">否</option>
+                    <option value="true">是</option>
+                  </select>
+                </div>
+              </div>
+            )}
           </div>
           
           <div className="sidebar-content">
