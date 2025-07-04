@@ -3,6 +3,8 @@ import SkillSearch from '../SkillSearch';
 import { skills } from '../../data/skills';
 import { FiClock, FiCheck } from 'react-icons/fi';
 
+import { CooldownStatus } from '../../hooks/useSkillCooldown';
+
 interface SkillActionProps {
   skillId: string | null;
   setSkillId: (id: string | null) => void;
@@ -21,11 +23,7 @@ interface SkillActionProps {
   selectedGroupId: string | null;
   cancelEditingAction: () => void;
   handleSkillSelect: (skillId: string | null) => void;
-  cooldownInfo?: {
-    isCooldown: boolean;
-    nextAvailableTime: number | null;
-    cooldownInfo: string;
-  };
+  cooldownInfo: CooldownStatus | null;
 }
 
 const SkillActionComponent: React.FC<SkillActionProps> = ({

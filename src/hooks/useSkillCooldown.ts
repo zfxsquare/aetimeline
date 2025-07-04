@@ -35,9 +35,9 @@ const calculateCooldown = (skill: Skill, usageTimes: number[], actionTime: numbe
   if (maxcharge > 0) {
     // 充能计算逻辑简化和修正
     // 找到所有在当前动作时间点之前，并且会影响充能计算的使用记录
-    const relevantPastUsages = pastUsages.slice(-(maxcharge > 0 ? maxcharge : 1));
+    // const relevantPastUsages = pastUsages.slice(-(maxcharge > 0 ? maxcharge : 1));
     
-    let availableCharges = maxcharge;
+    // let availableCharges = maxcharge;
     let nextChargeTime: number | null = null;
 
     const chargeRecoveryTimes: number[] = [];
@@ -46,11 +46,11 @@ const calculateCooldown = (skill: Skill, usageTimes: number[], actionTime: numbe
     }
 
     for(const usageTime of pastUsages) {
-        let recovered = false;
+        // let recovered = false;
         for(let i = 0; i < maxcharge; i++) {
             if(usageTime >= chargeRecoveryTimes[i]) {
                 chargeRecoveryTimes[i] = usageTime + recast;
-                recovered = true;
+                // recovered = true;
                 break;
             }
         }

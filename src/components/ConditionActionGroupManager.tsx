@@ -366,7 +366,7 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
   };
 
   // 修改SkillSearch组件的onSelect处理
-  const handleSkillSelect = (skillId: string) => {
+  const handleSkillSelect = (skillId: string | null) => {
     setSkillId(skillId);
   };
 

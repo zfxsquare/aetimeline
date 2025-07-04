@@ -2,7 +2,7 @@ import React from 'react';
 import ConditionContent from './conditions/ConditionContent';
 import ActionContent from './actions/ActionContent';
 import './ConditionActionGroup.css';
-import { ConditionActionGroup as ConditionActionGroupType, TimelineCondition, Action } from './types';
+import { ConditionActionGroup as ConditionActionGroupType } from './types';
 
 // 组件需要的接口定义
 interface ConditionActionGroupProps {
