@@ -3,9 +3,11 @@ import SkillSearch from '../SkillSearch';
 import { skills } from '../../data/skills';
 import { FiClock, FiCheck } from 'react-icons/fi';
 
+import { CooldownStatus } from '../../hooks/useSkillCooldown';
+
 interface SkillActionProps {
-  skillId: string;
-  setSkillId: (id: string) => void;
+  skillId: string | null;
+  setSkillId: (id: string | null) => void;
   skillTarget: string | undefined;
   setSkillTarget: (target: any) => void;
   timeOffset: number;
@@ -20,17 +22,8 @@ interface SkillActionProps {
   isEditingAction: boolean;
   selectedGroupId: string | null;
   cancelEditingAction: () => void;
-  handleSkillSelect: (skillId: string) => void;
-  cooldownInfo?: {
-    isCooldown: boolean;
-    nextAvailableTime: number | null;
-    cooldownInfo: string;
-    cooldownSource?: {
-      type: string;
-      entryTime?: number;
-      entryText?: string;
-    };
-  };
+  handleSkillSelect: (skillId: string | null) => void;
+  cooldownInfo: CooldownStatus | null;
 }
 
 const SkillActionComponent: React.FC<SkillActionProps> = ({
@@ -82,23 +75,6 @@ const SkillActionComponent: React.FC<SkillActionProps> = ({
 
     const isCooldown = cooldownInfo.isCooldown || false;
     const cooldownText = cooldownInfo.cooldownInfo || '';
-    const cooldownSource = cooldownInfo.cooldownSource;
-    
-    // 构建冷却来源信息
-    let sourceInfo = '';
-    if (isCooldown && cooldownSource) {
-      switch(cooldownSource.type) {
-        case 'timeline':
-          sourceInfo = `上次在${cooldownSource.entryTime}秒"${cooldownSource.entryText}"处使用过`;
-          break;
-        case 'current_entry':
-          sourceInfo = `在当前条目的其他组中使用过`;
-          break;
-        case 'same_group':
-          sourceInfo = `在当前组中已有使用记录`;
-          break;
-      }
-    }
     
     // 显示更准确的冷却信息，直接使用后端计算的结果
     return (
@@ -109,7 +85,6 @@ const SkillActionComponent: React.FC<SkillActionProps> = ({
               <span className="cooldown-icon"><FiClock /></span> 
               <span className="cooldown-text">
                 {cooldownText}
-                {sourceInfo && <div className="cooldown-source">{sourceInfo}</div>}
               </span>
             </>
           ) : (
@@ -131,8 +106,8 @@ const SkillActionComponent: React.FC<SkillActionProps> = ({
       <div className="input-group">
         <label>技能ID:</label>
         <SkillSearch
-          value={skillId}
-          onChange={setSkillId}
+          value={skillId || ''}
+          onChange={(value) => setSkillId(value)}
           onSelect={handleSkillSelect}
         />
       </div>
