@@ -1,92 +1,19 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { skills } from '../data/skills';
-// 导入拆分后的条件组件
 import SkillConditionComponent from './conditions/SkillCondition';
 import TeamCountConditionComponent from './conditions/TeamCountCondition';
 import TeamHpConditionComponent from './conditions/TeamHpCondition';
-// 导入拆分后的动作组件
 import SkillActionComponent from './actions/SkillAction';
 import ToggleActionComponent from './actions/ToggleAction';
-// 导入组组件
-import ConditionActionGroupComponent from './ConditionActionGroup';
 import GroupForm from './GroupForm';
-// 导入样式
+import GroupList from './GroupList';
+import GroupEditorHeader from './GroupEditorHeader';
+import EditorTabs from './EditorTabs';
 import './ConditionActionForm.css';
 import './ConditionActionGroupManager.css';
-// 导入新的Hook和Service
 import { useSkillCooldown } from '../hooks/useSkillCooldown';
 import { SkillUsageMap } from '../services/SkillUsageService';
-
-// 导入接口定义
-interface ActionType {
-  id: string;
-  name: string;
-}
-
-interface SkillCondition {
-  type: 'skill_available';
-  enabled: boolean;
-  skillId: string;
-}
-
-interface TeamCountCondition {
-  type: 'team_count';
-  enabled: boolean;
-  operator: '>' | '<' | '==' | '>=' | '<=';
-  count: number;
-  range: number;
-}
-
-interface TeamHpCondition {
-  type: 'team_hp';
-  enabled: boolean;
-  hpPercent: number;
-  excludeTank: boolean;
-}
-
-type TimelineCondition = SkillCondition | TeamCountCondition | TeamHpCondition;
-
-interface SkillAction {
-  type: 'skill';
-  enabled: boolean;
-  skillId: string;
-  target?: 'current' | 'self' | 'current_target' | 'party1' | 'party2' | 'party3' | 'party4' | 'party5' | 'party6' | 'party7' | 'party8' | 'id' | 'coordinate';
-  timeOffset: number;
-  forceUse?: boolean;
-  targetId?: string;
-  targetCoordinate?: { x: number; y: number; z: number };
-}
-
-interface ToggleAction {
-  type: 'toggle';
-  enabled: boolean;
-  toggleName: string;
-  state: boolean;
-  timeOffset: number;
-}
-
-type Action = SkillAction | ToggleAction;
-
-interface ConditionActionGroup {
-  id: string;
-  name: string;
-  timeout: number;
-  enabled: boolean;
-  conditions: TimelineCondition[];
-  actions: Action[];
-}
-
-interface TimelineEntry {
-  time: number;
-  text: string;
-  sync?: string;
-  duration?: number;
-  window?: {before: number, after: number};
-  jump?: string | number;
-  forcejump?: string | number;
-  label?: string;
-  groups?: ConditionActionGroup[];
-}
+import { Action, ConditionActionGroup, TimelineCondition, TimelineEntry, SkillAction } from './types';
 
 // 组件属性接口
 interface ConditionActionGroupManagerProps {
@@ -96,7 +23,7 @@ interface ConditionActionGroupManagerProps {
   selectedGroupId: string | null;
   setSelectedGroupId: React.Dispatch<React.SetStateAction<string | null>>;
   resetAllEditStates: () => void;
-  skillUsageMap: SkillUsageMap; // 新增：接收预计算的技能使用地图
+  skillUsageMap: SkillUsageMap;
 }
 
 // 生成唯一ID
@@ -165,7 +92,7 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
   );
   // --- Hook 使用结束 ---
   
-  // 条件编辑���态
+  // 条件编辑状态
   const [conditionType, setConditionType] = useState<string>('skill_available');
   const [isEditingCondition, setIsEditingCondition] = useState(false);
   const [editingConditionIndex, setEditingConditionIndex] = useState<number>(-1);
@@ -176,7 +103,7 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
   const [excludeTank, setExcludeTank] = useState(false);
 
   // 选项数据
-  const actionTypes: ActionType[] = [
+  const actionTypes = [
     { id: 'skill', name: '使用技能' },
     { id: 'toggle', name: '切换开关' }
   ];
@@ -256,16 +183,12 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
 
   // 选择组
   const handleSelectGroup = (groupId: string) => {
-    console.log('选择组:', groupId, '当前选中:', selectedGroupId);
-    // 如果点击当前选中的组，则折叠（取消选择）
     if (selectedGroupId === groupId) {
       setSelectedGroupId(null);
     } else {
-      // 否则选择新组
       setSelectedGroupId(groupId);
     }
     
-    // 只重置编辑状态，但不清除选中的组
     setIsEditingGroup(false);
     setEditingGroupId(null);
     setNewGroupName('');
@@ -549,7 +472,6 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
         setTimeOffset(0);
       } else {
         // 如果是其他类型的动作，完全重置表单
-        // 如果是其他类型的动作，完全重置表单
         setSkillId(null);
         setSkillTarget(undefined);
         setForceUse(false);
@@ -777,8 +699,6 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
     setNewGroupName('');
   };
 
-  
-
   // 复制组
   const handleCopyGroup = useCallback((groupId: string) => {
     const groupToCopy = groups.find(g => g.id === groupId);
@@ -807,55 +727,19 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
 
   return (
     <div className="groups-section">
-      <div className="section-header">
-        <h3>条件-动作组：{selectedEntry.text}</h3>
-        <div className="header-buttons">
-          <button 
-            className="add-button" 
-            onClick={() => {
-              setIsEditingGroup(true);
-              setEditingGroupId(null);
-              setNewGroupName('');
-            }}
-            title="添加新组"
-          >
-            +
-          </button>
-          {copiedGroup && (
-            <button
-              className="paste-button"
-              onClick={handlePasteGroup}
-              title="粘贴已复制的组"
-            >
-              <span className="icon">📋</span> 粘贴
-            </button>
-          )}
-        </div>
-      </div>
-      
-      {/* 复制状态显示区域 */}
-      {copiedGroup && (
-        <div className={`copy-status ${showCopySuccess ? 'success-flash' : ''} ${showPasteSuccess ? 'paste-flash' : ''}`}>
-          <div className="copy-info">
-            <span className="copy-icon">📋</span>
-            <span className="copy-text">
-              {showCopySuccess && <span className="copy-success">✓ 复制成功!</span>}
-              {showPasteSuccess && <span className="paste-success">✓ 粘贴成功!</span>}
-              {!showCopySuccess && !showPasteSuccess && '已复制:'} <strong>{copiedGroup.name}</strong>
-            </span>
-            <span className="copy-details">
-              {copiedGroup.conditions.length} 个条件, {copiedGroup.actions.length} 个动作
-            </span>
-          </div>
-          <button 
-            className="clear-copy-button"
-            onClick={() => setCopiedGroup(null)}
-            title="清除复制内容"
-          >
-            ×
-          </button>
-        </div>
-      )}
+      <GroupEditorHeader
+        selectedEntryText={selectedEntry.text}
+        copiedGroup={copiedGroup}
+        showCopySuccess={showCopySuccess}
+        showPasteSuccess={showPasteSuccess}
+        onAddNewGroup={() => {
+          setIsEditingGroup(true);
+          setEditingGroupId(null);
+          setNewGroupName('');
+        }}
+        onPasteGroup={handlePasteGroup}
+        onClearCopiedGroup={() => setCopiedGroup(null)}
+      />
       
       {isEditingGroup && (
         <GroupForm
@@ -870,81 +754,35 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
         />
       )}
       
-      <div className="groups-list">
-        {groups.length > 0 ? (
-          groups.map((group) => (
-            <ConditionActionGroupComponent
-              key={group.id}
-              group={group}
-              selectedGroupId={selectedGroupId}
-              handleSelectGroup={handleSelectGroup}
-              handleToggleGroupEnabled={handleToggleGroupEnabled}
-              handleEditGroup={handleEditGroup}
-              handleDeleteGroup={handleDeleteGroup}
-              handleToggleConditionEnabled={handleToggleConditionEnabled}
-              handleEditCondition={handleEditCondition}
-              handleRemoveCondition={handleRemoveCondition}
-              handleToggleActionEnabled={handleToggleActionEnabled}
-              handleEditAction={handleEditAction}
-              handleRemoveAction={handleRemoveAction}
-              handleCopyGroup={handleCopyGroup}
-            />
-          ))
-        ) : (
-          <div className="no-groups">尚未创建任何条件-动作组</div>
-        )}
-      </div>
+      <GroupList
+        groups={groups}
+        selectedGroupId={selectedGroupId}
+        handleSelectGroup={handleSelectGroup}
+        handleToggleGroupEnabled={handleToggleGroupEnabled}
+        handleEditGroup={handleEditGroup}
+        handleDeleteGroup={handleDeleteGroup}
+        handleToggleConditionEnabled={handleToggleConditionEnabled}
+        handleEditCondition={handleEditCondition}
+        handleRemoveCondition={handleRemoveCondition}
+        handleToggleActionEnabled={handleToggleActionEnabled}
+        handleEditAction={handleEditAction}
+        handleRemoveAction={handleRemoveAction}
+        handleCopyGroup={handleCopyGroup}
+      />
       
-      {/* 条件和动作编辑区域 */}
-      {selectedGroupId && (
-        <div className="tab-sections">
-          <div className="condition-tabs">
-            <div className="section-header">
-              <h4>添加条件</h4>
-            </div>
-            <div className="tab-scroll-container">
-              <div className="tab-selection">
-                {conditionTypes.map((type) => (
-                  <button 
-                    key={type.id}
-                    className={`tab-button ${conditionType === type.id ? 'active' : ''}`}
-                    onClick={() => handleConditionTypeChange(type.id)}
-                  >
-                    {type.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="tab-content">
-              {renderConditionForm()}
-            </div>
-          </div>
-
-          <div className="action-tabs">
-            <div className="section-header">
-              <h4>添加动作</h4>
-            </div>
-            <div className="tab-scroll-container">
-              <div className="tab-selection">
-                {actionTypes.map((type) => (
-                  <button 
-                    key={type.id}
-                    className={`tab-button ${actionType === type.id ? 'active' : ''}`}
-                    onClick={() => handleActionTypeChange(type.id)}
-                  >
-                    {type.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="tab-content">
-              {renderActionForm()}
-            </div>
-          </div>
-        </div>
-      )}
+      <EditorTabs
+        selectedGroupId={selectedGroupId}
+        conditionTypes={conditionTypes}
+        actionTypes={actionTypes}
+        conditionType={conditionType}
+        actionType={actionType}
+        handleConditionTypeChange={handleConditionTypeChange}
+        handleActionTypeChange={handleActionTypeChange}
+        renderConditionForm={renderConditionForm}
+        renderActionForm={renderActionForm}
+      />
     </div>
   );
 };
 
-export default ConditionActionGroupManager; 
+export default ConditionActionGroupManager;

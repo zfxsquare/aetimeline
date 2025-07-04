@@ -2,63 +2,11 @@ import React from 'react';
 import ConditionContent from './conditions/ConditionContent';
 import ActionContent from './actions/ActionContent';
 import './ConditionActionGroup.css';
+import { ConditionActionGroup as ConditionActionGroupType, TimelineCondition, Action } from './types';
 
 // 组件需要的接口定义
-interface SkillCondition {
-  type: 'skill_available';
-  enabled: boolean;
-  skillId: string;
-}
-
-interface TeamCountCondition {
-  type: 'team_count';
-  enabled: boolean;
-  operator: '>' | '<' | '==' | '>=' | '<=';
-  count: number;
-  range: number;
-}
-
-interface TeamHpCondition {
-  type: 'team_hp';
-  enabled: boolean;
-  hpPercent: number;
-  excludeTank: boolean;
-}
-
-type TimelineCondition = SkillCondition | TeamCountCondition | TeamHpCondition;
-
-interface SkillAction {
-  type: 'skill';
-  enabled: boolean;
-  skillId: string;
-  target?: 'current' | 'self' | 'current_target' | 'party1' | 'party2' | 'party3' | 'party4' | 'party5' | 'party6' | 'party7' | 'party8' | 'id' | 'coordinate';
-  timeOffset: number;
-  forceUse?: boolean;
-  targetId?: string;
-  targetCoordinate?: { x: number; y: number; z: number };
-}
-
-interface ToggleAction {
-  type: 'toggle';
-  enabled: boolean;
-  toggleName: string;
-  state: boolean;
-  timeOffset: number;
-}
-
-type Action = SkillAction | ToggleAction;
-
-interface ConditionActionGroup {
-  id: string;
-  name: string;
-  timeout: number;
-  enabled: boolean;
-  conditions: TimelineCondition[];
-  actions: Action[];
-}
-
 interface ConditionActionGroupProps {
-  group: ConditionActionGroup;
+  group: ConditionActionGroupType;
   selectedGroupId: string | null;
   handleSelectGroup: (id: string) => void;
   handleToggleGroupEnabled: (id: string) => void;
