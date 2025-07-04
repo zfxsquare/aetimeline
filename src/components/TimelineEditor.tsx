@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import './TimelineEditor.css';
 import ConditionActionGroupManager from './ConditionActionGroupManager';
 import { skills } from '../data/skills';
+import { SkillUsageService, SkillUsageMap } from '../services/SkillUsageService';
 
 // 在文件开头添加职业枚举
 enum Jobs {
@@ -244,6 +245,9 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   const [groups, setGroups] = useState<ConditionActionGroup[]>([]); // 当前选中条目的组
   const [entryGroupMap, setEntryGroupMap] = useState<EntryGroupMap>({});
   
+  // 技能冷却计算相关状态
+  const [skillUsageMap, setSkillUsageMap] = useState<SkillUsageMap>(new Map());
+
   // 导入文件的引用
   const fileInputRef = useRef<HTMLInputElement>(null);
   
@@ -287,6 +291,16 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   useEffect(() => {
     saveGroupsForCurrentEntry();
   }, [groups]);
+
+  // 当时间轴或组映射变化时，重新构建技能使用地图
+  useEffect(() => {
+    const entriesWithGroups = timelineEntries.map(entry => ({
+      ...entry,
+      groups: entryGroupMap[getEntryId(entry)] || []
+    }));
+    const newUsageMap = SkillUsageService.buildSkillUsageMap(entriesWithGroups);
+    setSkillUsageMap(newUsageMap);
+  }, [timelineEntries, entryGroupMap]);
 
   // 获取条目的唯一ID
   const getEntryId = (entry: TimelineEntry) => {
@@ -543,7 +557,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
           }
         }
         
-        // 重置所有编辑状态
+        // 重置所有编辑状���
         resetAllEditStates();
         
         // 显示成功消息
@@ -620,7 +634,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                 className="export-button" 
                 onClick={exportTimeline}
                 disabled={!name}
-                title="导出整个时间轴配置，包括所有条目和动作"
+                title="导出整个时间轴配置���包括所有条目和动作"
               >
                 导出时间轴
               </button>
@@ -829,8 +843,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                 selectedGroupId={selectedGroupId}
                 setSelectedGroupId={setSelectedGroupId}
                 resetAllEditStates={resetAllEditStates}
-                timelineEntries={timelineEntries}
-                entryGroupMap={entryGroupMap}
+                skillUsageMap={skillUsageMap}
               />
             )}
           </div>
