@@ -22,7 +22,13 @@ interface TeamHpCondition {
   excludeTank: boolean;
 }
 
-type TimelineCondition = SkillCondition | TeamCountCondition | TeamHpCondition;
+interface RoleCondition {
+  type: 'role';
+  enabled: boolean;
+  role: 'MT' | 'ST' | 'H1' | 'H2' | 'D1' | 'D2' | 'D3' | 'D4';
+}
+
+type TimelineCondition = SkillCondition | TeamCountCondition | TeamHpCondition | RoleCondition;
 
 interface ConditionContentProps {
   condition: TimelineCondition;
@@ -63,6 +69,24 @@ const ConditionContent: React.FC<ConditionContentProps> = ({ condition }) => {
       <>
         <span className="condition-type">团队血量</span>: {condition.hpPercent}%
         {condition.excludeTank && <span className="condition-detail">(排除坦克)</span>}
+      </>
+    );
+  } else if (condition.type === 'role') {
+    const roleLabels: Record<string, string> = {
+      'MT': 'MT',
+      'ST': 'ST',
+      'H1': 'H1',
+      'H2': 'H2',
+      'D1': 'D1',
+      'D2': 'D2',
+      'D3': 'D3',
+      'D4': 'D4'
+    };
+
+    content = (
+      <>
+        <span className="condition-type">自身职能</span>: 
+        <span className="condition-detail">{roleLabels[condition.role] || condition.role}</span>
       </>
     );
   }

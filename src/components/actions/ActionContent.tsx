@@ -20,7 +20,15 @@ interface ToggleAction {
   timeOffset: number;
 }
 
-type Action = SkillAction | ToggleAction;
+interface MoveToAction {
+  type: 'move_to';
+  enabled: boolean;
+  coordinate: { x: number; y: number; z: number };
+  tp: boolean;
+  timeOffset: number;
+}
+
+type Action = SkillAction | ToggleAction | MoveToAction;
 
 interface ActionContentProps {
   action: Action;
@@ -69,11 +77,23 @@ const ActionContent: React.FC<ActionContentProps> = ({ action }) => {
         {action.forceUse && <span className="action-detail force-use">强制使用</span>}
       </>
     );
-  } else {
+  } else if (action.type === 'toggle') {
     content = (
       <>
         <span className="action-type">切换开关</span>: {action.toggleName} 
         <span className="action-detail">状态</span>: {action.state ? '开启' : '关闭'}
+        <span className="action-detail">偏移</span>: 
+        <span className={`time-offset ${action.timeOffset > 0 ? 'positive' : action.timeOffset < 0 ? 'negative' : ''}`}>
+          {action.timeOffset > 0 ? '+' : ''}{action.timeOffset}s
+        </span>
+      </>
+    );
+  } else if (action.type === 'move_to') {
+    content = (
+      <>
+        <span className="action-type">移动到坐标</span>
+        <span className="action-detail">坐标</span>: {action.coordinate.x}, {action.coordinate.y}, {action.coordinate.z}
+        {action.tp && <span className="action-detail tp">tp</span>}
         <span className="action-detail">偏移</span>: 
         <span className={`time-offset ${action.timeOffset > 0 ? 'positive' : action.timeOffset < 0 ? 'negative' : ''}`}>
           {action.timeOffset > 0 ? '+' : ''}{action.timeOffset}s
