@@ -26,7 +26,13 @@ export interface TeamHpCondition {
   excludeTank: boolean;
 }
 
-export type TimelineCondition = SkillCondition | TeamCountCondition | TeamHpCondition;
+export interface RoleCondition {
+  type: 'role';
+  enabled: boolean;
+  role: 'MT' | 'ST' | 'H1' | 'H2' | 'D1' | 'D2' | 'D3' | 'D4';
+}
+
+export type TimelineCondition = SkillCondition | TeamCountCondition | TeamHpCondition | RoleCondition;
 
 export interface SkillAction {
   type: 'skill';
@@ -47,7 +53,15 @@ export interface ToggleAction {
   timeOffset: number;
 }
 
-export type Action = SkillAction | ToggleAction;
+export interface MoveToAction {
+  type: 'move_to';
+  enabled: boolean;
+  coordinate: { x: number; y: number; z: number };
+  tp: boolean;
+  timeOffset: number;
+}
+
+export type Action = SkillAction | ToggleAction | MoveToAction;
 
 export interface ConditionActionGroup {
   id: string;

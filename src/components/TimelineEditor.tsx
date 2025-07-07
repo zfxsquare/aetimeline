@@ -3,6 +3,7 @@ import './TimelineEditor.css';
 import ConditionActionGroupManager from './ConditionActionGroupManager';
 import { skills } from '../data/skills';
 import { SkillUsageService, SkillUsageMap } from '../services/SkillUsageService';
+import { ConditionActionGroup, TimelineEntry } from './types';
 
 // 在文件开头添加职业枚举
 enum Jobs {
@@ -128,72 +129,6 @@ const getOrderedJobs = (): {job: Jobs, name: string, category: JobCategory}[] =>
       return a.name.localeCompare(b.name, 'zh-CN');
     });
 };
-
-interface SkillCondition {
-  type: 'skill_available';
-  enabled: boolean;
-  skillId: string;
-}
-
-interface TeamCountCondition {
-  type: 'team_count';
-  enabled: boolean;
-  operator: '>' | '<' | '==' | '>=' | '<=';
-  count: number;
-  range: number;
-}
-
-interface TeamHpCondition {
-  type: 'team_hp';
-  enabled: boolean;
-  hpPercent: number;
-  excludeTank: boolean;
-}
-
-type TimelineCondition = SkillCondition | TeamCountCondition | TeamHpCondition;
-
-interface SkillAction {
-  type: 'skill';
-  enabled: boolean;
-  skillId: string;
-  target?: 'current' | 'self' | 'current_target' | 'party1' | 'party2' | 'party3' | 'party4' | 'party5' | 'party6' | 'party7' | 'party8' | 'id' | 'coordinate';
-  timeOffset: number;
-  forceUse?: boolean;
-  targetId?: string;
-  targetCoordinate?: { x: number; y: number; z: number };
-}
-
-interface ToggleAction {
-  type: 'toggle';
-  enabled: boolean;
-  toggleName: string;
-  state: boolean;
-  timeOffset: number;
-}
-
-type Action = SkillAction | ToggleAction;
-
-// 定义一个条件-动作组
-interface ConditionActionGroup {
-  id: string;  // 组的唯一标识
-  name: string; // 组的名称
-  timeout: number; // 超时时间
-  enabled: boolean; // 是否启用
-  conditions: TimelineCondition[];
-  actions: Action[];
-}
-
-interface TimelineEntry {
-  time: number;
-  text: string;
-  sync?: string;
-  duration?: number;
-  window?: {before: number, after: number};
-  jump?: string | number;
-  forcejump?: string | number;
-  label?: string;
-  groups?: ConditionActionGroup[]; // 使用组代替单独的actions/conditions
-}
 
 interface TimelineConfig {
   name: string;
@@ -357,6 +292,8 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                    (action.target && action.target.toLowerCase().includes(lowerSearchText));
           } else if (action.type === 'toggle') {
             return action.toggleName.toLowerCase().includes(lowerSearchText);
+          } else if (action.type === 'move_to') {
+            return '移动到坐标'.toLowerCase().includes(lowerSearchText);
           }
           return false;
         });
@@ -557,7 +494,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
           }
         }
         
-        // 重置所有编辑状���
+        // 重置所有编辑状态
         resetAllEditStates();
         
         // 显示成功消息
@@ -634,7 +571,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                 className="export-button" 
                 onClick={exportTimeline}
                 disabled={!name}
-                title="导出整个时间轴配置���包括所有条目和动作"
+                title="导出整个时间轴配置包括所有条目和动作"
               >
                 导出时间轴
               </button>
@@ -839,7 +776,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
               <ConditionActionGroupManager
                 selectedEntry={selectedEntry}
                 groups={groups}
-                setGroups={setGroups}
+                setGroups={setGroups as any}
                 selectedGroupId={selectedGroupId}
                 setSelectedGroupId={setSelectedGroupId}
                 resetAllEditStates={resetAllEditStates}

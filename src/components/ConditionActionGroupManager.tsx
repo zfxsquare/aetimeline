@@ -3,8 +3,10 @@ import { skills } from '../data/skills';
 import SkillConditionComponent from './conditions/SkillCondition';
 import TeamCountConditionComponent from './conditions/TeamCountCondition';
 import TeamHpConditionComponent from './conditions/TeamHpCondition';
+import RoleConditionComponent from './conditions/RoleCondition';
 import SkillActionComponent from './actions/SkillAction';
 import ToggleActionComponent from './actions/ToggleAction';
+import MoveToActionComponent from './actions/MoveToAction';
 import GroupForm from './GroupForm';
 import GroupList from './GroupList';
 import GroupEditorHeader from './GroupEditorHeader';
@@ -13,7 +15,7 @@ import './ConditionActionForm.css';
 import './ConditionActionGroupManager.css';
 import { useSkillCooldown } from '../hooks/useSkillCooldown';
 import { SkillUsageMap } from '../services/SkillUsageService';
-import { Action, ConditionActionGroup, TimelineCondition, TimelineEntry, SkillAction } from './types';
+import { Action, ConditionActionGroup, TimelineCondition, TimelineEntry, SkillAction, MoveToAction } from './types';
 
 // 组件属性接口
 interface ConditionActionGroupManagerProps {
@@ -63,6 +65,7 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
   const [timeOffset, setTimeOffset] = useState(0);
   const [targetId, setTargetId] = useState('');
   const [targetCoordinate, setTargetCoordinate] = useState({ x: 100, y: 0, z: 100 });
+  const [tp, settp] = useState(false);
   
   // --- 重构核心：使用 useSkillCooldown Hook ---
   const actionTime = selectedEntry ? selectedEntry.time + timeOffset : 0;
@@ -101,17 +104,20 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
   const [teamCountValue, setTeamCountValue] = useState(1);
   const [teamCountRange, setTeamCountRange] = useState(30);
   const [excludeTank, setExcludeTank] = useState(false);
+  const [selectedRole, setSelectedRole] = useState<'MT' | 'ST' | 'H1' | 'H2' | 'D1' | 'D2' | 'D3' | 'D4'>('MT');
 
   // 选项数据
   const actionTypes = [
     { id: 'skill', name: '使用技能' },
-    { id: 'toggle', name: '切换开关' }
+    { id: 'toggle', name: '切换开关' },
+    { id: 'move_to', name: '移动到坐标' }
   ];
 
   const conditionTypes = [
     { id: 'skill_available', name: '技能可用' },
     { id: 'team_count', name: '周围队友' },
-    { id: 'team_hp', name: '团队血量' }
+    { id: 'team_hp', name: '团队血量' },
+    { id: 'role', name: '自身职能' }
   ];
 
   const handleNewTimeoutChange = (value: string) => {
@@ -309,6 +315,22 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
             cancelEditingAction={cancelEditingAction}
           />
         );
+        
+      case 'move_to':
+        return (
+          <MoveToActionComponent
+            coordinate={targetCoordinate}
+            setCoordinate={setTargetCoordinate}
+            tp={tp}
+            settp={settp}
+            timeOffset={timeOffset}
+            handleTimeOffsetChange={handleTimeOffsetChange}
+            handleAddAction={handleAddAction}
+            isEditingAction={isEditingAction}
+            selectedGroupId={selectedGroupId}
+            cancelEditingAction={cancelEditingAction}
+          />
+        );
       
       default:
         return null;
@@ -353,6 +375,18 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
             setTeamCountValue={setTeamCountValue}
             excludeTank={excludeTank}
             setExcludeTank={setExcludeTank}
+            handleAddCondition={handleAddCondition}
+            isEditingCondition={isEditingCondition}
+            selectedGroupId={selectedGroupId}
+            cancelEditingCondition={cancelEditingCondition}
+          />
+        );
+      
+      case 'role':
+        return (
+          <RoleConditionComponent
+            selectedRole={selectedRole}
+            setSelectedRole={setSelectedRole}
             handleAddCondition={handleAddCondition}
             isEditingCondition={isEditingCondition}
             selectedGroupId={selectedGroupId}
@@ -437,6 +471,15 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
             timeOffset
           };
         }
+        break;
+      case 'move_to':
+        newAction = {
+          type: 'move_to',
+          enabled: true,
+          coordinate: targetCoordinate,
+          tp: tp,
+          timeOffset
+        };
         break;
     }
     
@@ -534,6 +577,9 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
     } else if (action.type === 'toggle') {
       setToggleName(action.toggleName);
       setToggleState(action.state);
+    } else if (action.type === 'move_to') {
+      setTargetCoordinate((action as MoveToAction).coordinate);
+      settp((action as MoveToAction).tp);
     }
     
     setTimeOffset(action.timeOffset);
@@ -570,6 +616,7 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
     setForceUse(false);
     setToggleName('');
     setToggleState(true);
+    settp(false);
     setTimeOffset(0);
   };
 
@@ -605,6 +652,13 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
           enabled: true,
           hpPercent: teamCountValue,
           excludeTank
+        };
+        break;
+      case 'role':
+        newCondition = {
+          type: 'role',
+          enabled: true,
+          role: selectedRole
         };
         break;
     }
@@ -659,6 +713,8 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
     } else if (condition.type === 'team_hp') {
       setTeamCountValue(condition.hpPercent);
       setExcludeTank(condition.excludeTank);
+    } else if (condition.type === 'role') {
+      setSelectedRole(condition.role);
     }
   };
 
@@ -690,6 +746,7 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
     setTeamCountValue(1);
     setTeamCountRange(30);
     setExcludeTank(false);
+    setSelectedRole('MT');
   };
 
   // 添加一个取消编辑组的函数
