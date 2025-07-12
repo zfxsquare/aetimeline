@@ -11,6 +11,7 @@ export interface Skill {
 }
 
 export const skills: Skill[] = [
+  { id: "3", name: "冲刺", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 60,maxcharge: 0 },
   { id: "9", name: "先锋剑", actionCategory: "战技", canTargetSelf: false, canTargetParty: false, canTargetHostile: true, targetArea: false,recast: 2.5,maxcharge: 0 },
 { id: "15", name: "暴乱剑", actionCategory: "战技", canTargetSelf: false, canTargetParty: false, canTargetHostile: true, targetArea: false,recast: 2.5,maxcharge: 0 },
 { id: "16", name: "盾牌猛击", actionCategory: "战技", canTargetSelf: false, canTargetParty: false, canTargetHostile: true, targetArea: false,recast: 2.5,maxcharge: 0 },
