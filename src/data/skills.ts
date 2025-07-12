@@ -797,6 +797,7 @@ export const skills: Skill[] = [
 { id: "37033", name: "心神风息", actionCategory: "能力", canTargetSelf: false, canTargetParty: false, canTargetHostile: true, targetArea: false,recast: 60,maxcharge: 0 },
 { id: "37035", name: "智慧之爱", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 180,maxcharge: 0 },
 { id: "37037", name: "应急战术", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 1,maxcharge: 0 },
+{ id: "99999", name: "爆发药", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 270,maxcharge: 0 },
 
 
 ]; 
