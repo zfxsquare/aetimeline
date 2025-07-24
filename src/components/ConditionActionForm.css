@@ -93,6 +93,34 @@
   resize: vertical;
 }
 
+/* C# 代码输入框样式 */
+.input-group .code-input {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  min-height: 200px;
+  line-height: 1.5;
+  tab-size: 4;
+  background-color: #1e1e1e;
+  border: 1px solid #454545;
+  color: #d4d4d4;
+  font-size: 14px;
+}
+
+.input-group .code-input:focus {
+  outline: none;
+  border-color: #5a87c3;
+  box-shadow: 0 0 0 2px rgba(90, 135, 195, 0.25);
+}
+
+/* 用于代码预览的样式 */
+.action-detail.code-preview {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 2px 5px;
+  border-radius: 3px;
+  color: #56b6c2;
+  margin: 0 5px;
+}
+
 .number-input {
   display: flex;
   align-items: center;

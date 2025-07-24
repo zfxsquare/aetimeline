@@ -28,7 +28,14 @@ interface MoveToAction {
   timeOffset: number;
 }
 
-type Action = SkillAction | ToggleAction | MoveToAction;
+interface CSharpCodeAction {
+  type: 'csharp_code';
+  enabled: boolean;
+  code: string;
+  timeOffset: number;
+}
+
+type Action = SkillAction | ToggleAction | MoveToAction | CSharpCodeAction;
 
 interface ActionContentProps {
   action: Action;
@@ -94,6 +101,22 @@ const ActionContent: React.FC<ActionContentProps> = ({ action }) => {
         <span className="action-type">移动到坐标</span>
         <span className="action-detail">坐标</span>: {action.coordinate.x}, {action.coordinate.y}, {action.coordinate.z}
         {action.tp && <span className="action-detail tp">tp</span>}
+        <span className="action-detail">偏移</span>: 
+        <span className={`time-offset ${action.timeOffset > 0 ? 'positive' : action.timeOffset < 0 ? 'negative' : ''}`}>
+          {action.timeOffset > 0 ? '+' : ''}{action.timeOffset}s
+        </span>
+      </>
+    );
+  } else if (action.type === 'csharp_code') {
+    // 显示C#代码的前30个字符，超过则显示省略号
+    const previewCode = action.code.length > 30 
+      ? action.code.substring(0, 30) + '...' 
+      : action.code;
+
+    content = (
+      <>
+        <span className="action-type">执行C#代码</span>
+        <span className="action-detail code-preview">{previewCode}</span>
         <span className="action-detail">偏移</span>: 
         <span className={`time-offset ${action.timeOffset > 0 ? 'positive' : action.timeOffset < 0 ? 'negative' : ''}`}>
           {action.timeOffset > 0 ? '+' : ''}{action.timeOffset}s

@@ -7,6 +7,7 @@ import RoleConditionComponent from './conditions/RoleCondition';
 import SkillActionComponent from './actions/SkillAction';
 import ToggleActionComponent from './actions/ToggleAction';
 import MoveToActionComponent from './actions/MoveToAction';
+import CSharpCodeActionComponent from './actions/CSharpCodeAction';
 import GroupForm from './GroupForm';
 import GroupList from './GroupList';
 import GroupEditorHeader from './GroupEditorHeader';
@@ -15,7 +16,7 @@ import './ConditionActionForm.css';
 import './ConditionActionGroupManager.css';
 import { useSkillCooldown } from '../hooks/useSkillCooldown';
 import { SkillUsageMap } from '../services/SkillUsageService';
-import { Action, ConditionActionGroup, TimelineCondition, TimelineEntry, SkillAction, MoveToAction } from './types';
+import { Action, ConditionActionGroup, TimelineCondition, TimelineEntry, SkillAction, MoveToAction, CSharpCodeAction } from './types';
 
 // 组件属性接口
 interface ConditionActionGroupManagerProps {
@@ -66,6 +67,7 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
   const [targetId, setTargetId] = useState('');
   const [targetCoordinate, setTargetCoordinate] = useState({ x: 100, y: 0, z: 100 });
   const [tp, settp] = useState(false);
+  const [csharpCode, setCsharpCode] = useState('');
   
   // --- 重构核心：使用 useSkillCooldown Hook ---
   const actionTime = selectedEntry ? selectedEntry.time + timeOffset : 0;
@@ -110,7 +112,8 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
   const actionTypes = [
     { id: 'skill', name: '使用技能' },
     { id: 'toggle', name: '切换开关' },
-    { id: 'move_to', name: '移动到坐标' }
+    { id: 'move_to', name: '移动到坐标' },
+    { id: 'csharp_code', name: 'C#代码' }
   ];
 
   const conditionTypes = [
@@ -331,6 +334,20 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
             cancelEditingAction={cancelEditingAction}
           />
         );
+        
+      case 'csharp_code':
+        return (
+          <CSharpCodeActionComponent
+            code={csharpCode}
+            setCode={setCsharpCode}
+            timeOffset={timeOffset}
+            handleTimeOffsetChange={handleTimeOffsetChange}
+            handleAddAction={handleAddAction}
+            isEditingAction={isEditingAction}
+            selectedGroupId={selectedGroupId}
+            cancelEditingAction={cancelEditingAction}
+          />
+        );
       
       default:
         return null;
@@ -481,6 +498,16 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
           timeOffset
         };
         break;
+      case 'csharp_code':
+        if (csharpCode.trim()) {
+          newAction = {
+            type: 'csharp_code',
+            enabled: true,
+            code: csharpCode,
+            timeOffset
+          };
+        }
+        break;
     }
     
     if (newAction) {
@@ -580,6 +607,8 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
     } else if (action.type === 'move_to') {
       setTargetCoordinate((action as MoveToAction).coordinate);
       settp((action as MoveToAction).tp);
+    } else if (action.type === 'csharp_code') {
+      setCsharpCode((action as CSharpCodeAction).code);
     }
     
     setTimeOffset(action.timeOffset);
@@ -617,6 +646,7 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
     setToggleName('');
     setToggleState(true);
     settp(false);
+    setCsharpCode('');
     setTimeOffset(0);
   };
 

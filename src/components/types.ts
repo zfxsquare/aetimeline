@@ -61,7 +61,14 @@ export interface MoveToAction {
   timeOffset: number;
 }
 
-export type Action = SkillAction | ToggleAction | MoveToAction;
+export interface CSharpCodeAction {
+  type: 'csharp_code';
+  enabled: boolean;
+  code: string;
+  timeOffset: number;
+}
+
+export type Action = SkillAction | ToggleAction | MoveToAction | CSharpCodeAction;
 
 export interface ConditionActionGroup {
   id: string;
