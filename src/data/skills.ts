@@ -11,6 +11,7 @@ export interface Skill {
 }
 
 export const skills: Skill[] = [
+  { id: "3", name: "冲刺", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 60,maxcharge: 0 },
   { id: "9", name: "先锋剑", actionCategory: "战技", canTargetSelf: false, canTargetParty: false, canTargetHostile: true, targetArea: false,recast: 2.5,maxcharge: 0 },
 { id: "15", name: "暴乱剑", actionCategory: "战技", canTargetSelf: false, canTargetParty: false, canTargetHostile: true, targetArea: false,recast: 2.5,maxcharge: 0 },
 { id: "16", name: "盾牌猛击", actionCategory: "战技", canTargetSelf: false, canTargetParty: false, canTargetHostile: true, targetArea: false,recast: 2.5,maxcharge: 0 },
@@ -796,6 +797,8 @@ export const skills: Skill[] = [
 { id: "37033", name: "心神风息", actionCategory: "能力", canTargetSelf: false, canTargetParty: false, canTargetHostile: true, targetArea: false,recast: 60,maxcharge: 0 },
 { id: "37035", name: "智慧之爱", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 180,maxcharge: 0 },
 { id: "37037", name: "应急战术", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 1,maxcharge: 0 },
-
+{ id: "99999", name: "爆发药", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 270,maxcharge: 0 },
+{ id: "88888", name: "秘策单盾扩散", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 90,maxcharge: 0 },
+{ id: "88887", name: "活化群盾", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 90,maxcharge: 0 },
 
 ]; 
