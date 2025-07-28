@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './TimelineParser.css';
-import * as defaultTimelines from '../data/defaultTimelines';
 
 interface TimelineEntry {
   time: number;
@@ -12,22 +11,6 @@ interface TimelineEntry {
   forcejump?: string | number;
   label?: string;
 }
-
-// 自动从 defaultTimelines 生成配置
-const timelineConfigs = Object.entries(defaultTimelines).map(([key, content]) => {
-  // 从文件名生成显示名称
-  const name = key
-    .replace('_cact_txt', '')
-    .replace('_', '')
-    .replace(/([A-Z])/g, ' $1')
-    .trim();
-  
-  return {
-    key,
-    name,
-    content
-  };
-});
 
 interface TimelineParserProps {
   onTimelineParsed: (entries: TimelineEntry[]) => void;
@@ -135,20 +118,6 @@ const TimelineParser: React.FC<TimelineParserProps> = ({ onTimelineParsed }) => 
     }
   };
 
-  const handleDefaultImport = async (content: string) => {
-    setLoading(true);
-    setError(null);
-
-    try {
-      const entries = parseTimeline(content);
-      onTimelineParsed(entries);
-    } catch (err) {
-      setError('解析时间轴文件失败: ' + (err instanceof Error ? err.message : String(err)));
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <div className="timeline-parser">
       <h2>导入时间轴文件</h2>
@@ -165,27 +134,6 @@ const TimelineParser: React.FC<TimelineParserProps> = ({ onTimelineParsed }) => 
       </div>
       {error && <div className="error-message">{error}</div>}
       {file && <div className="file-info">已选择文件: {file.name}</div>}
-      
-      <div className="default-imports">
-        <h3>快速导入</h3>
-        <div className="default-buttons">
-          {timelineConfigs.map(config => (
-            <button 
-              key={config.key}
-              onClick={() => handleDefaultImport(config.content)}
-              disabled={loading}
-              className="default-button"
-            >
-              导入{config.name}
-            </button>
-          ))}
-        </div>
-      </div>
-      
-      <div className="timeline-format-info">
-        <h3>时间轴格式说明</h3>
-        <p>导入txt的cactbot时间轴文件</p>
-      </div>
     </div>
   );
 };

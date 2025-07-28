@@ -1,0 +1,1435 @@
+{
+  "name": "绝亚",
+  "mapId": "887",
+  "description": "绝亚空白",
+  "author": "Fra",
+  "acr": "Fra",
+  "job": "Astrologian",
+  "ClearCustomed": false,
+  "entries": [
+    {
+      "time": 0,
+      "text": "Start",
+      "groups": []
+    },
+    {
+      "time": 0,
+      "text": "--同步化--",
+      "sync": "InCombat {\"inGameCombat\":\"1\"}",
+      "window": {
+        "before": 0,
+        "after": 1
+      },
+      "groups": []
+    },
+    {
+      "time": 11.4,
+      "text": "流体摆动",
+      "sync": "Ability {\"id\":\"49B0\",\"source\":\"有生命活水\"}",
+      "window": {
+        "before": 10,
+        "after": 2.5
+      },
+      "groups": []
+    },
+    {
+      "time": 19.5,
+      "text": "倾泻",
+      "sync": "Ability {\"id\":\"4826\",\"source\":\"有生命活水\"}",
+      "groups": []
+    },
+    {
+      "time": 35.8,
+      "text": "祈祷之手/离别之手",
+      "sync": "Ability {\"id\":[\"482B\",\"482C\"],\"source\":\"活水之手\"}",
+      "groups": []
+    },
+    {
+      "time": 36.7,
+      "text": "活水之怒 1",
+      "sync": "Ability {\"id\":\"49B5\",\"source\":\"活水之怒\"}",
+      "groups": []
+    },
+    {
+      "time": 37.7,
+      "text": "流体摆动",
+      "sync": "Ability {\"id\":\"49B0\",\"source\":\"有生命活水\"}",
+      "groups": []
+    },
+    {
+      "time": 37.7,
+      "text": "流体强袭",
+      "sync": "Ability { \"id\": \"\"49B7\"\", \"source\": \"\"Liquid\" Hand\" }",
+      "groups": []
+    },
+    {
+      "time": 38.7,
+      "text": "活水之怒 2",
+      "sync": "Ability {\"id\":\"49B6\",\"source\":\"活水之怒\"}",
+      "groups": []
+    },
+    {
+      "time": 39.7,
+      "text": "污染蒸汽",
+      "sync": "Ability {\"id\":\"481E\",\"source\":\"狩猎人偶\"}",
+      "groups": []
+    },
+    {
+      "time": 41.6,
+      "text": "栓塞",
+      "sync": "Ability {\"id\":\"4829\",\"source\":\"活水之怒\"}",
+      "groups": []
+    },
+    {
+      "time": 42.8,
+      "text": "苦痛之手",
+      "sync": "Ability {\"id\":\"482D\",\"source\":\"活水之手\"}",
+      "groups": []
+    },
+    {
+      "time": 50.3,
+      "text": "污染蒸汽",
+      "sync": "Ability {\"id\":\"481E\",\"source\":\"狩猎人偶\"}",
+      "groups": []
+    },
+    {
+      "time": 56.7,
+      "text": "流体摆动",
+      "sync": "Ability {\"id\":\"49B0\",\"source\":\"有生命活水\"}",
+      "groups": []
+    },
+    {
+      "time": 56.7,
+      "text": "流体强袭",
+      "sync": "Ability { \"id\": \"\"49B7\"\", \"source\": \"\"Liquid\" Hand\" }",
+      "groups": []
+    },
+    {
+      "time": 69.8,
+      "text": "万变水波 1",
+      "sync": "Ability {\"id\":\"4822\",\"source\":\"有生命活水\"}",
+      "groups": []
+    },
+    {
+      "time": 70,
+      "text": "苦痛之手",
+      "sync": "Ability {\"id\":\"482D\",\"source\":\"活水之手\"}",
+      "groups": []
+    },
+    {
+      "time": 71.9,
+      "text": "万变水波 2",
+      "sync": "Ability {\"id\":\"4823\",\"source\":\"有生命活水\"}",
+      "groups": []
+    },
+    {
+      "time": 74.9,
+      "text": "冲洗",
+      "sync": "Ability {\"id\":\"49B1\",\"source\":\"有生命活水\"}",
+      "groups": []
+    },
+    {
+      "time": 75,
+      "text": "万变水波 3",
+      "sync": "Ability {\"id\":\"4823\",\"source\":\"有生命活水\"}",
+      "groups": []
+    },
+    {
+      "time": 81.1,
+      "text": "溅开 x6",
+      "duration": 5.6,
+      "groups": []
+    },
+    {
+      "time": 86.6,
+      "text": "排水",
+      "sync": "Ability {\"id\":\"4827\",\"source\":\"活水之怒\"}",
+      "groups": []
+    },
+    {
+      "time": 89.1,
+      "text": "苦痛之手",
+      "sync": "Ability {\"id\":\"482D\",\"source\":\"活水之手\"}",
+      "groups": []
+    },
+    {
+      "time": 91.7,
+      "text": "倾泻",
+      "sync": "Ability {\"id\":\"4826\",\"source\":\"有生命活水\"}",
+      "groups": []
+    },
+    {
+      "time": 95.9,
+      "text": "窒息",
+      "sync": "Ability {\"id\":\"4828\",\"source\":\"活水之怒\"}",
+      "groups": []
+    },
+    {
+      "time": 107,
+      "text": "万变水波 1",
+      "sync": "Ability {\"id\":\"4822\",\"source\":\"有生命活水\"}",
+      "groups": []
+    },
+    {
+      "time": 109,
+      "text": "苦痛之手",
+      "sync": "Ability {\"id\":\"482D\",\"source\":\"活水之手\"}",
+      "groups": []
+    },
+    {
+      "time": 109.1,
+      "text": "万变水波 2",
+      "sync": "Ability {\"id\":\"4823\",\"source\":\"有生命活水\"}",
+      "groups": []
+    },
+    {
+      "time": 112,
+      "text": "冲洗",
+      "sync": "Ability {\"id\":\"49B1\",\"source\":\"有生命活水\"}",
+      "groups": []
+    },
+    {
+      "time": 112.1,
+      "text": "万变水波 3",
+      "sync": "Ability {\"id\":\"4823\",\"source\":\"有生命活水\"}",
+      "groups": []
+    },
+    {
+      "time": 113,
+      "text": "活水之怒 1",
+      "sync": "Ability {\"id\":\"49B5\",\"source\":\"活水之怒 \"}",
+      "groups": []
+    },
+    {
+      "time": 115.1,
+      "text": "活水之怒 2",
+      "sync": "Ability {\"id\":\"49B6\",\"source\":\"活水之怒\"}",
+      "groups": []
+    },
+    {
+      "time": 119.1,
+      "text": "栓塞",
+      "sync": "Ability {\"id\":\"4829\",\"source\":\"活水之怒\"}",
+      "groups": []
+    },
+    {
+      "time": 124.2,
+      "text": "祈祷之手/离别之手",
+      "sync": "Ability {\"id\":[\"482B\",\"482C\"],\"source\":\"活水之手\"}",
+      "groups": []
+    },
+    {
+      "time": 127.4,
+      "text": "溅开 x6",
+      "duration": 5.6,
+      "groups": []
+    },
+    {
+      "time": 129.3,
+      "text": "苦痛之手",
+      "sync": "Ability {\"id\":\"482D\",\"source\":\"活水之手\"}",
+      "groups": []
+    },
+    {
+      "time": 134.1,
+      "text": "流体摆动",
+      "sync": "Ability {\"id\":\"49B0\",\"source\":\"有生命活水\"}",
+      "groups": []
+    },
+    {
+      "time": 142.1,
+      "text": "倾泻 狂暴",
+      "sync": "Ability {\"id\":\"49B3\",\"source\":\"有生命活水\"}",
+      "groups": []
+    },
+    {
+      "time": 196,
+      "text": "--同步化--",
+      "window": {
+        "before": 50,
+        "after": 0
+      },
+      "groups": []
+    },
+    {
+      "time": 200,
+      "text": "鹰式破坏炮 1",
+      "sync": "Ability {\"id\":\"4830\",\"source\":\"巡航驱逐者\"}",
+      "window": {
+        "before": 200,
+        "after": 0
+      },
+      "groups": []
+    },
+    {
+      "time": 202.2,
+      "text": "鹰式破坏炮 2",
+      "groups": []
+    },
+    {
+      "time": 204.4,
+      "text": "鹰式破坏炮 3",
+      "groups": []
+    },
+    {
+      "time": 206.6,
+      "text": "鹰式破坏炮 4",
+      "groups": []
+    },
+    {
+      "time": 207.4,
+      "text": "#1 阿尔法之剑",
+      "sync": "Ability {\"id\":\"4834\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 208.8,
+      "text": "中间冲击波",
+      "groups": []
+    },
+    {
+      "time": 208.9,
+      "text": "#2 超级摧毁者冲击",
+      "sync": "Ability {\"id\":\"4B4F\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 211,
+      "text": "鹰式破坏炮 1",
+      "groups": []
+    },
+    {
+      "time": 212.1,
+      "text": "#3 阿尔法之剑",
+      "sync": "Ability {\"id\":\"4834\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 213.2,
+      "text": "鹰式破坏炮 2",
+      "groups": []
+    },
+    {
+      "time": 213.6,
+      "text": "#4 超级摧毁者冲击",
+      "sync": "Ability {\"id\":\"4B4F\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 215.5,
+      "text": "鹰式破坏炮 3",
+      "groups": []
+    },
+    {
+      "time": 216.8,
+      "text": "#5 阿尔法之剑",
+      "sync": "Ability {\"id\":\"4834\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 217.7,
+      "text": "鹰式破坏炮 4",
+      "groups": []
+    },
+    {
+      "time": 218.3,
+      "text": "#6 超级摧毁者冲击",
+      "sync": "Ability {\"id\":\"4B4F\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 219.9,
+      "text": "中间冲击波",
+      "groups": []
+    },
+    {
+      "time": 221.4,
+      "text": "#7 阿尔法之剑",
+      "sync": "Ability {\"id\":\"4834\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 222.9,
+      "text": "#8 超级摧毁者冲击",
+      "sync": "Ability {\"id\":\"4B4F\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 226.1,
+      "text": "正义飞踢",
+      "sync": "Ability {\"id\":\"4854\",\"source\":\"残暴正义号\"}",
+      "window": {
+        "before": 250,
+        "after": 5
+      },
+      "groups": []
+    },
+    {
+      "time": 229.1,
+      "text": "--可选中--",
+      "groups": []
+    },
+    {
+      "time": 238.3,
+      "text": "龙卷风",
+      "sync": "Ability {\"id\":\"49C2\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 241.3,
+      "text": "非最终审判",
+      "sync": "Ability {\"id\":\"483E\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 247.4,
+      "text": "系统连接",
+      "sync": "Ability {\"id\":\"483F\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 255.4,
+      "text": "制导",
+      "sync": "Ability {\"id\":\"482F\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 256.2,
+      "text": "飞轮",
+      "sync": "Ability {\"id\":\"4855\",\"source\":\"蒸汽战轮\"}",
+      "groups": []
+    },
+    {
+      "time": 260.6,
+      "text": "鹰式破坏炮",
+      "sync": "Ability {\"id\":\"4831\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 262.5,
+      "text": "光子炮",
+      "sync": "Ability {\"id\":\"4836\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 272.7,
+      "text": "回旋碎踢",
+      "sync": "Ability {\"id\":\"4A72\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 277.3,
+      "text": "水 雷",
+      "sync": "Ability {\"id\":\"4841\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 288.6,
+      "text": "寒冰导弹",
+      "sync": "Ability {\"id\":\"484E\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 290.6,
+      "text": "隐形地雷散布",
+      "sync": "Ability {\"id\":\"4851\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 292.7,
+      "text": "计数",
+      "sync": "Ability {\"id\":\"4850\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 306.7,
+      "text": "水 雷",
+      "sync": "Ability {\"id\":\"4841\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 313.5,
+      "text": "限制器减档",
+      "sync": "Ability {\"id\":\"4833\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 314.1,
+      "text": "--巡航驱逐者无敌--",
+      "duration": 6.3,
+      "groups": []
+    },
+    {
+      "time": 315.5,
+      "text": "大火炎放射",
+      "sync": "Ability {\"id\":\"4845\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 327.6,
+      "text": "龙卷风",
+      "sync": "Ability {\"id\":\"49C2\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 336.2,
+      "text": "水 雷",
+      "sync": "Ability {\"id\":\"4841\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 354.5,
+      "text": "螺旋桨强风",
+      "sync": "Ability {\"id\":\"4832\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 356.5,
+      "text": "终审闭庭",
+      "sync": "Ability {\"id\":\"483C\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 366.8,
+      "text": "光子炮",
+      "sync": "Ability {\"id\":\"4836\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 374.8,
+      "text": "双重火箭飞拳",
+      "sync": "Ability {\"id\":\"4847\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 382.1,
+      "text": "超级跳跃",
+      "sync": "Ability {\"id\":\"484A\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 384.4,
+      "text": "末世宣言 x5",
+      "duration": 4.4,
+      "groups": []
+    },
+    {
+      "time": 395,
+      "text": "龙卷风",
+      "sync": "Ability {\"id\":\"49C2\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 403.1,
+      "text": "龙卷风",
+      "sync": "Ability {\"id\":\"49C2\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 413.7,
+      "text": "死刑判决",
+      "sync": "Ability {\"id\":\"4856\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 423.7,
+      "text": "黑暗命运 狂暴",
+      "sync": "Ability {\"id\":\"483A\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 492,
+      "text": "--同步化--",
+      "sync": "StartsUsing {\"id\":\"485A\",\"source\":\"至尊亚历山大\"}",
+      "window": {
+        "before": 500,
+        "after": 0
+      },
+      "groups": []
+    },
+    {
+      "time": 500,
+      "text": "时间停止",
+      "sync": "Ability {\"id\":\"485A\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 503.1,
+      "text": "誓约神判 重罚神判",
+      "sync": "Ability {\"id\":\"4861\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 505.1,
+      "text": "阿尔法之剑",
+      "sync": "Ability { \"id\": \"\"486B\"\", \"source\": \"\"Cruise\" Chaser\" }",
+      "groups": []
+    },
+    {
+      "time": 505.2,
+      "text": "大火炎放射 1",
+      "sync": "Ability { \"id\": \"\"486C\"\", \"source\": \"\"Brute\" Justice\" }",
+      "groups": []
+    },
+    {
+      "time": 506.1,
+      "text": "阿尔法之剑",
+      "sync": "Ability { \"id\": \"\"486B\"\", \"source\": \"\"Cruise\" Chaser\" }",
+      "groups": []
+    },
+    {
+      "time": 507.2,
+      "text": "阿尔法之剑",
+      "sync": "Ability { \"id\": \"\"486B\"\", \"source\": \"\"Cruise\" Chaser\" }",
+      "groups": []
+    },
+    {
+      "time": 507.4,
+      "text": "大火炎放射 2",
+      "sync": "Ability { \"id\": \"\"486C\"\", \"source\": \"\"Brute\" Justice\" }",
+      "groups": []
+    },
+    {
+      "time": 511.4,
+      "text": "--可选中--",
+      "groups": []
+    },
+    {
+      "time": 521.5,
+      "text": "神罚射线",
+      "sync": "Ability {\"id\":\"4A80\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 524.6,
+      "text": "圣炎 1",
+      "sync": "Ability { \"id\": \"\"4A82\"\", \"source\": \"\"Alexander\" Prime\" }",
+      "groups": []
+    },
+    {
+      "time": 526.7,
+      "text": "圣炎 2",
+      "sync": "Ability { \"id\": \"\"4A82\"\", \"source\": \"\"Alexander\" Prime\" }",
+      "groups": []
+    },
+    {
+      "time": 528.8,
+      "text": "圣炎 3",
+      "sync": "Ability { \"id\": \"\"4A82\"\", \"source\": \"\"Alexander\" Prime\" }",
+      "groups": []
+    },
+    {
+      "time": 537.9,
+      "text": "时空潜行阵列",
+      "sync": "Ability {\"id\":\"486F\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 541,
+      "text": "--无法选中--",
+      "groups": []
+    },
+    {
+      "time": 552.4,
+      "text": "审判结晶",
+      "sync": "Ability {\"id\":\"485B\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 558.2,
+      "text": "审判结晶 + 真心",
+      "sync": "Ability {\"id\":\"485C\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 569.5,
+      "text": "大火炎放射 1",
+      "sync": "Ability { \"id\": \"\"486C\"\", \"source\": \"\"Brute\" Justice\" }",
+      "groups": []
+    },
+    {
+      "time": 571.7,
+      "text": "大火炎放射 2",
+      "sync": "Ability { \"id\": \"\"486C\"\", \"source\": \"\"Brute\" Justice\" }",
+      "groups": []
+    },
+    {
+      "time": 573.8,
+      "text": "大火炎放射 3",
+      "sync": "Ability { \"id\": \"\"486C\"\", \"source\": \"\"Brute\" Justice\" }",
+      "groups": []
+    },
+    {
+      "time": 581,
+      "text": "时空潜行",
+      "sync": "Ability {\"id\":\"485E\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 589.1,
+      "text": "誓约神判, 连带神判 重罚神判",
+      "sync": "Ability {\"id\":\"4861\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 589.4,
+      "text": "圣礼",
+      "sync": "Ability {\"id\":\"485F\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 595.3,
+      "text": "阿尔法之剑",
+      "sync": "Ability { \"id\": \"\"486B\"\", \"source\": \"\"Cruise\" Chaser\" }",
+      "groups": []
+    },
+    {
+      "time": 596.4,
+      "text": "阿尔法之剑",
+      "sync": "Ability { \"id\": \"\"486B\"\", \"source\": \"\"Cruise\" Chaser\" }",
+      "groups": []
+    },
+    {
+      "time": 597.5,
+      "text": "阿尔法之剑",
+      "sync": "Ability { \"id\": \"\"486B\"\", \"source\": \"\"Cruise\" Chaser\" }",
+      "groups": []
+    },
+    {
+      "time": 598.3,
+      "text": "超级跳跃",
+      "sync": "Ability {\"id\":\"484A\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 600.3,
+      "text": "--可选中--",
+      "groups": []
+    },
+    {
+      "time": 610.9,
+      "text": "神罚射线",
+      "sync": "Ability {\"id\":\"4A80\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 616,
+      "text": "圣炎 1",
+      "sync": "Ability { \"id\": \"\"4A82\"\", \"source\": \"\"Alexander\" Prime\" }",
+      "groups": []
+    },
+    {
+      "time": 618.1,
+      "text": "圣炎 2",
+      "sync": "Ability { \"id\": \"\"4A82\"\", \"source\": \"\"Alexander\" Prime\" }",
+      "groups": []
+    },
+    {
+      "time": 620.2,
+      "text": "圣炎 3",
+      "sync": "Ability { \"id\": \"\"4A82\"\", \"source\": \"\"Alexander\" Prime\" }",
+      "groups": []
+    },
+    {
+      "time": 629.3,
+      "text": "次元断绝阵列",
+      "sync": "Ability {\"id\":\"486E\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 632.3,
+      "text": "--无法选中--",
+      "groups": []
+    },
+    {
+      "time": 637.7,
+      "text": "限制器减档",
+      "sync": "Ability {\"id\":\"4B0F\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 640.7,
+      "text": "系统连接",
+      "sync": "Ability {\"id\":\"483F\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 643.7,
+      "text": "忏悔区",
+      "sync": "Ability {\"id\":\"4866\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 649.5,
+      "text": "飞轮",
+      "sync": "Ability { \"id\": \"\"4855\"\", \"source\": \"\"Steam\" Chakram\" }",
+      "groups": []
+    },
+    {
+      "time": 650.9,
+      "text": "超级跳跃",
+      "sync": "Ability {\"id\":\"484A\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 650.9,
+      "text": "#1 阿尔法之剑",
+      "sync": "Ability { \"id\": \"\"4834\"\", \"source\": \"\"Cruise\" Chaser\" }",
+      "groups": []
+    },
+    {
+      "time": 652.4,
+      "text": "#2 超级摧毁者冲击",
+      "sync": "Ability {\"id\":\"49C3\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 653.3,
+      "text": "末世宣言 x5",
+      "duration": 5,
+      "groups": []
+    },
+    {
+      "time": 655.2,
+      "text": "#3 阿尔法之剑",
+      "sync": "Ability { \"id\": \"\"4834\"\", \"source\": \"\"Cruise\" Chaser\" }",
+      "groups": []
+    },
+    {
+      "time": 655.6,
+      "text": "罪恶感 1",
+      "sync": "Ability {\"id\":\"4869\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 656.7,
+      "text": "#4 超级摧毁者冲击",
+      "sync": "Ability {\"id\":\"49C3\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 657.9,
+      "text": "圣礼",
+      "sync": "Ability {\"id\":\"4857\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 659.5,
+      "text": "#5 阿尔法之剑",
+      "sync": "Ability { \"id\": \"\"4834\"\", \"source\": \"\"Cruise\" Chaser\" }",
+      "groups": []
+    },
+    {
+      "time": 659.7,
+      "text": "罪恶感 2",
+      "sync": "Ability {\"id\":\"4868\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 660.8,
+      "text": "#6 超级摧毁者冲击",
+      "sync": "Ability {\"id\":\"49C3\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 663.6,
+      "text": "#7 阿尔法之剑",
+      "sync": "Ability { \"id\": \"\"4834\"\", \"source\": \"\"Cruise\" Chaser\" }",
+      "groups": []
+    },
+    {
+      "time": 664,
+      "text": "罪恶感 3",
+      "sync": "Ability {\"id\":\"4867\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 665.1,
+      "text": "#8 超级摧毁者冲击",
+      "sync": "Ability {\"id\":\"49C3\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 666.4,
+      "text": "导弹齐发",
+      "sync": "Ability {\"id\":\"484D\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 670,
+      "text": "净化射线",
+      "sync": "Ability {\"id\":\"4A51\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 674.2,
+      "text": "--可选中--",
+      "groups": []
+    },
+    {
+      "time": 674.6,
+      "text": "计数",
+      "sync": "Ability {\"id\":\"4850\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 682.9,
+      "text": "百万神圣",
+      "sync": "Ability {\"id\":\"4A83\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 690,
+      "text": "百万神圣",
+      "sync": "Ability {\"id\":\"4A83\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 699.4,
+      "text": "召唤亚历山大",
+      "sync": "Ability {\"id\":\"4A55\",\"source\":\"至尊亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 705.6,
+      "text": "--亚历山大无法选中--",
+      "groups": []
+    },
+    {
+      "time": 705.7,
+      "text": "正义旋风 + 水波 x16",
+      "sync": "Ability {\"id\":\"4876\",\"source\":\"残暴正义号\"}",
+      "duration": 50,
+      "groups": []
+    },
+    {
+      "time": 706.8,
+      "text": "--小怪可选中--",
+      "groups": []
+    },
+    {
+      "time": 710.7,
+      "text": "火龙卷1",
+      "sync": "Ability {\"id\":\"4877\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 713.7,
+      "text": "火龙卷2",
+      "sync": "Ability {\"id\":\"4877\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 716.7,
+      "text": "火龙卷3",
+      "sync": "Ability {\"id\":\"4877\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 719.7,
+      "text": "火龙卷4",
+      "sync": "Ability {\"id\":\"4877\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 722.7,
+      "text": "火龙卷5",
+      "sync": "Ability {\"id\":\"4877\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 725.7,
+      "text": "火龙卷6",
+      "sync": "Ability {\"id\":\"4877\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 728.7,
+      "text": "火龙卷7",
+      "sync": "Ability {\"id\":\"4877\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 731.7,
+      "text": "火龙卷8",
+      "sync": "Ability {\"id\":\"4877\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 731.7,
+      "text": "黑暗命运 狂暴",
+      "sync": "Ability {\"id\":\"4875\",\"source\":\"巡航驱逐者\"}",
+      "groups": []
+    },
+    {
+      "time": 734.7,
+      "text": "火龙卷9",
+      "sync": "Ability {\"id\":\"4877\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 737.7,
+      "text": "火龙卷10",
+      "sync": "Ability {\"id\":\"4877\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 740.7,
+      "text": "火龙卷11",
+      "sync": "Ability {\"id\":\"4877\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 743.7,
+      "text": "火龙卷12",
+      "sync": "Ability {\"id\":\"4877\",\"source\":\"残暴正义号\"}",
+      "groups": []
+    },
+    {
+      "time": 771.9,
+      "text": "神圣审判 狂暴",
+      "sync": "Ability {\"id\":\"4879\",\"source\":\"至尊亚历山大\"}",
+      "window": {
+        "before": 67,
+        "after": 5
+      },
+      "groups": []
+    },
+    {
+      "time": 787.3,
+      "text": "神圣审判",
+      "sync": "Ability {\"id\":\"487A\",\"source\":\"亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 787.4,
+      "text": "击倒",
+      "duration": 57,
+      "groups": []
+    },
+    {
+      "time": 845.4,
+      "text": "--可选中--",
+      "groups": []
+    },
+    {
+      "time": 900,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":\"4A8B\",\"source\":\"完美亚历山大\"}",
+      "window": {
+        "before": 900,
+        "after": 0
+      },
+      "groups": []
+    },
+    {
+      "time": 909.1,
+      "text": "终审判決",
+      "sync": "Ability {\"id\":\"487D\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 916.1,
+      "text": "行动命令/静止命令",
+      "sync": "Ability {\"id\":[\"487E\",\"487F\"],\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 926.3,
+      "text": "行动命令/静止命令",
+      "sync": "Ability {\"id\":[\"487E\",\"487F\"],\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 936.5,
+      "text": "制导 1",
+      "sync": "Ability {\"id\":[\"488A\",\"488B\"],\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 938.6,
+      "text": "单体/群体断罪",
+      "sync": "Ability {\"id\":[\"488C\",\"488D\"],\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 942.7,
+      "text": "制导 2",
+      "sync": "Ability {\"id\":[\"488A\",\"488B\"],\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 944.7,
+      "text": "单体/群体断罪",
+      "sync": "Ability {\"id\":[\"488C\",\"488D\"],\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 957.6,
+      "text": "未来观测 α",
+      "sync": "Ability {\"id\":\"487B\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 966.8,
+      "text": "未来: 行动命令/静止命令",
+      "sync": "Ability {\"id\":[\"4B0D\",\"4B0E\"],\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 972.7,
+      "text": "未来: 污名神判, 连带神判 3x 重罚神判",
+      "sync": "Ability {\"id\":\"48A4\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 974.9,
+      "text": "未来: 行动命令/静止命令",
+      "sync": "Ability {\"id\":[\"4899\",\"489A\"],\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 975.9,
+      "text": "未来: 圣礼 x3",
+      "duration": 1.5,
+      "groups": []
+    },
+    {
+      "time": 982.6,
+      "text": "未来确定 α",
+      "sync": "Ability {\"id\":\"487C\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 985.6,
+      "text": "--无法选中--",
+      "groups": []
+    },
+    {
+      "time": 989.8,
+      "text": "行动命令/静止命令",
+      "sync": "Ability {\"id\":[\"49AB\",\"49AC\"],\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 992.8,
+      "text": "污名神判, 连带神判 3x 重罚神判",
+      "sync": "Ability {\"id\":\"4861\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 993.8,
+      "text": "行动命令/静止命令",
+      "sync": "Ability {\"id\":[\"49AB\",\"49AC\"],\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 993.8,
+      "text": "圣礼 x3",
+      "duration": 1.5,
+      "groups": []
+    },
+    {
+      "time": 998.8,
+      "text": "--可选中--",
+      "groups": []
+    },
+    {
+      "time": 1008,
+      "text": "加重诛罚",
+      "sync": "Ability {\"id\":\"4892\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1011.1,
+      "text": "加重诛罚 1",
+      "sync": "Ability { \"id\": \"\"4893\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1012.2,
+      "text": "加重诛罚 2",
+      "sync": "Ability { \"id\": \"\"4893\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1013.3,
+      "text": "加重诛罚 3",
+      "sync": "Ability { \"id\": \"\"4893\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1017.2,
+      "text": "诛罚",
+      "sync": "Ability {\"id\":\"4891\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1032.3,
+      "text": "未来观测 β",
+      "sync": "Ability {\"id\":\"4B13\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1047.7,
+      "text": "未来: 誓约神判 连带神判",
+      "sync": "Ability { \"id\": \"\"489C\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1050.5,
+      "text": "未来: 正义之跃",
+      "sync": "Ability {\"id\":\"489D\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1056,
+      "text": "未来: 制导",
+      "sync": "Ability {\"id\":[\"48A0\",\"48A1\"],\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1058.1,
+      "text": "未来: 单体/群体断罪",
+      "sync": "Ability {\"id\":[\"48A2\",\"48A3\"],\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1061.5,
+      "text": "未来: 拜火圣礼",
+      "sync": "Ability {\"id\":\"489E\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1070.3,
+      "text": "未来确定 β",
+      "sync": "Ability {\"id\":\"4B14\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1073.3,
+      "text": "--无法选中--",
+      "groups": []
+    },
+    {
+      "time": 1081.5,
+      "text": "誓约神判 连带神判",
+      "sync": "Ability {\"id\":\"4863\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1082.5,
+      "text": "正义之跃",
+      "sync": "Ability {\"id\":\"4885\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1086.5,
+      "text": "制导 1",
+      "sync": "Ability {\"id\":[\"49AE\",\"49AD\"],\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1088.6,
+      "text": "单体/群体断罪",
+      "sync": "Ability {\"id\":[\"488C\",\"488D\"],\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1093.5,
+      "text": "拜火圣礼",
+      "sync": "Ability {\"id\":\"4886\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1098.5,
+      "text": "--可选中--",
+      "groups": []
+    },
+    {
+      "time": 1106.8,
+      "text": "加重诛罚",
+      "sync": "Ability {\"id\":\"4892\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1109.9,
+      "text": "加重诛罚 1",
+      "sync": "Ability { \"id\": \"\"4893\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1111,
+      "text": "加重诛罚 2",
+      "sync": "Ability { \"id\": \"\"4893\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1112.1,
+      "text": "加重诛罚 3",
+      "sync": "Ability { \"id\": \"\"4893\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1116,
+      "text": "诛罚",
+      "sync": "Ability {\"id\":\"4891\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1126.2,
+      "text": "神圣大审判",
+      "sync": "Ability {\"id\":\"488E\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1130.8,
+      "text": "神圣大审判 生效 x3",
+      "duration": 6,
+      "groups": []
+    },
+    {
+      "time": 1137.4,
+      "text": "神圣大审判 1",
+      "sync": "Ability { \"id\": \"\"4890\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1139.4,
+      "text": "神圣大审判 2",
+      "sync": "Ability { \"id\": \"\"4890\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1141.4,
+      "text": "神圣大审判 3",
+      "sync": "Ability { \"id\": \"\"4890\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1142.5,
+      "text": "株连",
+      "sync": "Ability {\"id\":\"4894\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1152.6,
+      "text": "加重诛罚",
+      "sync": "Ability {\"id\":\"4892\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1155.7,
+      "text": "加重诛罚 1",
+      "sync": "Ability { \"id\": \"\"4893\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1156.8,
+      "text": "加重诛罚 2",
+      "sync": "Ability { \"id\": \"\"4893\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1157.9,
+      "text": "加重诛罚 3",
+      "sync": "Ability { \"id\": \"\"4893\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1161.8,
+      "text": "诛罚",
+      "sync": "Ability {\"id\":\"4891\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1171.7,
+      "text": "神圣大审判",
+      "sync": "Ability {\"id\":\"488E\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1176.3,
+      "text": "神圣大审判 生效 x3",
+      "duration": 6,
+      "groups": []
+    },
+    {
+      "time": 1182.9,
+      "text": "神圣大审判 1",
+      "sync": "Ability { \"id\": \"\"4890\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1184.9,
+      "text": "神圣大审判 2",
+      "sync": "Ability { \"id\": \"\"4890\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1186.9,
+      "text": "神圣大审判 3",
+      "sync": "Ability { \"id\": \"\"4890\"\", \"source\": \"\"Perfect\" Alexander\" }",
+      "groups": []
+    },
+    {
+      "time": 1187.9,
+      "text": "株连",
+      "sync": "Ability {\"id\":\"4894\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1202.8,
+      "text": "时空干涉",
+      "sync": "Ability {\"id\":\"4896\",\"source\":\"完美亚历山大\"}",
+      "groups": []
+    },
+    {
+      "time": 1216.4,
+      "text": "7 剩余玩家",
+      "groups": []
+    },
+    {
+      "time": 1221.4,
+      "text": "6 剩余玩家",
+      "groups": []
+    },
+    {
+      "time": 1226.4,
+      "text": "5 剩余玩家",
+      "groups": []
+    },
+    {
+      "time": 1231.5,
+      "text": "4 剩余玩家",
+      "groups": []
+    },
+    {
+      "time": 1236.5,
+      "text": "3 剩余玩家",
+      "groups": []
+    },
+    {
+      "time": 1241.6,
+      "text": "2 剩余玩家",
+      "groups": []
+    },
+    {
+      "time": 1246.6,
+      "text": "1 剩余玩家",
+      "groups": []
+    },
+    {
+      "time": 1247.6,
+      "text": "时间牢狱 狂暴",
+      "sync": "Ability {\"id\":\"4897\",\"source\":\"完美亚历山大\"}",
+      "duration": 9,
+      "groups": []
+    },
+    {
+      "time": 1249.8,
+      "text": "0 剩余玩家",
+      "groups": []
+    }
+  ]
+}
