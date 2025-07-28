@@ -1,0 +1,1468 @@
+{
+  "name": "m8s",
+  "mapId": "1263",
+  "description": "test",
+  "author": "Fra",
+  "acr": "Fra",
+  "job": "Astrologian",
+  "ClearCustomed": false,
+  "entries": [
+    {
+      "time": 0,
+      "text": "--Reset--",
+      "sync": "ActorControl {\"command\":\"4000000F\"}",
+      "window": {
+        "before": 0,
+        "after": 100000
+      },
+      "jump": 0,
+      "groups": []
+    },
+    {
+      "time": 0,
+      "text": "--同步化--",
+      "sync": "InCombat {\"inGameCombat\":\"1\"}",
+      "window": {
+        "before": 0,
+        "after": 1
+      },
+      "groups": []
+    },
+    {
+      "time": 14.7,
+      "text": "空间斩",
+      "sync": "Ability {\"id\":\"A74F\",\"source\":\"剑嚎\"}",
+      "window": {
+        "before": 10,
+        "after": 10
+      },
+      "groups": []
+    },
+    {
+      "time": 20.5,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A38F\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 29.5,
+      "text": "土之魔技/风之魔技",
+      "sync": "Ability {\"id\":[\"A39E\",\"A39D\",\"A3A1\",\"A3A2\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 39.6,
+      "text": "扫击群狼剑/旋击群狼剑",
+      "sync": "Ability {\"id\":[\"A911\",\"A912\",\"A913\",\"A914\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 40.9,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":\"A92C\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 41,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":[\"A930\",\"A931\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 43,
+      "text": "群狼剑 (圆形)",
+      "sync": "Ability {\"id\":[\"A398\",\"A7AF\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 43.4,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":[\"A969\",\"A96A\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 46,
+      "text": "群狼剑 (扇形)",
+      "sync": "Ability {\"id\":[\"A399\",\"A39A\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 46.4,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":[\"A7B1\",\"A7B2\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 52.5,
+      "text": "空间斩",
+      "sync": "Ability {\"id\":\"A74F\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 58.3,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A38F\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 66,
+      "text": "千年风化",
+      "sync": "Ability {\"id\":\"A3B2\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 76.8,
+      "text": "暴风",
+      "sync": "Ability {\"id\":\"A3B7\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 78.2,
+      "text": "千年风啸 1",
+      "sync": "Ability { \"id\": \"\"A3B4\"\", \"source\": \"\"Wolf\" of Wind\" }",
+      "groups": []
+    },
+    {
+      "time": 78.6,
+      "text": "狂风 1",
+      "sync": "Ability {\"id\":\"A3B3\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 80.1,
+      "text": "千年风啸 2",
+      "sync": "Ability { \"id\": \"\"A3B4\"\", \"source\": \"\"Wolf\" of Wind\" }",
+      "groups": []
+    },
+    {
+      "time": 82.1,
+      "text": "千年风啸 3",
+      "sync": "Ability { \"id\": \"\"A3B4\"\", \"source\": \"\"Wolf\" of Wind\" }",
+      "groups": []
+    },
+    {
+      "time": 83.7,
+      "text": "狂风 2",
+      "sync": "Ability {\"id\":\"A3B3\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 84.3,
+      "text": "千年风啸 4",
+      "sync": "Ability { \"id\": \"\"A3B4\"\", \"source\": \"\"Wolf\" of Wind\" }",
+      "groups": []
+    },
+    {
+      "time": 86.3,
+      "text": "千年风啸 5",
+      "sync": "Ability { \"id\": \"\"A3B4\"\", \"source\": \"\"Wolf\" of Wind\" }",
+      "groups": []
+    },
+    {
+      "time": 92.4,
+      "text": "暴风",
+      "sync": "Ability {\"id\":\"A3B7\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 94.5,
+      "text": "风狼阵 (塔)",
+      "sync": "Ability {\"id\":\"A3B6\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 94.6,
+      "text": "千年狂风",
+      "sync": "Ability {\"id\":\"A3B5\",\"source\":\"风狼首\"}",
+      "groups": []
+    },
+    {
+      "time": 100.4,
+      "text": "连震击",
+      "sync": "Ability {\"id\":\"A3B9\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 101.3,
+      "text": "连震击 1",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 102.3,
+      "text": "连震击 2",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 103.3,
+      "text": "连震击 3",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 104.3,
+      "text": "连震击 4",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 105.3,
+      "text": "连震击 5",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 106.4,
+      "text": "连震击 6",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 107.4,
+      "text": "连震击 7",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 108.4,
+      "text": "连震击 8",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 114.3,
+      "text": "空间斩",
+      "sync": "Ability {\"id\":\"A74F\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 123.2,
+      "text": "一刀两断",
+      "sync": "Ability {\"id\":\"A3D8\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 131.3,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A38F\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 137.9,
+      "text": "大地的呼唤",
+      "sync": "Ability {\"id\":\"A3C4\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 145.1,
+      "text": "斩空剑",
+      "sync": "Ability {\"id\":\"A751\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 145.9,
+      "text": "光牙召唤",
+      "sync": "Ability {\"id\":\"A4CC\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 152.9,
+      "text": "崩塌",
+      "sync": "Ability {\"id\":\"A3C6\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 158.8,
+      "text": "扫击群狼剑/旋击群狼剑",
+      "sync": "Ability {\"id\":[\"A911\",\"A912\",\"A913\",\"A914\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 160.1,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":\"A92C\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 160.2,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":[\"A930\",\"A931\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 162.2,
+      "text": "群狼剑 (圆形)",
+      "sync": "Ability {\"id\":[\"A398\",\"A7AF\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 162.6,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":[\"A969\",\"A96A\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 165.2,
+      "text": "群狼剑 (扇形)",
+      "sync": "Ability {\"id\":[\"A399\",\"A39A\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 165.6,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":[\"A7B1\",\"A7B2\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 167.7,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":\"A786\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 172.4,
+      "text": "--北--",
+      "sync": "Ability {\"id\":\"A38F\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 177.7,
+      "text": "光狼召唤",
+      "sync": "Ability {\"id\":\"A3C8\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 179.7,
+      "text": "--无法选中--",
+      "groups": []
+    },
+    {
+      "time": 179.7,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":\"A3C9\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 186.8,
+      "text": "风尘咆哮",
+      "sync": "Ability {\"id\":\"A3DC\",\"source\":\"土狼首\"}",
+      "groups": []
+    },
+    {
+      "time": 188.8,
+      "text": "--小怪可选中--",
+      "groups": []
+    },
+    {
+      "time": 196.9,
+      "text": "光狼阵",
+      "sync": "Ability {\"id\":\"A3CC\",\"source\":\"土狼首\"}",
+      "groups": []
+    },
+    {
+      "time": 196.9,
+      "text": "--坦克/直线 AOE--",
+      "groups": []
+    },
+    {
+      "time": 210.8,
+      "text": "光狼阵",
+      "sync": "Ability {\"id\":\"A3CC\",\"source\":\"土狼首\"}",
+      "groups": []
+    },
+    {
+      "time": 210.8,
+      "text": "--坦克/直线 AOE--",
+      "groups": []
+    },
+    {
+      "time": 224.8,
+      "text": "光狼阵",
+      "sync": "Ability {\"id\":\"A3CC\",\"source\":\"土狼首\"}",
+      "groups": []
+    },
+    {
+      "time": 224.8,
+      "text": "--坦克/直线 AOE--",
+      "groups": []
+    },
+    {
+      "time": 240.1,
+      "text": "--同步化--",
+      "sync": "StartsUsing {\"id\":[\"A3D0\",\"A3D3\"]}",
+      "window": {
+        "before": 10,
+        "after": 10
+      },
+      "groups": []
+    },
+    {
+      "time": 248.1,
+      "text": "土之狼吼 (狂暴)",
+      "sync": "Ability {\"id\":\"A3D3\",\"source\":\"土狼首\"}",
+      "groups": []
+    },
+    {
+      "time": 248.1,
+      "text": "风之狼吼 (狂暴)",
+      "sync": "Ability {\"id\":\"A3D0\",\"source\":\"风狼首\"}",
+      "groups": []
+    },
+    {
+      "time": 343.8,
+      "text": "--同步化--",
+      "sync": "MapEffect {\"flags\":\"00080004\",\"location\":\"01\"}",
+      "window": {
+        "before": 400,
+        "after": 10
+      },
+      "groups": []
+    },
+    {
+      "time": 356.8,
+      "text": "风尘光狼斩 1",
+      "sync": "Ability {\"id\":\"A749\",\"source\":\"剑嚎\"}",
+      "window": {
+        "before": 400,
+        "after": 10
+      },
+      "groups": []
+    },
+    {
+      "time": 356.9,
+      "text": "风尘光狼斩 2",
+      "sync": "Ability {\"id\":\"A74A\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 357.2,
+      "text": "风尘光狼斩 3",
+      "sync": "Ability {\"id\":\"A74B\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 359.2,
+      "text": "风尘光狼斩 4",
+      "sync": "Ability {\"id\":\"A9FE\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 360.4,
+      "text": "风尘光狼斩 5",
+      "sync": "Ability {\"id\":\"A3CB\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 370.2,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A38F\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 372.9,
+      "text": "光牙召唤",
+      "sync": "Ability {\"id\":\"A4CB\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 377.9,
+      "text": "大地之怒",
+      "sync": "Ability {\"id\":\"A3BE\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 384.9,
+      "text": "突进光牙",
+      "sync": "Ability { \"id\": \"\"A3D6\"\", \"source\": \"\"Gleaming\" Fang\" }",
+      "groups": []
+    },
+    {
+      "time": 386.2,
+      "text": "大震击",
+      "sync": "Ability {\"id\":\"A3C0\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 386.2,
+      "text": "巨岩",
+      "sync": "Ability { \"id\": \"\"A3BF\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 387,
+      "text": "残影剑",
+      "sync": "Ability {\"id\":\"A3BC\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 387.4,
+      "text": "突进光牙",
+      "sync": "Ability { \"id\": \"\"A3D6\"\", \"source\": \"\"Gleaming\" Fang\" }",
+      "groups": []
+    },
+    {
+      "time": 388.3,
+      "text": "--无法选中--",
+      "groups": []
+    },
+    {
+      "time": 393,
+      "text": "大震击",
+      "sync": "Ability {\"id\":\"A3C0\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 393,
+      "text": "巨岩",
+      "sync": "Ability { \"id\": \"\"A3BF\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 395.2,
+      "text": "--可选中--",
+      "groups": []
+    },
+    {
+      "time": 397.9,
+      "text": "风狼豪波",
+      "sync": "Ability {\"id\":\"A78A\",\"source\":\"风狼首\"}",
+      "groups": []
+    },
+    {
+      "time": 402.5,
+      "text": "扫击群狼剑/旋击群狼剑",
+      "sync": "Ability {\"id\":[\"A911\",\"A912\",\"A913\",\"A914\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 403.8,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":\"A92C\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 403.8,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":[\"A930\",\"A931\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 405.8,
+      "text": "群狼剑 (圆形)",
+      "sync": "Ability {\"id\":[\"A398\",\"A7AF\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 406.2,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":[\"A969\",\"A96A\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 408.8,
+      "text": "群狼剑 (扇形)",
+      "sync": "Ability {\"id\":[\"A399\",\"A39A\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 409.2,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":[\"A7B1\",\"A7B2\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 411.3,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":\"A786\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 412.1,
+      "text": "地烈波",
+      "sync": "Ability {\"id\":\"A78E\",\"source\":\"土狼首\"}",
+      "groups": []
+    },
+    {
+      "time": 422.5,
+      "text": "一刀两断",
+      "sync": "Ability {\"id\":\"A3D8\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 430.6,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A38F\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 436.7,
+      "text": "幻狼召唤",
+      "sync": "Ability {\"id\":\"A3C1\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 438.7,
+      "text": "--幻影 1--",
+      "sync": "Ability { \"id\": \"[\"A3E0\"\", \"A3E1\"], \"source\": \"\"Moonlit\" Shadow\" }",
+      "groups": []
+    },
+    {
+      "time": 439.7,
+      "text": "--幻影 2--",
+      "sync": "Ability { \"id\": \"[\"A3E0\"\", \"A3E1\"], \"source\": \"\"Moonlit\" Shadow\" }",
+      "groups": []
+    },
+    {
+      "time": 440.7,
+      "text": "--幻影 3--",
+      "sync": "Ability { \"id\": \"[\"A3E0\"\", \"A3E1\"], \"source\": \"\"Moonlit\" Shadow\" }",
+      "groups": []
+    },
+    {
+      "time": 441.7,
+      "text": "--幻影 4--",
+      "sync": "Ability { \"id\": \"[\"A3E0\"\", \"A3E1\"], \"source\": \"\"Moonlit\" Shadow\" }",
+      "groups": []
+    },
+    {
+      "time": 443.7,
+      "text": "大地之怒",
+      "sync": "Ability {\"id\":\"A3BE\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 449.3,
+      "text": "大震击",
+      "sync": "Ability {\"id\":\"A3C0\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 449.3,
+      "text": "巨岩",
+      "sync": "Ability { \"id\": \"\"A3BF\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 450.7,
+      "text": "幻狼剑 1",
+      "sync": "Ability { \"id\": \"[\"A3C2\"\", \"A3C3\"], \"source\": \"\"Moonlit\" Shadow\" }",
+      "groups": []
+    },
+    {
+      "time": 452.7,
+      "text": "幻狼剑 2",
+      "sync": "Ability { \"id\": \"[\"A3C2\"\", \"A3C3\"], \"source\": \"\"Moonlit\" Shadow\" }",
+      "groups": []
+    },
+    {
+      "time": 454.7,
+      "text": "幻狼剑 3",
+      "sync": "Ability { \"id\": \"[\"A3C2\"\", \"A3C3\"], \"source\": \"\"Moonlit\" Shadow\" }",
+      "groups": []
+    },
+    {
+      "time": 456.7,
+      "text": "幻狼剑 4",
+      "sync": "Ability { \"id\": \"[\"A3C2\"\", \"A3C3\"], \"source\": \"\"Moonlit\" Shadow\" }",
+      "groups": []
+    },
+    {
+      "time": 457.7,
+      "text": "大震击",
+      "sync": "Ability {\"id\":\"A3C0\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 457.7,
+      "text": "巨岩",
+      "sync": "Ability { \"id\": \"\"A3BF\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 457.7,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A38F\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 461.9,
+      "text": "地烈波",
+      "sync": "Ability {\"id\":\"A792\",\"source\":\"土狼首\"}",
+      "groups": []
+    },
+    {
+      "time": 466.8,
+      "text": "土之魔技/风之魔技",
+      "sync": "Ability {\"id\":[\"A39E\",\"A39D\",\"A3A1\",\"A3A2\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 475.8,
+      "text": "连震击",
+      "sync": "Ability {\"id\":\"A3B9\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 476.7,
+      "text": "连震击 1",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 477.7,
+      "text": "连震击 2",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 478.7,
+      "text": "连震击 3",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 479.7,
+      "text": "连震击 4",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 480.7,
+      "text": "连震击 5",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 481.8,
+      "text": "连震击 6",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 482.8,
+      "text": "连震击 7",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 483.8,
+      "text": "连震击 8",
+      "sync": "Ability { \"id\": \"\"A3BB\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 489.7,
+      "text": "空间斩",
+      "sync": "Ability {\"id\":\"A74F\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 504.5,
+      "text": "空间斩",
+      "sync": "Ability {\"id\":\"A74F\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 505.2,
+      "text": "--中间--",
+      "sync": "Ability { \"id\": \"\"A38F\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 505.2,
+      "text": "--无法选中--",
+      "groups": []
+    },
+    {
+      "time": 505.5,
+      "text": "--同步化--",
+      "sync": "StartsUsing {\"id\":\"A3F1\",\"source\":\"剑嚎\"}",
+      "window": {
+        "before": 10,
+        "after": 10
+      },
+      "groups": []
+    },
+    {
+      "time": 509.2,
+      "text": "空间灭斩 (狂暴)",
+      "sync": "Ability {\"id\":\"A3F1\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 605,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A38F\",\"source\":\"剑嚎\"}",
+      "window": {
+        "before": 140,
+        "after": 0
+      },
+      "groups": []
+    },
+    {
+      "time": 606,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":\"A82D\",\"source\":\"剑嚎\"}",
+      "window": {
+        "before": 610,
+        "after": 0
+      },
+      "groups": []
+    },
+    {
+      "time": 650.3,
+      "text": "--可选中--",
+      "groups": []
+    },
+    {
+      "time": 662.3,
+      "text": "爆震",
+      "sync": "Ability {\"id\":\"A45A\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 674.3,
+      "text": "魔光 1",
+      "sync": "Ability {\"id\":\"A45C\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 674.3,
+      "text": "闪光炮",
+      "sync": "Ability {\"id\":\"A45E\",\"source\":\"光牙\"}",
+      "groups": []
+    },
+    {
+      "time": 685.3,
+      "text": "双牙击",
+      "sync": "Ability {\"id\":\"A4CD\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 697.4,
+      "text": "铠袖一触",
+      "sync": "Ability {\"id\":[\"A460\",\"A462\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 707.4,
+      "text": "魔光 2",
+      "sync": "Ability {\"id\":\"A45C\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 707.4,
+      "text": "闪光炮",
+      "sync": "Ability {\"id\":\"A45E\",\"source\":\"光牙\"}",
+      "groups": []
+    },
+    {
+      "time": 718.4,
+      "text": "爆震",
+      "sync": "Ability {\"id\":\"A45A\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 726.6,
+      "text": "刚刃一闪",
+      "sync": "StartsUsing {\"id\":\"A465\",\"source\":\"剑嚎\"}",
+      "duration": 3.7,
+      "groups": []
+    },
+    {
+      "time": 731.6,
+      "text": "刚刃一闪 (平台)",
+      "sync": "Ability {\"id\":\"A466\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 738.6,
+      "text": "风震魔印",
+      "sync": "Ability {\"id\":\"A467\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 743.7,
+      "text": "定时震击",
+      "sync": "Ability { \"id\": \"\"A469\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 743.7,
+      "text": "定时风击",
+      "sync": "Ability { \"id\": \"\"A468\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 743.7,
+      "text": "贪狼之剑",
+      "sync": "Ability { \"id\": \"\"A46D\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 748.7,
+      "text": "风狼阵",
+      "sync": "Ability {\"id\":\"A46E\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 757.5,
+      "text": "风狼阵 (塔)",
+      "sync": "Ability {\"id\":\"A46F\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 759.8,
+      "text": "魔狼战形·飓风之相",
+      "sync": "Ability {\"id\":\"A82A\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 768.9,
+      "text": "双牙暴风击",
+      "sync": "Ability {\"id\":\"A471\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 772.6,
+      "text": "风爆",
+      "sync": "Ability { \"id\": \"\"A891\"\", \"source\": \"\"Howling\" Blade\" }",
+      "window": {
+        "before": 0.5,
+        "after": 0.5
+      },
+      "duration": 11.7,
+      "groups": []
+    },
+    {
+      "time": 776.1,
+      "text": "双牙暴风击",
+      "sync": "Ability {\"id\":\"A474\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 779.8,
+      "text": "风爆",
+      "sync": "Ability { \"id\": \"\"A891\"\", \"source\": \"\"Howling\" Blade\" }",
+      "window": {
+        "before": 0.5,
+        "after": 0.5
+      },
+      "duration": 11.7,
+      "groups": []
+    },
+    {
+      "time": 782.7,
+      "text": "双牙暴风击",
+      "sync": "Ability {\"id\":\"A474\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 786.4,
+      "text": "风爆",
+      "sync": "Ability { \"id\": \"\"A891\"\", \"source\": \"\"Howling\" Blade\" }",
+      "window": {
+        "before": 0.5,
+        "after": 0.5
+      },
+      "duration": 11.7,
+      "groups": []
+    },
+    {
+      "time": 788.6,
+      "text": "双牙暴风击",
+      "sync": "Ability {\"id\":\"A474\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 792.3,
+      "text": "风爆",
+      "sync": "Ability { \"id\": \"\"A891\"\", \"source\": \"\"Howling\" Blade\" }",
+      "window": {
+        "before": 0.5,
+        "after": 0.5
+      },
+      "duration": 11.7,
+      "groups": []
+    },
+    {
+      "time": 799.4,
+      "text": "光牙召唤",
+      "sync": "Ability {\"id\":\"A475\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 811,
+      "text": "回天动地",
+      "sync": "Ability {\"id\":[\"A477\",\"A478\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 811,
+      "text": "连击闪光炮",
+      "sync": "Ability { \"id\": \"\"A476\"\", \"source\": \"\"Gleaming\" Fang\" }",
+      "groups": []
+    },
+    {
+      "time": 811.7,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":\"A47D\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 815.4,
+      "text": "连击闪光炮",
+      "sync": "Ability { \"id\": \"\"A476\"\", \"source\": \"\"Gleaming\" Fang\" }",
+      "groups": []
+    },
+    {
+      "time": 816.1,
+      "text": "回天动地",
+      "sync": "Ability {\"id\":\"A482\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 819.8,
+      "text": "连击闪光炮",
+      "sync": "Ability { \"id\": \"\"A476\"\", \"source\": \"\"Gleaming\" Fang\" }",
+      "groups": []
+    },
+    {
+      "time": 820.4,
+      "text": "回天动地",
+      "sync": "Ability {\"id\":\"A482\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 824.1,
+      "text": "连击闪光炮",
+      "sync": "Ability { \"id\": \"\"A476\"\", \"source\": \"\"Gleaming\" Fang\" }",
+      "groups": []
+    },
+    {
+      "time": 824.7,
+      "text": "回天动地",
+      "sync": "Ability {\"id\":\"A482\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 828.5,
+      "text": "连击闪光炮",
+      "sync": "Ability { \"id\": \"\"A476\"\", \"source\": \"\"Gleaming\" Fang\" }",
+      "groups": []
+    },
+    {
+      "time": 828.9,
+      "text": "回天动地",
+      "sync": "Ability {\"id\":\"A482\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 838.7,
+      "text": "爆震",
+      "sync": "Ability {\"id\":\"A45A\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 852.7,
+      "text": "魔光 3",
+      "sync": "Ability {\"id\":\"A45C\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 852.7,
+      "text": "闪光炮",
+      "sync": "Ability {\"id\":\"A45E\",\"source\":\"光牙\"}",
+      "groups": []
+    },
+    {
+      "time": 863.7,
+      "text": "双牙击",
+      "sync": "Ability {\"id\":\"A4CD\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 878.9,
+      "text": "魔狼战形·咒刃之相",
+      "sync": "Ability {\"id\":\"A82C\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 884.1,
+      "text": "独狼的诅咒",
+      "sync": "Ability {\"id\":\"A483\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 894.2,
+      "text": "风狼阵",
+      "sync": "Ability {\"id\":\"A485\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 902.8,
+      "text": "风狼阵 (塔)",
+      "sync": "Ability {\"id\":\"A487\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 912.4,
+      "text": "铠袖一触",
+      "sync": "Ability {\"id\":[\"A460\",\"A462\"],\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 924.6,
+      "text": "魔光 4",
+      "sync": "Ability {\"id\":\"A45C\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 924.6,
+      "text": "闪光炮",
+      "sync": "Ability {\"id\":\"A45E\",\"source\":\"光牙\"}",
+      "groups": []
+    },
+    {
+      "time": 939.4,
+      "text": "八连光弹",
+      "sync": "Ability {\"id\":\"AA02\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 940.5,
+      "text": "八连光弹 1",
+      "sync": "Ability { \"id\": \"\"AA03\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 941.5,
+      "text": "八连光弹 2",
+      "sync": "Ability { \"id\": \"\"AA04\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 942.4,
+      "text": "八连光弹 3",
+      "sync": "Ability { \"id\": \"\"AA05\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 943.3,
+      "text": "八连光弹 4",
+      "sync": "Ability { \"id\": \"\"AA06\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 944,
+      "text": "八连光弹 5",
+      "sync": "Ability { \"id\": \"\"AA07\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 944.4,
+      "text": "八连光弹 6",
+      "sync": "Ability { \"id\": \"\"AA08\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 944.8,
+      "text": "八连光弹 7",
+      "sync": "Ability { \"id\": \"\"AA09\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 946.6,
+      "text": "八连光弹 8",
+      "sync": "Ability { \"id\": \"\"AA0A\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 946.9,
+      "text": "刚刃一闪 1",
+      "sync": "StartsUsing {\"id\":\"A74C\",\"source\":\"剑嚎\"}",
+      "duration": 2.7,
+      "groups": []
+    },
+    {
+      "time": 950.9,
+      "text": "刚刃一闪 (平台)",
+      "sync": "Ability {\"id\":\"A74D\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 959.1,
+      "text": "八连光弹",
+      "sync": "Ability {\"id\":\"A494\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 960.1,
+      "text": "八连光弹 1",
+      "sync": "Ability {\"id\":\"A495\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 961.1,
+      "text": "八连光弹 2",
+      "sync": "Ability { \"id\": \"\"A496\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 962,
+      "text": "八连光弹 3",
+      "sync": "Ability { \"id\": \"\"A497\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 962.9,
+      "text": "八连光弹 4",
+      "sync": "Ability { \"id\": \"\"A498\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 963.5,
+      "text": "八连光弹 5",
+      "sync": "Ability { \"id\": \"\"A499\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 964.1,
+      "text": "八连光弹 6",
+      "sync": "Ability { \"id\": \"\"A49A\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 964.4,
+      "text": "八连光弹 7",
+      "sync": "Ability { \"id\": \"\"A49B\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 966.2,
+      "text": "八连光弹 8",
+      "sync": "Ability { \"id\": \"\"A49C\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 966.4,
+      "text": "刚刃一闪 2",
+      "sync": "StartsUsing {\"id\":\"A74C\",\"source\":\"剑嚎\"}",
+      "duration": 2.7,
+      "groups": []
+    },
+    {
+      "time": 970.5,
+      "text": "刚刃一闪 (平台)",
+      "sync": "Ability {\"id\":\"A74D\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 978.6,
+      "text": "八连光弹",
+      "sync": "Ability {\"id\":\"A494\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 979.6,
+      "text": "八连光弹 1",
+      "sync": "Ability { \"id\": \"\"A495\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 980.6,
+      "text": "八连光弹 2",
+      "sync": "Ability { \"id\": \"\"A496\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 981.5,
+      "text": "八连光弹 3",
+      "sync": "Ability { \"id\": \"\"A497\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 982.4,
+      "text": "八连光弹 4",
+      "sync": "Ability { \"id\": \"\"A498\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 983,
+      "text": "八连光弹 5",
+      "sync": "Ability { \"id\": \"\"A499\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 983.6,
+      "text": "八连光弹 6",
+      "sync": "Ability { \"id\": \"\"A49A\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 984,
+      "text": "八连光弹 7",
+      "sync": "Ability { \"id\": \"\"A49B\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 985.8,
+      "text": "八连光弹 8",
+      "sync": "Ability { \"id\": \"\"A49C\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 986.1,
+      "text": "刚刃一闪 3",
+      "sync": "StartsUsing {\"id\":\"A74C\",\"source\":\"剑嚎\"}",
+      "duration": 2.7,
+      "groups": []
+    },
+    {
+      "time": 990.1,
+      "text": "刚刃一闪 (平台)",
+      "sync": "Ability {\"id\":\"A74D\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 998.2,
+      "text": "八连光弹",
+      "sync": "Ability {\"id\":\"A494\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 999.2,
+      "text": "八连光弹 1",
+      "sync": "Ability { \"id\": \"\"A495\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1000.2,
+      "text": "八连光弹 2",
+      "sync": "Ability { \"id\": \"\"A496\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1001.1,
+      "text": "八连光弹 3",
+      "sync": "Ability { \"id\": \"\"A497\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1002,
+      "text": "八连光弹 4",
+      "sync": "Ability { \"id\": \"\"A498\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1002.7,
+      "text": "八连光弹 5",
+      "sync": "Ability { \"id\": \"\"A499\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1003.1,
+      "text": "八连光弹 6",
+      "sync": "Ability { \"id\": \"\"A49A\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1003.5,
+      "text": "八连光弹 7",
+      "sync": "Ability { \"id\": \"\"A49B\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1005.3,
+      "text": "八连光弹 8",
+      "sync": "Ability { \"id\": \"\"A49C\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1005.7,
+      "text": "刚刃一闪 4",
+      "sync": "StartsUsing {\"id\":\"A74C\",\"source\":\"剑嚎\"}",
+      "duration": 2.7,
+      "groups": []
+    },
+    {
+      "time": 1009.6,
+      "text": "刚刃一闪 (平台)",
+      "sync": "Ability {\"id\":\"A74D\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 1017.8,
+      "text": "八连光弹",
+      "sync": "Ability {\"id\":\"A494\",\"source\":\"剑嚎\"}",
+      "groups": []
+    },
+    {
+      "time": 1018.8,
+      "text": "八连光弹 1",
+      "sync": "Ability { \"id\": \"\"A495\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1019.8,
+      "text": "八连光弹 2",
+      "sync": "Ability { \"id\": \"\"A496\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1020.7,
+      "text": "八连光弹 3",
+      "sync": "Ability { \"id\": \"\"A497\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1021.6,
+      "text": "八连光弹 4",
+      "sync": "Ability { \"id\": \"\"A498\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1022.3,
+      "text": "八连光弹 5",
+      "sync": "Ability { \"id\": \"\"A499\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1022.7,
+      "text": "八连光弹 6",
+      "sync": "Ability { \"id\": \"\"A49A\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1023.1,
+      "text": "八连光弹 7",
+      "sync": "Ability { \"id\": \"\"A49B\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1024.9,
+      "text": "八连光弹 8",
+      "sync": "Ability { \"id\": \"\"A49C\"\", \"source\": \"\"Howling\" Blade\" }",
+      "groups": []
+    },
+    {
+      "time": 1025.2,
+      "text": "刚刃一闪・终",
+      "sync": "StartsUsing {\"id\":\"A49D\",\"source\":\"剑嚎\"}",
+      "duration": 10,
+      "groups": []
+    },
+    {
+      "time": 1035.2,
+      "text": "--无法选中--",
+      "groups": []
+    },
+    {
+      "time": 1036.2,
+      "text": "刚刃一闪・终 (狂暴)",
+      "sync": "Ability {\"id\":\"A49E\",\"source\":\"剑嚎\"}",
+      "groups": []
+    }
+  ]
+}

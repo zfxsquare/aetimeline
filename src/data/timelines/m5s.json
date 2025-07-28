@@ -1,0 +1,851 @@
+{
+  "name": "m5s",
+  "mapId": "1257",
+  "description": "Test",
+  "author": "Fra",
+  "acr": "Fra",
+  "job": "Astrologian",
+  "ClearCustomed": false,
+  "entries": [
+    {
+      "time": 0,
+      "text": "--Reset--",
+      "sync": "ActorControl {\"command\":\"4000000F\"}",
+      "window": {
+        "before": 0,
+        "after": 100000
+      },
+      "jump": 0,
+      "groups": []
+    },
+    {
+      "time": 0,
+      "text": "--同步化--",
+      "sync": "InCombat {\"inGameCombat\":\"1\"}",
+      "window": {
+        "before": 0,
+        "after": 1
+      },
+      "groups": []
+    },
+    {
+      "time": 9.6,
+      "text": "--同步化--",
+      "sync": "StartsUsing {\"id\":\"A721\",\"source\":\"热舞绿光\"}",
+      "window": {
+        "before": 9.6,
+        "after": 2
+      },
+      "groups": []
+    },
+    {
+      "time": 15.3,
+      "text": "经典铭心",
+      "sync": "Ability {\"id\":\"A722\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 20.9,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A6C5\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 27,
+      "text": "放入A面/放入B面",
+      "sync": "Ability {\"id\":[\"A780\",\"A781\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 34.1,
+      "text": "二/三/四连指向、定格＆播放",
+      "sync": "Ability {\"id\":[\"A728\",\"A729\",\"A72A\",\"A4DB\",\"A72B\",\"A72C\",\"A72D\",\"A4DC\",\"A730\",\"A731\",\"A732\",\"A4DD\",\"A733\",\"A734\",\"A735\",\"A4DE\",\"A739\",\"A73A\",\"A73B\",\"A4DF\",\"A73C\",\"A73D\",\"A73E\",\"A4E0\"],\"source\":\"热舞绿光\"}",
+      "duration": 2,
+      "groups": []
+    },
+    {
+      "time": 37.8,
+      "text": "播放",
+      "sync": "Ability { \"id\": \"\"A738\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 39.6,
+      "text": "播放A面/播放B面",
+      "sync": "Ability {\"id\":[\"A783\",\"A784\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 46.5,
+      "text": "放入B面/放入A面",
+      "sync": "Ability {\"id\":[\"A780\",\"A781\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 53.6,
+      "text": "二/三/四连指向、定格＆播放",
+      "sync": "Ability {\"id\":[\"A728\",\"A729\",\"A72A\",\"A4DB\",\"A72B\",\"A72C\",\"A72D\",\"A4DC\",\"A730\",\"A731\",\"A732\",\"A4DD\",\"A733\",\"A734\",\"A735\",\"A4DE\",\"A739\",\"A73A\",\"A73B\",\"A4DF\",\"A73C\",\"A73D\",\"A73E\",\"A4E0\"],\"source\":\"热舞绿光\"}",
+      "duration": 2,
+      "groups": []
+    },
+    {
+      "time": 57.2,
+      "text": "播放",
+      "sync": "Ability { \"id\": \"\"A738\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 59,
+      "text": "播放B面/播放A面",
+      "sync": "Ability {\"id\":[\"A783\",\"A784\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 65,
+      "text": "欢庆时刻",
+      "sync": "Ability {\"id\":\"A723\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 71.1,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A6C5\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 77.2,
+      "text": "激热跳舞街",
+      "sync": "Ability {\"id\":\"A756\",\"source\":\"热舞绿光\"}",
+      "window": {
+        "before": 77.2,
+        "after": 30
+      },
+      "groups": []
+    },
+    {
+      "time": 82.5,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 86.5,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 90.5,
+      "text": "内翻外转/外翻内转",
+      "sync": "Ability {\"id\":[\"A77C\",\"A77E\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 90.5,
+      "text": "热舞场地",
+      "sync": "Ability { \"id\": \"\"A753\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 92.9,
+      "text": "内翻外转/外翻内转",
+      "sync": "Ability {\"id\":[\"A77D\",\"A77F\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 94.6,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 98.6,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 99.5,
+      "text": "放入A面/放入B面",
+      "sync": "Ability {\"id\":[\"A780\",\"A781\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 102.7,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 106.7,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 110.7,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 114.7,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 116.8,
+      "text": "二/三/四连指向、定格＆播放",
+      "sync": "Ability {\"id\":[\"A728\",\"A729\",\"A72A\",\"A4DB\",\"A72B\",\"A72C\",\"A72D\",\"A4DC\",\"A730\",\"A731\",\"A732\",\"A4DD\",\"A733\",\"A734\",\"A735\",\"A4DE\",\"A739\",\"A73A\",\"A73B\",\"A4DF\",\"A73C\",\"A73D\",\"A73E\",\"A4E0\"],\"source\":\"热舞绿光\"}",
+      "duration": 2,
+      "groups": []
+    },
+    {
+      "time": 118.7,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 120.4,
+      "text": "播放",
+      "sync": "Ability { \"id\": \"\"A738\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 122.2,
+      "text": "播放A面/播放B面",
+      "sync": "Ability {\"id\":[\"A783\",\"A784\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 128.2,
+      "text": "欢庆时刻",
+      "sync": "Ability {\"id\":\"A723\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 136,
+      "text": "经典铭心",
+      "sync": "Ability {\"id\":\"A722\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 141.6,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A6C5\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 146.9,
+      "text": "伴舞团",
+      "sync": "Ability {\"id\":\"9A32\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 154.9,
+      "text": "登天夜狂热",
+      "sync": "Ability {\"id\":\"A760\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 155.2,
+      "text": "尽情舞蹈！ (外+八方) 1",
+      "sync": "Ability {\"id\":\"9BE4\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 157.9,
+      "text": "尽情舞蹈！ (内+八方+重复) 2",
+      "sync": "Ability {\"id\":\"A763\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 160.3,
+      "text": "尽情舞蹈！ (外+八方+重复) 3",
+      "sync": "Ability {\"id\":\"A762\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 162.6,
+      "text": "尽情舞蹈！ (内+八方+重复) 4",
+      "sync": "Ability {\"id\":\"A763\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 165,
+      "text": "尽情舞蹈！ (外+八方+重复) 5",
+      "sync": "Ability {\"id\":\"A762\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 167.4,
+      "text": "尽情舞蹈！ (内+八方+重复) 6",
+      "sync": "Ability {\"id\":\"A763\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 169.8,
+      "text": "尽情舞蹈！ (外+八方+重复) 7",
+      "sync": "Ability {\"id\":\"A762\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 172.2,
+      "text": "尽情舞蹈！ (内+八方+重复) 8",
+      "sync": "Ability {\"id\":\"A763\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 174.8,
+      "text": "尽情舞蹈！ (重复)",
+      "sync": "Ability { \"id\": \"\"A765\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 182.2,
+      "text": "Let's Dance! (半场) 1",
+      "sync": "Ability { \"id\": \"[\"A76D\"\", \"A76E\"], \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 184.8,
+      "text": "Let's Dance! (半场) 2",
+      "sync": "Ability { \"id\": \"\"A76D\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 185.7,
+      "text": "毒 1",
+      "groups": []
+    },
+    {
+      "time": 187.4,
+      "text": "Let's Dance! (半场) 3",
+      "sync": "Ability { \"id\": \"\"A76E\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 189.9,
+      "text": "Let's Dance! (半场) 4",
+      "sync": "Ability { \"id\": \"\"A76E\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 190.8,
+      "text": "毒 2",
+      "groups": []
+    },
+    {
+      "time": 192.4,
+      "text": "Let's Dance! (半场) 5",
+      "sync": "Ability { \"id\": \"\"A76D\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 194.9,
+      "text": "Let's Dance! (半场) 6",
+      "sync": "Ability { \"id\": \"\"A76E\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 195.9,
+      "text": "毒 3",
+      "groups": []
+    },
+    {
+      "time": 197.2,
+      "text": "Let's Dance! (半场) 7",
+      "sync": "Ability { \"id\": \"\"A76E\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 199.7,
+      "text": "Let's Dance! (半场) 8",
+      "sync": "Ability { \"id\": \"\"A76D\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 200.8,
+      "text": "毒 4",
+      "groups": []
+    },
+    {
+      "time": 208.7,
+      "text": "在这停顿！",
+      "sync": "Ability {\"id\":\"A76F\",\"source\":\"热舞绿光\"}",
+      "window": {
+        "before": 30,
+        "after": 30
+      },
+      "groups": []
+    },
+    {
+      "time": 226.9,
+      "text": "放入A面/放入B面",
+      "sync": "Ability {\"id\":[\"A780\",\"A781\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 232.6,
+      "text": "舞浪全开",
+      "sync": "Ability {\"id\":\"A754\",\"source\":\"热舞绿光\"}",
+      "duration": 39.8,
+      "groups": []
+    },
+    {
+      "time": 242.6,
+      "text": "4拍节奏/8拍节奏",
+      "sync": "Ability {\"id\":[\"A75B\",\"A75D\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 250.6,
+      "text": "8拍节奏/4拍节奏",
+      "sync": "Ability {\"id\":[\"A75B\",\"A75D\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 253.6,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A6C5\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 260.7,
+      "text": "内翻外转/外翻内转",
+      "sync": "Ability {\"id\":[\"A77C\",\"A77E\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 263.3,
+      "text": "内翻外转/外翻内转",
+      "sync": "Ability {\"id\":[\"A77D\",\"A77F\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 270.7,
+      "text": "二/三/四连指向、定格＆播放",
+      "sync": "Ability {\"id\":[\"A728\",\"A729\",\"A72A\",\"A4DB\",\"A72B\",\"A72C\",\"A72D\",\"A4DC\",\"A730\",\"A731\",\"A732\",\"A4DD\",\"A733\",\"A734\",\"A735\",\"A4DE\",\"A739\",\"A73A\",\"A73B\",\"A4DF\",\"A73C\",\"A73D\",\"A73E\",\"A4E0\"],\"source\":\"热舞绿光\"}",
+      "duration": 2,
+      "groups": []
+    },
+    {
+      "time": 274.1,
+      "text": "播放",
+      "sync": "Ability { \"id\": \"\"A738\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 275.9,
+      "text": "播放A面/播放B面",
+      "sync": "Ability {\"id\":[\"A783\",\"A784\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 283.6,
+      "text": "经典铭心",
+      "sync": "Ability {\"id\":\"A722\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 290.2,
+      "text": "欢庆时刻",
+      "sync": "Ability {\"id\":\"A723\",\"source\":\"热舞绿光\"}",
+      "window": {
+        "before": 30,
+        "after": 30
+      },
+      "groups": []
+    },
+    {
+      "time": 296.3,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A6C5\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 301.4,
+      "text": "来吧！青蛙舞者！",
+      "sync": "Ability {\"id\":\"A75F\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 315.5,
+      "text": "4拍节奏/8拍节奏",
+      "sync": "Ability {\"id\":[\"A75B\",\"A75D\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 316,
+      "text": "太空热步",
+      "groups": []
+    },
+    {
+      "time": 323.6,
+      "text": "激热跳舞街",
+      "sync": "Ability {\"id\":\"A756\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 335.2,
+      "text": "伴舞波动",
+      "sync": "Ability {\"id\":\"A778\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 344.6,
+      "text": "放入A面/放入B面",
+      "sync": "Ability {\"id\":[\"A780\",\"A781\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 345.1,
+      "text": "伴舞波动",
+      "sync": "Ability {\"id\":\"A778\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 351.5,
+      "text": "二/三/四连指向、定格＆播放",
+      "sync": "Ability {\"id\":[\"A728\",\"A729\",\"A72A\",\"A4DB\",\"A72B\",\"A72C\",\"A72D\",\"A4DC\",\"A730\",\"A731\",\"A732\",\"A4DD\",\"A733\",\"A734\",\"A735\",\"A4DE\",\"A739\",\"A73A\",\"A73B\",\"A4DF\",\"A73C\",\"A73D\",\"A73E\",\"A4E0\"],\"source\":\"热舞绿光\"}",
+      "duration": 2,
+      "groups": []
+    },
+    {
+      "time": 355.1,
+      "text": "播放",
+      "sync": "Ability { \"id\": \"\"A738\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 356.9,
+      "text": "播放A面/播放B面",
+      "sync": "Ability {\"id\":[\"A783\",\"A784\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 362.9,
+      "text": "欢庆时刻",
+      "sync": "Ability {\"id\":\"A723\",\"source\":\"热舞绿光\"}",
+      "window": {
+        "before": 30,
+        "after": 30
+      },
+      "groups": []
+    },
+    {
+      "time": 369,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A6C5\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 374.3,
+      "text": "伴舞团",
+      "sync": "Ability {\"id\":\"9A32\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 382.3,
+      "text": "返场夜狂热",
+      "sync": "Ability {\"id\":\"A370\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 382.6,
+      "text": "尽情舞蹈！ (外+八方) 1",
+      "sync": "Ability {\"id\":\"9BE4\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 385.3,
+      "text": "尽情舞蹈！ (内+八方+重复) 2",
+      "sync": "Ability {\"id\":\"A763\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 387.6,
+      "text": "尽情舞蹈！ (外+八方+重复) 3",
+      "sync": "Ability {\"id\":\"A762\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 390,
+      "text": "尽情舞蹈！ (内+八方+重复) 4",
+      "sync": "Ability {\"id\":\"A763\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 392.4,
+      "text": "尽情舞蹈！ (外+八方+重复) 5",
+      "sync": "Ability {\"id\":\"A762\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 394.8,
+      "text": "尽情舞蹈！ (内+八方+重复) 6",
+      "sync": "Ability {\"id\":\"A763\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 397.2,
+      "text": "尽情舞蹈！ (外+八方+重复) 7",
+      "sync": "Ability {\"id\":\"A762\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 399.6,
+      "text": "尽情舞蹈！ (内+八方+重复) 8",
+      "sync": "Ability {\"id\":\"A763\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 402.2,
+      "text": "尽情舞蹈！ (重复)",
+      "sync": "Ability { \"id\": \"\"A765\"\", \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 409.6,
+      "text": "彻夜狂欢，放纵劲舞！ 1",
+      "sync": "Ability { \"id\": \"[\"A391\"\", \"A392\", \"A393\", \"A394\"], \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 411.2,
+      "text": "彻夜狂欢，放纵劲舞！ 2",
+      "sync": "Ability { \"id\": \"[\"A391\"\", \"A392\", \"A393\", \"A394\"], \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 412.7,
+      "text": "彻夜狂欢，放纵劲舞！ 3",
+      "sync": "Ability { \"id\": \"[\"A391\"\", \"A392\", \"A393\", \"A394\"], \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 414.2,
+      "text": "彻夜狂欢，放纵劲舞！ 4",
+      "sync": "Ability { \"id\": \"[\"A391\"\", \"A392\", \"A393\", \"A394\"], \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 415.7,
+      "text": "彻夜狂欢，放纵劲舞！ 5",
+      "sync": "Ability { \"id\": \"[\"A391\"\", \"A392\", \"A393\", \"A394\"], \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 417.2,
+      "text": "彻夜狂欢，放纵劲舞！ 6",
+      "sync": "Ability { \"id\": \"[\"A391\"\", \"A392\", \"A393\", \"A394\"], \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 418.7,
+      "text": "彻夜狂欢，放纵劲舞！ 7",
+      "sync": "Ability { \"id\": \"[\"A391\"\", \"A392\", \"A393\", \"A394\"], \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 420.2,
+      "text": "彻夜狂欢，放纵劲舞！ 8",
+      "sync": "Ability { \"id\": \"[\"A391\"\", \"A392\", \"A393\", \"A394\"], \"source\": \"\"Dancing\" Green\" }",
+      "groups": []
+    },
+    {
+      "time": 428.2,
+      "text": "在这停顿！",
+      "sync": "Ability {\"id\":\"A770\",\"source\":\"热舞绿光\"}",
+      "window": {
+        "before": 30,
+        "after": 30
+      },
+      "groups": []
+    },
+    {
+      "time": 442.4,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A6C5\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 447.5,
+      "text": "来吧！青蛙舞者！",
+      "sync": "Ability {\"id\":\"A75F\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 454.6,
+      "text": "摇摆哈娑 (分身)",
+      "sync": "Ability {\"id\":[\"A775\",\"A776\"],\"source\":\"青蛙舞者\"}",
+      "groups": []
+    },
+    {
+      "time": 458.7,
+      "text": "摇摆哈娑 (分身)",
+      "sync": "Ability {\"id\":[\"A775\",\"A776\"],\"source\":\"青蛙舞者\"}",
+      "groups": []
+    },
+    {
+      "time": 462.7,
+      "text": "摇摆哈娑 (BOSS)",
+      "sync": "Ability {\"id\":[\"A724\",\"A725\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 479.3,
+      "text": "太空热步",
+      "groups": []
+    },
+    {
+      "time": 479.4,
+      "text": "伴舞波动",
+      "sync": "Ability {\"id\":\"A778\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 495.1,
+      "text": "太空热步",
+      "groups": []
+    },
+    {
+      "time": 495.2,
+      "text": "伴舞波动",
+      "sync": "Ability {\"id\":\"A778\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 504.5,
+      "text": "摇摆哈娑 (全体)",
+      "sync": "Ability {\"id\":[\"A724\",\"A725\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 512.3,
+      "text": "经典铭心",
+      "sync": "Ability {\"id\":\"A722\",\"source\":\"热舞绿光\"}",
+      "window": {
+        "before": 30,
+        "after": 30
+      },
+      "groups": []
+    },
+    {
+      "time": 517.9,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A6C5\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 523.2,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 527.2,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 530.8,
+      "text": "4拍节奏/8拍节奏",
+      "sync": "Ability {\"id\":[\"A75B\",\"A75D\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 531.2,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 535.2,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 538.9,
+      "text": "内翻外转/外翻内转",
+      "sync": "Ability {\"id\":[\"A77C\",\"A77E\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 539.2,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 541.2,
+      "text": "内翻外转/外翻内转",
+      "sync": "Ability {\"id\":[\"A77D\",\"A77F\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 543.2,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 547.2,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 550.6,
+      "text": "8拍节奏/4拍节奏",
+      "sync": "Ability {\"id\":[\"A75B\",\"A75D\"],\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 551.3,
+      "text": "热舞场地",
+      "sync": "Ability {\"id\":\"A753\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 557.9,
+      "text": "欢庆时刻",
+      "sync": "Ability {\"id\":\"A723\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 568,
+      "text": "欢庆时刻",
+      "sync": "Ability {\"id\":\"A723\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 583,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A6C5\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 588.3,
+      "text": "舞团终演",
+      "sync": "Ability {\"id\":\"A4E1\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 603.4,
+      "text": "高能夜狂热 (狂暴)",
+      "sync": "Ability {\"id\":\"A779\",\"source\":\"热舞绿光\"}",
+      "groups": []
+    },
+    {
+      "time": 603.4,
+      "text": "--同步化--",
+      "sync": "Ability {\"id\":\"A77B\",\"source\":\"青蛙舞者\"}",
+      "groups": []
+    }
+  ]
+}

@@ -1,0 +1,633 @@
+{
+  "name": "m6s",
+  "mapId": "1259",
+  "description": "m6s",
+  "author": "Fra",
+  "acr": "Fra",
+  "job": "Astrologian",
+  "ClearCustomed": false,
+  "entries": [
+    {
+      "time": 0,
+      "text": "--Reset--",
+      "sync": "ActorControl {\"command\":\"4000000F\"}",
+      "window": {
+        "before": 0,
+        "after": 100000
+      },
+      "jump": 0,
+      "groups": []
+    },
+    {
+      "time": 0,
+      "text": "--同步化--",
+      "sync": "InCombat {\"inGameCombat\":\"1\"}",
+      "window": {
+        "before": 0,
+        "after": 1
+      },
+      "groups": []
+    },
+    {
+      "time": 11.3,
+      "text": "慕斯怪大雨",
+      "sync": "Ability {\"id\":\"A6BC\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 22.4,
+      "text": "色彩狂热",
+      "sync": "Ability {\"id\":[\"A691\",\"A692\"],\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 24.5,
+      "text": "冷色爆弹怪/暖色爆弹怪",
+      "sync": "Ability { \"id\": \"\"A693\"\", \"source\": \"\"Sugar\" Riot\" }",
+      "groups": []
+    },
+    {
+      "time": 29.7,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A673\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 35.1,
+      "text": "翅膀标记",
+      "sync": "Ability {\"id\":\"A676\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 41.2,
+      "text": "色彩冲击",
+      "sync": "Ability {\"id\":[\"A68B\",\"A68D\"],\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 57.6,
+      "text": "双手涂鸦",
+      "sync": "Ability {\"id\":[\"93CA\",\"9408\",\"A67D\",\"A67E\",\"A67F\",\"A680\",\"A681\",\"A682\"],\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 61.7,
+      "text": "臭气/暗黑雾/爆炸",
+      "sync": "Ability { \"id\": \"\"A684\"\", \"source\": \"\"Mouthwatering\" Morbol\" }",
+      "groups": []
+    },
+    {
+      "time": 62.1,
+      "text": "色彩冲击",
+      "sync": "Ability {\"id\":[\"A68F\",\"A690\"],\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 69.7,
+      "text": "黏黏慕斯怪 (咏唱)",
+      "sync": "Ability {\"id\":\"A695\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 70.6,
+      "text": "黏黏慕斯怪 (快照)",
+      "sync": "Ability { \"id\": \"\"A696\"\", \"source\": \"\"Sugar\" Riot\" }",
+      "groups": []
+    },
+    {
+      "time": 76.6,
+      "text": "爆炸",
+      "sync": "Ability {\"id\":\"A697\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 81.9,
+      "text": "色彩狂热",
+      "sync": "Ability {\"id\":[\"A691\",\"A692\"],\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 83.9,
+      "text": "冷色爆弹怪/暖色爆弹怪",
+      "sync": "Ability { \"id\": \"\"A693\"\", \"source\": \"\"Sugar\" Riot\" }",
+      "groups": []
+    },
+    {
+      "time": 89.1,
+      "text": "--北--",
+      "sync": "Ability {\"id\":\"A673\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 91.3,
+      "text": "糖心绘景",
+      "sync": "Ability {\"id\":\"A668\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 107.5,
+      "text": "添笔",
+      "sync": "Ability {\"id\":\"A66A\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 121.7,
+      "text": "飞针",
+      "sync": "Ability {\"id\":\"A6A1\",\"source\":\"狂热糖潮\"}",
+      "duration": 15,
+      "groups": []
+    },
+    {
+      "time": 141.1,
+      "text": "热扩散/重热扩散",
+      "sync": "Ability {\"id\":[\"A6A2\",\"9A2D\"],\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 142.4,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A673\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 148.8,
+      "text": "黏黏慕斯怪 (咏唱)",
+      "sync": "Ability {\"id\":\"A695\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 149.7,
+      "text": "黏黏慕斯怪 (快照)",
+      "sync": "Ability {\"id\":\"A696\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 155.7,
+      "text": "爆炸",
+      "sync": "Ability {\"id\":\"A697\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 157.3,
+      "text": "添笔",
+      "sync": "Ability {\"id\":\"A66C\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 172.3,
+      "text": "热扩散",
+      "sync": "Ability {\"id\":\"A6A2\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 173.1,
+      "text": "飞针",
+      "sync": "Ability {\"id\":\"9A2C\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 176.7,
+      "text": "咣当软糊怪",
+      "sync": "Ability {\"id\":\"A6B5\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 179.8,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A673\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 189,
+      "text": "双手涂鸦",
+      "sync": "Ability {\"id\":\"A683\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 190,
+      "text": "咣当软糊怪",
+      "sync": "Ability {\"id\":\"A6B6\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 199,
+      "text": "慕斯怪大雨",
+      "sync": "Ability {\"id\":\"A6BC\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 207.1,
+      "text": "色彩狂热",
+      "sync": "Ability {\"id\":[\"A691\",\"A692\"],\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 209.1,
+      "text": "冷色爆弹怪/暖色爆弹怪",
+      "sync": "Ability { \"id\": \"\"A693\"\", \"source\": \"\"Sugar\" Riot\" }",
+      "groups": []
+    },
+    {
+      "time": 217.2,
+      "text": "糖糖之魂",
+      "sync": "Ability {\"id\":\"A6A5\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 224.3,
+      "text": "即兴绘画",
+      "sync": "Ability {\"id\":\"A6A6\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 227.4,
+      "text": "--羊 可选中--",
+      "groups": []
+    },
+    {
+      "time": 227.4,
+      "text": "--2x 亩鼠 可选中--",
+      "groups": []
+    },
+    {
+      "time": 229.4,
+      "text": "--索取猫 可选中--",
+      "groups": []
+    },
+    {
+      "time": 253.4,
+      "text": "即兴绘画",
+      "sync": "Ability {\"id\":\"A6A7\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 256.5,
+      "text": "--2x 羽环鳐 可选中--",
+      "groups": []
+    },
+    {
+      "time": 256.5,
+      "text": "--2x 亩鼠 可选中--",
+      "groups": []
+    },
+    {
+      "time": 275.5,
+      "text": "即兴绘画",
+      "sync": "Ability {\"id\":\"A6A8\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 278.6,
+      "text": "--羊 可选中--",
+      "groups": []
+    },
+    {
+      "time": 280.6,
+      "text": "--索取猫 可选中--",
+      "groups": []
+    },
+    {
+      "time": 286.6,
+      "text": "--炸脖龙 可选中--",
+      "groups": []
+    },
+    {
+      "time": 305.5,
+      "text": "给你原石",
+      "sync": "Ability {\"id\":\"A6AA\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 314.6,
+      "text": "即兴绘画",
+      "sync": "Ability {\"id\":\"A6A9\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 317.7,
+      "text": "--羊 可选中--",
+      "groups": []
+    },
+    {
+      "time": 317.7,
+      "text": "--2x 羽环鳐 可选中--",
+      "groups": []
+    },
+    {
+      "time": 317.7,
+      "text": "--2x 亩鼠 可选中--",
+      "groups": []
+    },
+    {
+      "time": 319.7,
+      "text": "--索取猫 可选中--",
+      "groups": []
+    },
+    {
+      "time": 325.7,
+      "text": "--炸脖龙 可选中--",
+      "groups": []
+    },
+    {
+      "time": 388.7,
+      "text": "给你原石",
+      "sync": "Ability {\"id\":\"A6AA\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 397.8,
+      "text": "单手涂鸦",
+      "sync": "Ability {\"id\":\"9A3D\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 401.9,
+      "text": "突进",
+      "sync": "Ability {\"id\":\"A686\",\"source\":\"糖糖箭\"}",
+      "groups": []
+    },
+    {
+      "time": 410.9,
+      "text": "色彩狂热",
+      "sync": "Ability {\"id\":[\"A691\",\"A692\"],\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 412.9,
+      "text": "冷色爆弹怪/暖色爆弹怪",
+      "sync": "Ability { \"id\": \"\"A693\"\", \"source\": \"\"Sugar\" Riot\" }",
+      "groups": []
+    },
+    {
+      "time": 418.9,
+      "text": "慕斯怪大雨",
+      "sync": "Ability {\"id\":\"A6BC\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 426.1,
+      "text": "--北--",
+      "sync": "Ability {\"id\":\"A673\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 428.3,
+      "text": "糖心绘景",
+      "sync": "Ability {\"id\":\"A663\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 448.4,
+      "text": "双手涂鸦",
+      "sync": "Ability {\"id\":[\"A687\",\"A689\"],\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 452.5,
+      "text": "突进+糖糖闪雷/糖糖火炎",
+      "sync": "Ability { \"id\": \"\"A686\"\", \"source\": \"\"Sweet\" Shot\" }",
+      "groups": []
+    },
+    {
+      "time": 454.5,
+      "text": "添笔",
+      "sync": "Ability {\"id\":\"A698\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 466.6,
+      "text": "糖糖闪雷",
+      "sync": "Ability { \"id\": \"\"A69D\"\", \"source\": \"\"Sugar\" Riot\" }",
+      "groups": []
+    },
+    {
+      "time": 473,
+      "text": "落雷",
+      "sync": "Ability {\"id\":\"A69A\",\"source\":\"狂热糖潮\"}",
+      "duration": 34.4,
+      "groups": []
+    },
+    {
+      "time": 479,
+      "text": "百雷 (咏唱)",
+      "sync": "Ability {\"id\":\"A69E\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 479.7,
+      "text": "雷流 (快照)",
+      "sync": "Ability {\"id\":\"A69F\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 489.6,
+      "text": "百雷 (咏唱)",
+      "sync": "Ability {\"id\":\"A69E\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 490.3,
+      "text": "雷流 (快照)",
+      "sync": "Ability {\"id\":\"A69F\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 500.2,
+      "text": "百雷 (咏唱)",
+      "sync": "Ability {\"id\":\"A69E\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 500.9,
+      "text": "雷流 (快照)",
+      "sync": "Ability {\"id\":\"A69F\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 510.8,
+      "text": "百雷 (咏唱)",
+      "sync": "Ability {\"id\":\"A69E\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 511.5,
+      "text": "雷流 (快照)",
+      "sync": "Ability {\"id\":\"A69F\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 515.9,
+      "text": "软糊怪派对 x5",
+      "sync": "Ability {\"id\":\"A66D\",\"source\":\"狂热糖潮\"}",
+      "duration": 5,
+      "groups": []
+    },
+    {
+      "time": 529.9,
+      "text": "添笔",
+      "sync": "Ability {\"id\":\"A699\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 546,
+      "text": "啪叽慕斯怪",
+      "sync": "Ability {\"id\":\"A6B7\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 551,
+      "text": "啪叽慕斯怪",
+      "sync": "Ability { \"id\": \"\"A6B8\"\", \"source\": \"\"Sugar\" Riot\" }",
+      "groups": []
+    },
+    {
+      "time": 553,
+      "text": "啪叽慕斯怪",
+      "sync": "Ability { \"id\": \"\"A6B8\"\", \"source\": \"\"Sugar\" Riot\" }",
+      "groups": []
+    },
+    {
+      "time": 555,
+      "text": "啪叽慕斯怪",
+      "sync": "Ability { \"id\": \"\"A6B8\"\", \"source\": \"\"Sugar\" Riot\" }",
+      "groups": []
+    },
+    {
+      "time": 556,
+      "text": "慕斯慕斯冲 (咏唱)",
+      "sync": "Ability {\"id\":\"A6BA\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 556.9,
+      "text": "慕斯慕斯冲 (快照)",
+      "sync": "Ability {\"id\":\"A6BB\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 557.1,
+      "text": "啪叽慕斯怪",
+      "sync": "Ability { \"id\": \"\"A6B8\"\", \"source\": \"\"Sugar\" Riot\" }",
+      "groups": []
+    },
+    {
+      "time": 563.1,
+      "text": "糖糖闪雷",
+      "sync": "Ability { \"id\": \"\"A69D\"\", \"source\": \"\"Sugar\" Riot\" }",
+      "groups": []
+    },
+    {
+      "time": 564.9,
+      "text": "爆炸",
+      "sync": "Ability {\"id\":\"A6A3\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 569.1,
+      "text": "翅膀标记",
+      "sync": "Ability {\"id\":\"A676\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 589.3,
+      "text": "糖糖闪雷",
+      "sync": "Ability {\"id\":\"A69D\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 591.3,
+      "text": "爆炸",
+      "sync": "Ability {\"id\":\"A6A3\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 596.3,
+      "text": "慕斯怪大雨",
+      "sync": "Ability {\"id\":\"A6BC\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 606.4,
+      "text": "黏黏慕斯怪 (咏唱)",
+      "sync": "Ability {\"id\":\"A695\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 607.3,
+      "text": "黏黏慕斯怪 (快照)",
+      "sync": "Ability {\"id\":\"A696\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 613.3,
+      "text": "爆炸",
+      "sync": "Ability {\"id\":\"A697\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 618.6,
+      "text": "色彩狂热",
+      "sync": "Ability {\"id\":[\"A691\",\"A692\"],\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 620.6,
+      "text": "冷色爆弹怪/暖色爆弹怪",
+      "sync": "Ability { \"id\": \"\"A693\"\", \"source\": \"\"Sugar\" Riot\" }",
+      "groups": []
+    },
+    {
+      "time": 625.8,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A673\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 631,
+      "text": "翅膀标记",
+      "sync": "Ability {\"id\":\"A676\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 637.1,
+      "text": "色彩冲击",
+      "sync": "Ability {\"id\":[\"A68B\",\"A68D\"],\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 653.2,
+      "text": "双手涂鸦",
+      "sync": "Ability {\"id\":[\"93CA\",\"9408\",\"A67D\",\"A67E\",\"A67F\",\"A680\",\"A681\",\"A682\"],\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 657.3,
+      "text": "臭气/暗黑雾/爆炸",
+      "sync": "Ability { \"id\": \"\"A684\"\", \"source\": \"\"Mouthwatering\" Morbol\" }",
+      "groups": []
+    },
+    {
+      "time": 658.1,
+      "text": "色彩冲击",
+      "sync": "Ability {\"id\":[\"A68F\",\"A690\"],\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 665.3,
+      "text": "--跳?--",
+      "sync": "Ability {\"id\":\"A673\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 674.6,
+      "text": "艺术大乱斗",
+      "sync": "Ability {\"id\":\"A6BD\",\"source\":\"狂热糖潮\"}",
+      "groups": []
+    },
+    {
+      "time": 680.7,
+      "text": "狂暴",
+      "groups": []
+    }
+  ]
+}

@@ -7,14 +7,6 @@
   margin: 0 auto;
 }
 
-.timeline-manager h1 {
-  color: #a0d8ff;
-  text-align: center;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #444444;
-  padding-bottom: 10px;
-}
-
 .timeline-manager-content {
   background-color: #222222;
   border-radius: 4px;
@@ -50,6 +42,46 @@
 
 .send-to-editor-button:hover {
   background-color: #2960d3 !important;
+}
+
+/* JSON导入按钮样式 */
+.timeline-json-imports {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #2a2a2a;
+  border-radius: 6px;
+  border: 1px solid #444444;
+}
+
+.timeline-json-imports h3 {
+  color: #a0d8ff;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.json-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.json-import-button {
+  background-color: #3a7bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 0.9em;
+}
+
+.json-import-button:hover {
+  background-color: #2960d3;
+}
+
+.json-import-button:active {
+  background-color: #2456b1;
 }
 
 .timeline-info {

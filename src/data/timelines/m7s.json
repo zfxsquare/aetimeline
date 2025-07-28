@@ -1,0 +1,798 @@
+{
+  "name": "m7s",
+  "mapId": "1261",
+  "description": "test",
+  "author": "Fra",
+  "acr": "Fra",
+  "job": "Astrologian",
+  "ClearCustomed": false,
+  "entries": [
+    {
+      "time": 0,
+      "text": "--Reset--",
+      "sync": "ActorControl {\"command\":\"4000000F\"}",
+      "window": {
+        "before": 0,
+        "after": 100000
+      },
+      "jump": 0,
+      "groups": []
+    },
+    {
+      "time": 0,
+      "text": "--同步化--",
+      "sync": "InCombat {\"inGameCombat\":\"1\"}",
+      "window": {
+        "before": 0,
+        "after": 1
+      },
+      "groups": []
+    },
+    {
+      "time": 10.5,
+      "text": "野蛮碎击 x6",
+      "sync": "Ability {\"id\":\"A55B\",\"source\":\"野蛮恨心\"}",
+      "duration": 5.2,
+      "groups": []
+    },
+    {
+      "time": 23.1,
+      "text": "石制武器",
+      "sync": "Ability {\"id\":[\"A55D\",\"A55E\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 32,
+      "text": "近侧挥打/远侧挥打",
+      "sync": "Ability {\"id\":[\"A55F\",\"A560\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 33,
+      "text": "野蛮横扫",
+      "sync": "Ability {\"id\":[\"A561\",\"A562\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 34.1,
+      "text": "野蛮挥打",
+      "sync": "Ability {\"id\":[\"A565\",\"A566\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 43.3,
+      "text": "孢囊 (咏唱)",
+      "sync": "Ability {\"id\":\"A569\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 46.4,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A516\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 48.4,
+      "text": "孢囊",
+      "sync": "Ability {\"id\":\"A56A\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 52.8,
+      "text": "种弹播撒 (咏唱)",
+      "sync": "Ability {\"id\":\"A56D\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 53.9,
+      "text": "花粉",
+      "sync": "Ability {\"id\":\"A56B\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 56,
+      "text": "--小怪可选中--",
+      "groups": []
+    },
+    {
+      "time": 56.8,
+      "text": "种弹播撒 (圈 1)",
+      "sync": "Ability { \"id\": \"\"A571\"\", \"source\": \"\"Brute\" Abombinator\" }",
+      "groups": []
+    },
+    {
+      "time": 58.8,
+      "text": "种弹播撒 (圈 2)",
+      "sync": "Ability { \"id\": \"\"A571\"\", \"source\": \"\"Brute\" Abombinator\" }",
+      "groups": []
+    },
+    {
+      "time": 60.8,
+      "text": "种弹播撒 (种子落下)",
+      "sync": "Ability {\"id\":\"A56E\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 60.8,
+      "text": "种弹播撒 (圈 3)",
+      "sync": "Ability { \"id\": \"\"A571\"\", \"source\": \"\"Brute\" Abombinator\" }",
+      "groups": []
+    },
+    {
+      "time": 62.8,
+      "text": "种弹播撒 (圈 4)",
+      "sync": "Ability { \"id\": \"\"A571\"\", \"source\": \"\"Brute\" Abombinator\" }",
+      "groups": []
+    },
+    {
+      "time": 65.4,
+      "text": "冲击",
+      "sync": "Ability {\"id\":\"A573\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 65.4,
+      "text": "荆棘缠缚",
+      "sync": "Ability {\"id\":[\"A56F\",\"A570\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 70.7,
+      "text": "荆棘蔓延",
+      "sync": "Ability {\"id\":\"A572\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 78.4,
+      "text": "环形突风/交叉突风 (小怪)",
+      "sync": "Ability { \"id\": \"[\"A90D\"\", \"A90E\"], \"source\": \"\"Blooming\" Abomination\" }",
+      "groups": []
+    },
+    {
+      "time": 90.2,
+      "text": "飓风 (小怪 狂暴)",
+      "sync": "Ability { \"id\": \"\"A56C\"\", \"source\": \"\"Blooming\" Abomination\" }",
+      "groups": []
+    },
+    {
+      "time": 93.4,
+      "text": "石化波动",
+      "sync": "Ability {\"id\":\"A575\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 105.4,
+      "text": "爆炸 1",
+      "sync": "Ability {\"id\":\"A576\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 108,
+      "text": "爆炸 2",
+      "sync": "Ability { \"id\": \"\"A576\"\", \"source\": \"\"Brute\" Abombinator\" }",
+      "groups": []
+    },
+    {
+      "time": 108.6,
+      "text": "石制武器",
+      "sync": "Ability {\"id\":[\"A55D\",\"A55E\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 110.6,
+      "text": "爆炸 3",
+      "sync": "Ability { \"id\": \"\"A576\"\", \"source\": \"\"Brute\" Abombinator\" }",
+      "groups": []
+    },
+    {
+      "time": 117.5,
+      "text": "近侧挥打/远侧挥打",
+      "sync": "Ability {\"id\":[\"A55F\",\"A560\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 118.5,
+      "text": "野蛮横扫",
+      "sync": "Ability {\"id\":[\"A561\",\"A562\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 119.6,
+      "text": "野蛮挥打",
+      "sync": "Ability {\"id\":[\"A565\",\"A566\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 127.3,
+      "text": "荆棘挥打",
+      "sync": "Ability {\"id\":\"A579\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 129.3,
+      "text": "荆棘波",
+      "sync": "Ability {\"id\":\"A57B\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 137.6,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A516\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 148,
+      "text": "新式超豪华野蛮大乱击",
+      "sync": "Ability {\"id\":\"A57C\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 148,
+      "text": "--无法选中--",
+      "groups": []
+    },
+    {
+      "time": 158.6,
+      "text": "藤蔓攀附",
+      "sync": "Ability {\"id\":\"A57D\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 163.3,
+      "text": "--可选中--",
+      "groups": []
+    },
+    {
+      "time": 170.4,
+      "text": "石制武器",
+      "sync": "Ability {\"id\":[\"A57F\",\"A580\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 184.4,
+      "text": "野蛮横扫",
+      "sync": "Ability {\"id\":[\"A592\",\"A593\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 189.2,
+      "text": "雷击",
+      "sync": "Ability {\"id\":\"A586\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 189.3,
+      "text": "野蛮怒视",
+      "sync": "Ability {\"id\":\"A94C\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 195.2,
+      "text": "荆棘领域",
+      "sync": "Ability {\"id\":\"A587\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 206.3,
+      "text": "荆棘生死战",
+      "sync": "Ability {\"id\":\"A588\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 210.4,
+      "text": "石制武器",
+      "sync": "Ability {\"id\":[\"A57F\",\"A580\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 222.5,
+      "text": "野蛮电火花",
+      "sync": "Ability {\"id\":\"A894\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 231.6,
+      "text": "孢子云 (咏唱)",
+      "sync": "Ability {\"id\":\"A58A\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 237.6,
+      "text": "孢子云 1",
+      "sync": "Ability { \"id\": \"\"A58B\"\", \"source\": \"\"Brute\" Abombinator\" }",
+      "groups": []
+    },
+    {
+      "time": 239.6,
+      "text": "孢子云 2",
+      "sync": "Ability { \"id\": \"\"A58B\"\", \"source\": \"\"Brute\" Abombinator\" }",
+      "groups": []
+    },
+    {
+      "time": 241.6,
+      "text": "孢子云 3",
+      "sync": "Ability { \"id\": \"\"A58B\"\", \"source\": \"\"Brute\" Abombinator\" }",
+      "groups": []
+    },
+    {
+      "time": 246.8,
+      "text": "野蛮横扫",
+      "sync": "Ability {\"id\":[\"A592\",\"A593\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 251.6,
+      "text": "雷击",
+      "sync": "Ability {\"id\":\"A586\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 251.7,
+      "text": "野蛮怒视",
+      "sync": "Ability {\"id\":\"A94C\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 257.6,
+      "text": "荆棘领域",
+      "sync": "Ability {\"id\":\"A587\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 266.7,
+      "text": "荆棘生死战：楼体",
+      "sync": "Ability {\"id\":\"A596\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 281.1,
+      "text": "野蛮电火花",
+      "sync": "Ability {\"id\":\"A894\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 288.1,
+      "text": "种弹炸裂 (咏唱)",
+      "sync": "Ability {\"id\":\"A597\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 294.2,
+      "text": "种弹炸裂 1",
+      "sync": "Ability {\"id\":\"A598\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 295.2,
+      "text": "石制武器",
+      "sync": "Ability {\"id\":[\"A57F\",\"A580\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 298.9,
+      "text": "荆棘缠缚 1",
+      "sync": "Ability {\"id\":[\"A599\",\"A59A\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 299.2,
+      "text": "种弹炸裂 2",
+      "sync": "Ability {\"id\":\"A598\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 303.9,
+      "text": "荆棘缠缚 2",
+      "sync": "Ability {\"id\":[\"A599\",\"A59A\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 304.2,
+      "text": "种弹炸裂 3",
+      "sync": "Ability {\"id\":\"A598\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 308.9,
+      "text": "荆棘缠缚 3",
+      "sync": "Ability {\"id\":[\"A599\",\"A59A\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 309.2,
+      "text": "种弹炸裂 4",
+      "sync": "Ability {\"id\":\"A598\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 313.9,
+      "text": "荆棘缠缚 4",
+      "sync": "Ability {\"id\":[\"A599\",\"A59A\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 319.1,
+      "text": "种弹重击",
+      "sync": "Ability {\"id\":\"A59B\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 323.8,
+      "text": "荆棘缠缚 5",
+      "sync": "Ability {\"id\":[\"A59C\",\"A59D\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 329.2,
+      "text": "野蛮横扫",
+      "sync": "Ability {\"id\":[\"A592\",\"A593\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 334,
+      "text": "雷击",
+      "sync": "Ability {\"id\":\"A586\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 334.1,
+      "text": "野蛮怒视",
+      "sync": "Ability {\"id\":\"A94C\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 340,
+      "text": "荆棘领域",
+      "sync": "Ability {\"id\":\"A587\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 352.1,
+      "text": "强震冲",
+      "sync": "Ability {\"id\":\"A59E\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 352.1,
+      "text": "--无法选中--",
+      "groups": []
+    },
+    {
+      "time": 369.5,
+      "text": "--可选中--",
+      "groups": []
+    },
+    {
+      "time": 381.5,
+      "text": "野蛮碎击 x7",
+      "sync": "Ability {\"id\":\"A55B\",\"source\":\"野蛮恨心\"}",
+      "duration": 6.2,
+      "groups": []
+    },
+    {
+      "time": 391.3,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A516\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 395.3,
+      "text": "双持石制武器",
+      "sync": "Ability {\"id\":[\"A5A0\",\"A5A1\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 407.9,
+      "text": "野蛮横扫",
+      "sync": "Ability {\"id\":[\"A5A3\",\"A5A5\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 409,
+      "text": "荆棘领域",
+      "sync": "Ability {\"id\":\"A639\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 415,
+      "text": "藤蔓碎颈臂",
+      "sync": "Ability {\"id\":[\"A5A8\",\"A5AA\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 423.3,
+      "text": "野蛮横扫",
+      "sync": "Ability {\"id\":[\"A5A3\",\"A5A5\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 426.3,
+      "text": "雷击",
+      "sync": "Ability {\"id\":\"A586\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 426.4,
+      "text": "野蛮怒视",
+      "sync": "Ability {\"id\":\"A95E\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 432.3,
+      "text": "野蛮冲",
+      "sync": "Ability {\"id\":\"A5AE\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 441.5,
+      "text": "野蛮碎击 x8",
+      "sync": "Ability {\"id\":\"A55B\",\"source\":\"野蛮恨心\"}",
+      "duration": 7.2,
+      "groups": []
+    },
+    {
+      "time": 454.3,
+      "text": "石制武器",
+      "sync": "Ability {\"id\":[\"A55D\",\"A55E\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 463.2,
+      "text": "近侧挥打/远侧挥打",
+      "sync": "Ability {\"id\":[\"A55F\",\"A560\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 464.2,
+      "text": "野蛮横扫",
+      "sync": "Ability {\"id\":[\"A561\",\"A562\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 465.3,
+      "text": "野蛮挥打",
+      "sync": "Ability {\"id\":[\"A565\",\"A566\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 476.5,
+      "text": "荆棘生死战：墙面",
+      "sync": "Ability {\"id\":\"A5B0\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 481.6,
+      "text": "孢囊 (咏唱)",
+      "sync": "Ability {\"id\":\"A569\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 483.7,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A516\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 486.7,
+      "text": "孢囊",
+      "sync": "Ability {\"id\":\"A56A\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 492.3,
+      "text": "花粉",
+      "sync": "Ability {\"id\":\"A56B\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 494.4,
+      "text": "--小怪可选中--",
+      "groups": []
+    },
+    {
+      "time": 495.7,
+      "text": "种弹重击",
+      "sync": "Ability {\"id\":\"A59B\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 500.4,
+      "text": "荆棘缠缚",
+      "sync": "Ability {\"id\":[\"A59C\",\"A59D\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 512.7,
+      "text": "石化波动",
+      "sync": "Ability {\"id\":\"A575\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 523.8,
+      "text": "种弹播撒 (咏唱)",
+      "sync": "Ability {\"id\":\"A56D\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 527.8,
+      "text": "种弹播撒 (圈 1)",
+      "sync": "Ability { \"id\": \"\"A571\"\", \"source\": \"\"Brute\" Abombinator\" }",
+      "groups": []
+    },
+    {
+      "time": 529.8,
+      "text": "种弹播撒 (圈 2)",
+      "sync": "Ability { \"id\": \"\"A571\"\", \"source\": \"\"Brute\" Abombinator\" }",
+      "groups": []
+    },
+    {
+      "time": 531.8,
+      "text": "种弹播撒 (种子落下)",
+      "sync": "Ability {\"id\":\"A56E\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 531.8,
+      "text": "种弹播撒 (圈 3)",
+      "sync": "Ability { \"id\": \"\"A571\"\", \"source\": \"\"Brute\" Abombinator\" }",
+      "groups": []
+    },
+    {
+      "time": 533.8,
+      "text": "种弹播撒 (圈 4)",
+      "sync": "Ability { \"id\": \"\"A571\"\", \"source\": \"\"Brute\" Abombinator\" }",
+      "groups": []
+    },
+    {
+      "time": 538.4,
+      "text": "荆棘缠缚",
+      "sync": "Ability {\"id\":[\"A56F\",\"A570\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 538.5,
+      "text": "荆棘蔓延",
+      "sync": "Ability {\"id\":\"A572\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 541.7,
+      "text": "荆棘挥打",
+      "sync": "Ability {\"id\":\"A579\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 543.7,
+      "text": "荆棘波",
+      "sync": "Ability {\"id\":\"A57B\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 550,
+      "text": "野蛮碎击 x8",
+      "sync": "Ability {\"id\":\"A55B\",\"source\":\"野蛮恨心\"}",
+      "duration": 7.2,
+      "groups": []
+    },
+    {
+      "time": 567.7,
+      "text": "双持石制武器",
+      "sync": "Ability {\"id\":[\"A5A0\",\"A5A1\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 573.6,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A516\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 579.6,
+      "text": "种弹炸裂 (咏唱)",
+      "sync": "Ability {\"id\":\"A90A\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 585.7,
+      "text": "种弹炸裂 (种子落下)",
+      "sync": "Ability {\"id\":\"A598\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 590.4,
+      "text": "野蛮横扫",
+      "sync": "Ability {\"id\":[\"A5A3\",\"A5A5\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 590.8,
+      "text": "荆棘缠缚",
+      "sync": "Ability {\"id\":[\"A599\",\"A59A\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 595.4,
+      "text": "藤蔓碎颈臂",
+      "sync": "Ability {\"id\":[\"A5A8\",\"A5AA\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 599.8,
+      "text": "种弹炸裂 (种子落下)",
+      "sync": "Ability {\"id\":\"A598\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 604.7,
+      "text": "野蛮横扫",
+      "sync": "Ability {\"id\":[\"A5A3\",\"A5A5\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 604.9,
+      "text": "荆棘缠缚",
+      "sync": "Ability {\"id\":[\"A599\",\"A59A\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 611.2,
+      "text": "野蛮冲",
+      "sync": "Ability {\"id\":\"A5AE\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 617.4,
+      "text": "石制武器",
+      "sync": "Ability {\"id\":[\"A55D\",\"A55E\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 626.3,
+      "text": "近侧挥打/远侧挥打",
+      "sync": "Ability {\"id\":[\"A55F\",\"A560\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 627.3,
+      "text": "野蛮横扫",
+      "sync": "Ability {\"id\":[\"A561\",\"A562\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 628.4,
+      "text": "野蛮挥打",
+      "sync": "Ability {\"id\":[\"A565\",\"A566\"],\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 637.4,
+      "text": "野蛮碎击 x8",
+      "sync": "Ability {\"id\":\"A55B\",\"source\":\"野蛮恨心\"}",
+      "duration": 7.2,
+      "groups": []
+    },
+    {
+      "time": 653.3,
+      "text": "--中间--",
+      "sync": "Ability {\"id\":\"A516\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 665.6,
+      "text": "究极超豪华野蛮大乱击 (狂暴 咏唱)",
+      "sync": "Ability {\"id\":\"A5B1\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    },
+    {
+      "time": 665.6,
+      "text": "--无法选中--",
+      "groups": []
+    },
+    {
+      "time": 669.5,
+      "text": "究极超豪华野蛮大乱击 (狂暴)",
+      "sync": "Ability {\"id\":\"A5B3\",\"source\":\"野蛮恨心\"}",
+      "groups": []
+    }
+  ]
+}
