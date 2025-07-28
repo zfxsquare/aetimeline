@@ -799,6 +799,6 @@ export const skills: Skill[] = [
 { id: "37037", name: "应急战术", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 1,maxcharge: 0 },
 { id: "99999", name: "爆发药", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 270,maxcharge: 0 },
 { id: "88888", name: "秘策单盾扩散", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 90,maxcharge: 0 },
-{ id: "88887", name: "活化群盾", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 90,maxcharge: 0 },
+{ id: "88887", name: "活化罩子群盾", actionCategory: "能力", canTargetSelf: true, canTargetParty: false, canTargetHostile: false, targetArea: false,recast: 90,maxcharge: 0 },
 
 ]; 
