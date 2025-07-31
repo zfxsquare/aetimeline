@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import './TimelineEditor.css';
 import ConditionActionGroupManager from './ConditionActionGroupManager';
+import TimelineVariables from './TimelineVariables';
 import { skills } from '../data/skills';
 import { SkillUsageService, SkillUsageMap } from '../services/SkillUsageService';
 import { ConditionActionGroup, TimelineEntry } from './types';
+import type { TimelineVariable } from './TimelineVariables';
 
 // 在文件开头添加职业枚举
 enum Jobs {
@@ -138,6 +140,7 @@ interface TimelineConfig {
   acr: string;         // 添加适用ACR字段
   job?: Jobs;          // 修改为单个职业
   ClearCustomed?: boolean;  // 添加是否证道字段
+  variables?: TimelineVariable[];  // 添加时间轴变量
   entries: TimelineEntry[];
 }
 
@@ -163,8 +166,12 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   const [author, setAuthor] = useState('');
   const [acr, setAcr] = useState('');
   const [isInfoExpanded, setIsInfoExpanded] = useState(false);  // 添加展开状态
+  const [isVariablesExpanded, setIsVariablesExpanded] = useState(false);  // 添加变量区域展开状态
+  const [infoDropdownPosition, setInfoDropdownPosition] = useState<{top?: string, left?: string}>({});
+  const [variablesDropdownPosition, setVariablesDropdownPosition] = useState<{top?: string, left?: string}>({});
   const [selectedJob, setSelectedJob] = useState<Jobs | ''>('');  // 修改为单选
   const [clearCustomed, setClearCustomed] = useState(false);  // 添加是否证道状态
+  const [variables, setVariables] = useState<TimelineVariable[]>([]);  // 添加变量状态
   
   // 条目相关状态
   const [selectedEntry, setSelectedEntry] = useState<TimelineEntry | null>(null);
@@ -186,13 +193,70 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   // 导入文件的引用
   const fileInputRef = useRef<HTMLInputElement>(null);
   
-  // 新增ref用于获取内容高度
+  // refs用于获取元素位置
+  const infoContainerRef = useRef<HTMLDivElement>(null);
   const infoContentRef = useRef<HTMLDivElement>(null);
+  const variablesContainerRef = useRef<HTMLDivElement>(null);
 
   // 当导入的条目发生变化时更新本地状态
   useEffect(() => {
     setTimelineEntries(importedEntries);
   }, [importedEntries]);
+  
+  // 计算下拉菜单位置
+  useEffect(() => {
+    if (isInfoExpanded && infoContainerRef.current) {
+      const updatePosition = () => {
+        const rect = infoContainerRef.current?.getBoundingClientRect();
+        if (rect) {
+          setInfoDropdownPosition({
+            top: `${rect.bottom}px`,
+            left: `${rect.left}px`
+          });
+        }
+      };
+      
+      updatePosition(); // 初始更新位置
+      
+      // 添加窗口调整大小和页面滚动的监听器
+      window.addEventListener('resize', updatePosition);
+      window.addEventListener('scroll', updatePosition, true); // 使用捕获阶段以捕获任何元素上的滚动
+      
+      return () => {
+        window.removeEventListener('resize', updatePosition);
+        window.removeEventListener('scroll', updatePosition, true);
+      };
+    } else {
+      setInfoDropdownPosition({});
+    }
+  }, [isInfoExpanded]);
+  
+  useEffect(() => {
+    if (isVariablesExpanded && variablesContainerRef.current) {
+      const updatePosition = () => {
+        const rect = variablesContainerRef.current?.getBoundingClientRect();
+        if (rect) {
+          setVariablesDropdownPosition({
+            top: `${rect.bottom}px`,
+            left: `${rect.left}px`
+          });
+        }
+      };
+      
+      updatePosition(); // 初始更新位置
+      
+      // 添加窗口调整大小和页面滚动的监听器
+      window.addEventListener('resize', updatePosition);
+      window.addEventListener('scroll', updatePosition, true); // 使用捕获阶段以捕获任何元素上的滚动
+      
+      return () => {
+        window.removeEventListener('resize', updatePosition);
+        window.removeEventListener('scroll', updatePosition, true);
+      };
+    } else {
+      setVariablesDropdownPosition({});
+    }
+  }, [isVariablesExpanded]);
   
   // 处理条目选择
   const handleEntrySelect = (entry: TimelineEntry) => {
@@ -342,6 +406,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
       acr,
       job: selectedJob as Jobs,
       ClearCustomed: clearCustomed,  // 添加是否证道字段
+      variables: variables.length > 0 ? variables : undefined,  // 只有在有变量时才添加
       entries: entriesWithGroups
     };
 
@@ -424,6 +489,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
         setAcr(config.acr || '');
         setSelectedJob(config.job || '');  // 设置选中的职业
         setClearCustomed(config.ClearCustomed || false);  // 设置是否证道状态
+        setVariables(config.variables || []);  // 设置变量
         
         // 处理时间轴条目和组映射
         if (config.entries && config.entries.length > 0) {
@@ -585,14 +651,18 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
             </div>
           </div>
           
-          <div className="timeline-info-container">
+          <div className="timeline-info-container" ref={infoContainerRef}>
             <div className="timeline-info-header" onClick={() => setIsInfoExpanded(!isInfoExpanded)}>
               <h3>时间轴信息</h3>
               <span className={`expand-icon ${isInfoExpanded ? 'expanded' : ''}`}>▼</span>
             </div>
             
             {isInfoExpanded && (
-              <div className="timeline-info-dropdown" ref={infoContentRef}>
+              <div 
+                className="timeline-info-dropdown" 
+                ref={infoContentRef}
+                style={infoDropdownPosition}
+              >
                 <div className="input-group">
                   <label>时间轴名称：<span className="required">*</span></label>
                   <input 
@@ -695,6 +765,25 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
             )}
           </div>
           
+          <div className="timeline-info-container" ref={variablesContainerRef}>
+            <div className="timeline-info-header" onClick={() => setIsVariablesExpanded(!isVariablesExpanded)}>
+              <h3>时间轴变量</h3>
+              <span className={`expand-icon ${isVariablesExpanded ? 'expanded' : ''}`}>▼</span>
+            </div>
+            
+            {isVariablesExpanded && (
+              <div 
+                className="timeline-info-dropdown"
+                style={variablesDropdownPosition}
+              >
+                <TimelineVariables 
+                  variables={variables}
+                  onChange={setVariables}
+                />
+              </div>
+            )}
+          </div>
+          
           <div className="sidebar-content">
             <div className="reactions-section">
               <div className="reactions-list">
@@ -781,6 +870,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                 setSelectedGroupId={setSelectedGroupId}
                 resetAllEditStates={resetAllEditStates}
                 skillUsageMap={skillUsageMap}
+                variables={variables}
               />
             )}
           </div>
@@ -790,4 +880,4 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
   );
 };
 
-export default TimelineEditor; 
+export default TimelineEditor;

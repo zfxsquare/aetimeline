@@ -1,0 +1,109 @@
+.timeline-variables {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.variables-header h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.1em;
+  color: #eee;
+}
+
+.variable-description {
+  font-size: 0.85em;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.variables-add {
+  display: flex;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.variables-add input {
+  flex-grow: 1;
+  padding: 8px 10px;
+  background-color: #333;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #eee;
+}
+
+.variables-add button {
+  background-color: #4a6da7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.variables-add button:hover {
+  background-color: #5a7db7;
+}
+
+.variables-list {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.variables-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.variables-list th {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid #444;
+  color: #aaa;
+  font-weight: normal;
+}
+
+.variables-list td {
+  padding: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.toggle-button {
+  border: none;
+  border-radius: 3px;
+  padding: 5px 15px;
+  cursor: pointer;
+  min-width: 60px;
+}
+
+.toggle-button.true {
+  background-color: #4a6;
+  color: white;
+}
+
+.toggle-button.false {
+  background-color: #666;
+  color: #ddd;
+}
+
+.delete-button {
+  background-color: #933;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.delete-button:hover {
+  background-color: #b33;
+}
+
+.no-variables {
+  padding: 15px;
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  background-color: #2d2d2d;
+  border-radius: 4px;
+}
