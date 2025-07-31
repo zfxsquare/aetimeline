@@ -32,7 +32,14 @@ export interface RoleCondition {
   role: 'MT' | 'ST' | 'H1' | 'H2' | 'D1' | 'D2' | 'D3' | 'D4';
 }
 
-export type TimelineCondition = SkillCondition | TeamCountCondition | TeamHpCondition | RoleCondition;
+export interface VariableCondition {
+  type: 'variable';
+  enabled: boolean;
+  variableName: string;
+  expectedValue: boolean;
+}
+
+export type TimelineCondition = SkillCondition | TeamCountCondition | TeamHpCondition | RoleCondition | VariableCondition;
 
 export interface SkillAction {
   type: 'skill';

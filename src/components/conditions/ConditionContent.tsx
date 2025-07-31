@@ -1,4 +1,5 @@
 import React from 'react';
+import './ConditionContent.css';
 import { skills } from '../../data/skills';
 
 interface SkillCondition {
@@ -28,7 +29,14 @@ interface RoleCondition {
   role: 'MT' | 'ST' | 'H1' | 'H2' | 'D1' | 'D2' | 'D3' | 'D4';
 }
 
-type TimelineCondition = SkillCondition | TeamCountCondition | TeamHpCondition | RoleCondition;
+interface VariableCondition {
+  type: 'variable';
+  enabled: boolean;
+  variableName: string;
+  expectedValue: boolean;
+}
+
+type TimelineCondition = SkillCondition | TeamCountCondition | TeamHpCondition | RoleCondition | VariableCondition;
 
 interface ConditionContentProps {
   condition: TimelineCondition;
@@ -87,6 +95,16 @@ const ConditionContent: React.FC<ConditionContentProps> = ({ condition }) => {
       <>
         <span className="condition-type">自身职能</span>: 
         <span className="condition-detail">{roleLabels[condition.role] || condition.role}</span>
+      </>
+    );
+  } else if (condition.type === 'variable') {
+    content = (
+      <>
+        <span className="condition-type">变量</span>: 
+        <span className="condition-detail">{condition.variableName}</span> = 
+        <span className={`condition-value ${condition.expectedValue ? 'true' : 'false'}`}>
+          {condition.expectedValue ? '真' : '假'}
+        </span>
       </>
     );
   }

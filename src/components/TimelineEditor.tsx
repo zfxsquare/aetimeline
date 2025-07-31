@@ -870,6 +870,7 @@ const TimelineEditor: React.FC<TimelineEditorProps> = ({ importedEntries = [] })
                 setSelectedGroupId={setSelectedGroupId}
                 resetAllEditStates={resetAllEditStates}
                 skillUsageMap={skillUsageMap}
+                variables={variables}
               />
             )}
           </div>

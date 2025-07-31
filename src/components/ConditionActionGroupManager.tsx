@@ -4,6 +4,7 @@ import SkillConditionComponent from './conditions/SkillCondition';
 import TeamCountConditionComponent from './conditions/TeamCountCondition';
 import TeamHpConditionComponent from './conditions/TeamHpCondition';
 import RoleConditionComponent from './conditions/RoleCondition';
+import VariableConditionComponent from './conditions/VariableCondition';
 import SkillActionComponent from './actions/SkillAction';
 import ToggleActionComponent from './actions/ToggleAction';
 import MoveToActionComponent from './actions/MoveToAction';
@@ -17,6 +18,7 @@ import './ConditionActionGroupManager.css';
 import { useSkillCooldown } from '../hooks/useSkillCooldown';
 import { SkillUsageMap } from '../services/SkillUsageService';
 import { Action, ConditionActionGroup, TimelineCondition, TimelineEntry, SkillAction, MoveToAction, CSharpCodeAction } from './types';
+import type { TimelineVariable } from './TimelineVariables';
 
 // 组件属性接口
 interface ConditionActionGroupManagerProps {
@@ -27,6 +29,7 @@ interface ConditionActionGroupManagerProps {
   setSelectedGroupId: React.Dispatch<React.SetStateAction<string | null>>;
   resetAllEditStates: () => void;
   skillUsageMap: SkillUsageMap;
+  variables: TimelineVariable[];
 }
 
 // 生成唯一ID
@@ -41,7 +44,8 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
   selectedGroupId,
   setSelectedGroupId,
   resetAllEditStates,
-  skillUsageMap
+  skillUsageMap,
+  variables
 }) => {
   // 组编辑状态
   const [isEditingGroup, setIsEditingGroup] = useState(false);
@@ -107,6 +111,8 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
   const [teamCountRange, setTeamCountRange] = useState(30);
   const [excludeTank, setExcludeTank] = useState(false);
   const [selectedRole, setSelectedRole] = useState<'MT' | 'ST' | 'H1' | 'H2' | 'D1' | 'D2' | 'D3' | 'D4'>('MT');
+  const [variableName, setVariableName] = useState('');
+  const [expectedValue, setExpectedValue] = useState(false);
 
   // 选项数据
   const actionTypes = [
@@ -120,7 +126,8 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
     { id: 'skill_available', name: '技能可用' },
     { id: 'team_count', name: '周围队友' },
     { id: 'team_hp', name: '团队血量' },
-    { id: 'role', name: '自身职能' }
+    { id: 'role', name: '自身职能' },
+    { id: 'variable', name: '变量' }
   ];
 
   const handleNewTimeoutChange = (value: string) => {
@@ -410,6 +417,21 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
             cancelEditingCondition={cancelEditingCondition}
           />
         );
+        
+      case 'variable':
+        return (
+          <VariableConditionComponent
+            variableName={variableName}
+            setVariableName={setVariableName}
+            expectedValue={expectedValue}
+            setExpectedValue={setExpectedValue}
+            variables={variables}
+            handleAddCondition={handleAddCondition}
+            isEditingCondition={isEditingCondition}
+            selectedGroupId={selectedGroupId}
+            cancelEditingCondition={cancelEditingCondition}
+          />
+        );
       
       default:
         return null;
@@ -691,6 +713,16 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
           role: selectedRole
         };
         break;
+      case 'variable':
+        if (variableName) {
+          newCondition = {
+            type: 'variable',
+            enabled: true,
+            variableName,
+            expectedValue
+          };
+        }
+        break;
     }
     
     if (newCondition) {
@@ -719,6 +751,8 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
       setTeamCountValue(1);
       setTeamCountRange(30);
       setExcludeTank(false);
+      setVariableName('');
+      setExpectedValue(false);
     }
   };
 
@@ -745,6 +779,9 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
       setExcludeTank(condition.excludeTank);
     } else if (condition.type === 'role') {
       setSelectedRole(condition.role);
+    } else if (condition.type === 'variable') {
+      setVariableName(condition.variableName);
+      setExpectedValue(condition.expectedValue);
     }
   };
 
@@ -777,6 +814,8 @@ const ConditionActionGroupManager: React.FC<ConditionActionGroupManagerProps> = 
     setTeamCountRange(30);
     setExcludeTank(false);
     setSelectedRole('MT');
+    setVariableName('');
+    setExpectedValue(false);
   };
 
   // 添加一个取消编辑组的函数

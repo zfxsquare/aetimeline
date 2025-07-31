@@ -1,0 +1,17 @@
+.condition-value {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.condition-value.true {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+
+.condition-value.false {
+  background-color: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+}
