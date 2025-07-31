@@ -131,7 +131,7 @@
   flex-direction: column;
   gap: 8px;
   position: relative;
-  z-index: 5;
+  z-index: 10;
 }
 
 .search-options {
@@ -1450,7 +1450,12 @@
   background-color: #2a2a2a;
   border-bottom: 1px solid #3a3a3a;
   margin-bottom: 10px;
-  z-index: 100;
+  z-index: 50;
+}
+
+/* 变量容器的z-index低于信息容器 */
+.timeline-info-container:nth-child(3) {
+  z-index: 30;
 }
 
 .timeline-info-header {
@@ -1483,16 +1488,18 @@
 }
 
 .timeline-info-dropdown {
-  position: absolute;
-  left: 0;
-  right: 0;
+  position: fixed; /* 改为fixed定位，避免受父元素影响 */
+  width: 300px; /* 与侧栏同宽 */
   background-color: #2a2a2a;
   padding: 15px 0;
-  border-bottom: 1px solid #3a3a3a;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  z-index: 101;
-  animation: fadeInDown 0.3s ease;
+  border: 1px solid #4a4a4a;
+  border-top: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 9999;  /* 使用更高的z-index */
+  animation: fadeInDown 0.15s ease;
   box-sizing: border-box;
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
 }
 
 @keyframes fadeInDown {
